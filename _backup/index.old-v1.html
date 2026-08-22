@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agarwal &amp; Dhandhania | Chartered Accountants — Since 1960</title>
+<meta name="description" content="Agarwal & Dhandhania — Chartered Accountants since 1960. Audit, taxation, corporate advisory, management consultancy, forensic audit, KPO/BPO. Surat, Gujarat.">
+<style>
+  :root{
+    --green:#00562a; --green-d:#013d1e; --green-l:#0a7a41;
+    --amber:#f6a12a; --amber-d:#e08d11;
+    --ink:#141a17; --muted:#5c6b63; --line:#e6ece8;
+    --bg:#ffffff; --bg-soft:#f5f8f6; --charcoal:#151a17;
+    --shadow:0 10px 30px rgba(0,40,20,.08);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Lato','Segoe UI',system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.2;font-weight:800;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .wrap{width:min(1180px,92%);margin-inline:auto}
+  .accent{color:var(--amber)}
+  section{padding:88px 0}
+  .eyebrow{color:var(--amber-d);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin-bottom:12px}
+  .lead{color:var(--muted);font-size:1.05rem;max-width:60ch}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--amber);color:#241800;font-weight:800;padding:13px 26px;border-radius:999px;transition:.2s;border:none;cursor:pointer;font-size:.95rem}
+  .btn:hover{background:var(--amber-d);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* top bar */
+  .topbar{background:var(--green-d);color:#dff0e6;font-size:.85rem}
+  .topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding:9px 0;flex-wrap:wrap}
+  .topbar a{color:#dff0e6;opacity:.9}
+  .topbar a:hover{opacity:1;color:#fff}
+  .topbar .r{display:flex;gap:18px;flex-wrap:wrap}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .mark{width:46px;height:46px;border-radius:11px;background:linear-gradient(135deg,var(--green),var(--green-l));display:grid;place-items:center;color:#fff;font-weight:900;font-size:1.15rem;box-shadow:var(--shadow)}
+  .brand b{font-size:1.12rem;display:block;letter-spacing:-.02em}
+  .brand span{font-size:.72rem;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  nav.menu{display:flex;gap:26px;align-items:center}
+  nav.menu a{font-weight:700;font-size:.93rem;color:#26332c;position:relative;padding:4px 0}
+  nav.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--amber);transition:.25s}
+  nav.menu a:hover{color:var(--green)}
+  nav.menu a:hover::after{width:100%}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{display:block;width:24px;height:2.5px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.3s}
+
+  /* hero */
+  .hero{position:relative;background:linear-gradient(120deg,var(--green-d) 0%,var(--green) 55%,var(--green-l) 120%);color:#fff;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 400px at 85% 20%,rgba(246,161,42,.22),transparent 60%),
+    radial-gradient(500px 500px at 10% 90%,rgba(255,255,255,.07),transparent 60%)}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;padding:96px 0 100px}
+  .hero .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:7px 16px;border-radius:999px;font-size:.82rem;font-weight:700;letter-spacing:.05em;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.5rem);margin-bottom:18px}
+  .hero p{color:#d9ece0;font-size:1.1rem;max-width:52ch;margin-bottom:30px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .badge66{aspect-ratio:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:24px;display:grid;place-content:center;text-align:center;padding:30px;box-shadow:var(--shadow)}
+  .badge66 .num{font-size:clamp(3rem,8vw,5.5rem);font-weight:900;color:var(--amber);line-height:1}
+  .badge66 .txt{letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;font-weight:800;margin-top:8px}
+  .badge66 small{display:block;color:#cfe3d6;margin-top:10px;font-size:.82rem;letter-spacing:.03em}
+
+  /* stats strip */
+  .stats{background:var(--charcoal);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 0;text-align:center}
+  .stats .n{font-size:2rem;font-weight:900;color:var(--amber)}
+  .stats .l{font-size:.86rem;color:#b9c6bf;letter-spacing:.04em}
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about .imgcard{background:linear-gradient(135deg,var(--bg-soft),#eaf2ec);border-radius:var(--radius);padding:40px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .about .imgcard .big{font-size:3.4rem;font-weight:900;color:var(--green)}
+  .about ul{list-style:none;margin-top:22px;display:grid;gap:12px}
+  .about li{display:flex;gap:12px;align-items:flex-start;font-weight:600}
+  .about li svg{flex:none;margin-top:3px}
+  h2.title{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:8px}
+
+  /* services */
+  .services{background:var(--bg-soft)}
+  .head-center{text-align:center;max-width:680px;margin:0 auto 52px}
+  .head-center .lead{margin:0 auto}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 24px;transition:.28s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--amber);transition:.3s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+  .card:hover::before{width:100%}
+  .ico{width:56px;height:56px;border-radius:13px;background:linear-gradient(135deg,rgba(0,86,42,.1),rgba(246,161,42,.16));display:grid;place-items:center;margin-bottom:18px;color:var(--green)}
+  .card h3{font-size:1.06rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.92rem}
+
+  /* why */
+  .why .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .why .item{display:flex;gap:16px;padding:24px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);transition:.25s}
+  .why .item:hover{border-color:var(--amber);box-shadow:var(--shadow)}
+  .why .item .n{flex:none;width:44px;height:44px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:900}
+  .why .item h3{font-size:1rem;margin-bottom:4px}
+  .why .item p{color:var(--muted);font-size:.9rem}
+
+  /* contact */
+  .contact{background:linear-gradient(120deg,var(--green-d),var(--green));color:#fff}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .contact h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:10px}
+  .contact .sub{color:#d4e8db;margin-bottom:28px}
+  .cinfo{display:grid;gap:20px}
+  .cinfo .row{display:flex;gap:16px;align-items:flex-start}
+  .cinfo .ic{flex:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.12);display:grid;place-items:center}
+  .cinfo .row b{display:block;margin-bottom:2px}
+  .cinfo .row span{color:#cfe3d6;font-size:.95rem}
+  form{background:#fff;color:var(--ink);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  form .fld{margin-bottom:16px}
+  label{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px}
+  input,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg-soft)}
+  input:focus,textarea:focus{outline:none;border-color:var(--green);background:#fff}
+  form .btn{width:100%;justify-content:center}
+  .note{font-size:.78rem;color:var(--muted);margin-top:10px;text-align:center}
+
+  /* footer */
+  footer{background:var(--charcoal);color:#c5d2cb;font-size:.92rem}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px;padding:64px 0 40px}
+  footer h4{color:#fff;font-size:1rem;margin-bottom:16px}
+  footer a{color:#c5d2cb;display:block;padding:5px 0}
+  footer a:hover{color:var(--amber)}
+  .fbrand .mark{margin-bottom:14px}
+  .social{display:flex;gap:10px;margin-top:16px}
+  .social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;padding:0}
+  .social a:hover{background:var(--amber);color:#241800}
+  .fbottom{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;text-align:center;color:#8ea297;font-size:.85rem}
+
+  @media(max-width:960px){
+    .hero .wrap,.about .wrap,.contact .wrap{grid-template-columns:1fr}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .why .grid3{grid-template-columns:1fr 1fr}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+    .badge66{max-width:320px}
+  }
+  @media(max-width:640px){
+    nav.menu{position:fixed;inset:64px 0 auto 0;background:#fff;flex-direction:column;padding:18px 22px;gap:6px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);transform:translateY(-140%);transition:.3s;align-items:flex-start}
+    nav.menu.open{transform:translateY(0)}
+    nav.menu a{width:100%;padding:10px 0;border-bottom:1px solid var(--line)}
+    .burger{display:block}
+    .grid,.why .grid3,.fgrid{grid-template-columns:1fr}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- top bar -->
+<div class="topbar"><div class="wrap">
+  <div>📍 204-205, SNS Interio, 4th Floor, Bhatar Althan Road, Surat-395017 (Gujarat)</div>
+  <div class="r">
+    <a href="tel:02612269131">📞 0261-2269131</a>
+    <a href="mailto:connect@adcaindia.com">✉ connect@adcaindia.com</a>
+  </div>
+</div></div>
+
+<!-- header -->
+<header><div class="wrap"><div class="nav">
+  <a class="brand" href="#home">
+    <div class="mark">A&amp;D</div>
+    <div><b>Agarwal &amp; Dhandhania</b><span>Chartered Accountants</span></div>
+  </a>
+  <nav class="menu" id="menu">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#network">Network</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></div></header>
+
+<!-- hero -->
+<section class="hero" id="home" style="padding:0">
+  <div class="wrap">
+    <div>
+      <span class="pill">★ Trusted since 1960 · 66+ Years of Excellence</span>
+      <h1>Sound, practical financial advice — <span class="accent">at a reasonable price.</span></h1>
+      <p>A broad-based provider of audit, taxation, corporate advisory and management consultancy to a diverse, geographically dispersed set of organizations across India.</p>
+      <div class="cta">
+        <a href="#services" class="btn">Explore Our Services →</a>
+        <a href="#contact" class="btn ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="badge66">
+      <div class="num">66</div>
+      <div class="txt">Years of Existence</div>
+      <small>Celebrating over half a century of trust</small>
+    </div>
+  </div>
+</section>
+
+<!-- stats -->
+<div class="stats"><div class="wrap">
+  <div><div class="n">1960</div><div class="l">Founded</div></div>
+  <div><div class="n">66+</div><div class="l">Years of Service</div></div>
+  <div><div class="n">8</div><div class="l">Core Practice Areas</div></div>
+  <div><div class="n">Pan-India</div><div class="l">Network Reach</div></div>
+</div></div>
+
+<!-- about -->
+<section class="about" id="about"><div class="wrap">
+  <div class="imgcard">
+    <div class="big">Est. 1960</div>
+    <p style="color:var(--muted);margin-top:8px">Agarwal &amp; Dhandhania — tracing its roots back well over half a century.</p>
+    <ul>
+      <li>✅ <span>High-quality audit &amp; income-tax advisory</span></li>
+      <li>✅ <span>Broad-based management consultancy</span></li>
+      <li>✅ <span>Accounting &amp; taxation for diverse organizations</span></li>
+      <li>✅ <span>Sustained focus on sound, practical advice</span></li>
+    </ul>
+  </div>
+  <div>
+    <div class="eyebrow">About Agarwal &amp; Dhandhania</div>
+    <h2 class="title">Six decades of building financial confidence</h2>
+    <p class="lead" style="margin-bottom:16px">Founded in 1960, the firm initially rendered high-quality audit and income-tax advisory services to clients across Western India.</p>
+    <p class="lead">Over the last decade, Agarwal &amp; Dhandhania has rapidly expanded into a broad-based provider of management consultancy, accounting and taxation advice — growing steadily in both size and scope through a strong professional team and a sustained focus on practical advice at a reasonable price.</p>
+    <a href="#contact" class="btn" style="margin-top:26px">Read More →</a>
+  </div>
+</div></section>
+
+<!-- services -->
+<section class="services" id="services"><div class="wrap">
+  <div class="head-center">
+    <div class="eyebrow">Our Services</div>
+    <h2 class="title">Comprehensive expertise, one trusted firm</h2>
+    <p class="lead">A full spectrum of professional services delivered by a well-qualified, experienced team.</p>
+  </div>
+  <div class="grid" id="svcgrid"></div>
+</div></section>
+
+<!-- why -->
+<section class="why" id="why"><div class="wrap">
+  <div class="head-center">
+    <div class="eyebrow">Why Agarwal &amp; Dhandhania</div>
+    <h2 class="title">What sets our practice apart</h2>
+  </div>
+  <div class="grid3" id="whygrid"></div>
+</div></section>
+
+<!-- contact -->
+<section class="contact" id="contact"><div class="wrap">
+  <div>
+    <div class="eyebrow" style="color:var(--amber)">Get In Touch</div>
+    <h2>Let's discuss how we can help</h2>
+    <p class="sub">Reach out for audit, taxation, advisory or consultancy support — we respond promptly.</p>
+    <div class="cinfo">
+      <div class="row"><div class="ic">🏢</div><div><b>Head Office</b><span>204-205, SNS Interio, 4th Floor, Bhatar Althan Road, Nr Gujarat Gas Pump, Surat-395017 (Gujarat)</span></div></div>
+      <div class="row"><div class="ic">📞</div><div><b>Phone</b><span>0261-2269131</span></div></div>
+      <div class="row"><div class="ic">✉</div><div><b>Email</b><span>connect@adcaindia.com</span></div></div>
+    </div>
+    <div class="social" style="margin-top:24px">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Twitter">𝕏</a>
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="YouTube">▶</a>
+    </div>
+  </div>
+  <form onsubmit="event.preventDefault();this.querySelector('.note').textContent='Thank you! This is a demo form — connect it to your email/CRM to receive messages.';">
+    <div class="fld"><label>Full Name</label><input required placeholder="Your name"></div>
+    <div class="fld"><label>Email</label><input type="email" required placeholder="you@example.com"></div>
+    <div class="fld"><label>Phone</label><input placeholder="Your phone"></div>
+    <div class="fld"><label>Message</label><textarea rows="4" required placeholder="How can we help?"></textarea></div>
+    <button class="btn" type="submit">Send Message</button>
+    <p class="note"></p>
+  </form>
+</div></section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <div class="mark">A&amp;D</div>
+      <p>Agarwal &amp; Dhandhania — Chartered Accountants delivering sound, practical financial advice since 1960.</p>
+      <div class="social">
+        <a href="#">f</a><a href="#">𝕏</a><a href="#">in</a><a href="#">▶</a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#about">About Us</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#services">Audit &amp; Risk Assurance</a>
+      <a href="#services">Direct &amp; Indirect Taxation</a>
+      <a href="#services">Corporate Advisory</a>
+      <a href="#services">Forensic Audit</a>
+    </div>
+    <div id="network">
+      <h4>Newsletter</h4>
+      <p style="margin-bottom:12px">Subscribe for updates &amp; publications.</p>
+      <form onsubmit="event.preventDefault();this.querySelector('span').textContent='Subscribed ✓';">
+        <input placeholder="Your email" style="margin-bottom:10px">
+        <button class="btn" type="submit" style="width:100%;justify-content:center">Subscribe</button>
+        <span style="display:block;margin-top:8px;color:var(--amber);font-size:.85rem"></span>
+      </form>
+    </div>
+  </div>
+  <div class="fbottom">© 2025 Agarwal &amp; Dhandhania. All Rights Reserved. · Chartered Accountants · Surat, Gujarat</div>
+</footer>
+
+<script>
+  // mobile menu
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+  // services data
+  const ic=(p)=>`<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+  const services=[
+    ["Audit & Risk Assurance","Independent statutory, internal and risk-based audits that strengthen trust and controls.",'<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>'],
+    ["Corporate Advisory","Strategic guidance on structuring, compliance, transactions and growth.",'<path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/>'],
+    ["Management Consultancy","Practical operational and financial consulting to improve performance.",'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.6 15H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 11 3.09V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 16 4.6a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20.9 9H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>'],
+    ["Accounting & Business Support","End-to-end bookkeeping, MIS and compliance support for growing businesses.",'<path d="M9 17V7m4 10V4m4 13v-6"/><path d="M3 21h18"/>'],
+    ["Direct & Indirect Taxation","Income-tax, GST and cross-border tax planning, filing and representation.",'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>'],
+    ["Forensic & Investigation Audit","Fraud detection, forensic accounting and investigative assurance.",'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'],
+    ["Online & Offline Turnkey Support","Complete outsourced finance functions, delivered on-site or remotely.",'<path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/>'],
+    ["KPO & BPO","Knowledge- and business-process outsourcing for finance and accounting.",'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>'],
+  ];
+  document.getElementById('svcgrid').innerHTML=services.map(s=>`
+    <div class="card"><div class="ico">${ic(s[2])}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+
+  const why=[
+    ["Cost-Competitive Services","Sound, practical advice delivered at a reasonable price."],
+    ["Countrywide Network","Our USP — a wide network giving true pan-India reach."],
+    ["Reliable & Timely","Dependable delivery, always on schedule."],
+    ["Qualified Professionals","A well-qualified, deeply experienced professional team."],
+    ["Client Understanding","We take time to understand each client's requirements."],
+    ["Customer-Friendly Approach","Approachable, responsive and relationship-driven."],
+  ];
+  document.getElementById('whygrid').innerHTML=why.map((w,i)=>`
+    <div class="item"><div class="n">${i+1}</div><div><h3>${w[0]}</h3><p>${w[1]}</p></div></div>`).join('');
+</script>
+</body>
+</html>
