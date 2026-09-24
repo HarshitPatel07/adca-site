@@ -623,6 +623,11 @@ table.tbl tr:nth-child(even) td{background:var(--gray-bg)}
 }
 @media (max-width:860px){
   .burger{display:block}
+  /* The header row is logo, chips and burger. On a 360px screen that wants
+     117 + 174 + 24 plus gaps, which is wider than the screen — the six icons
+     alone are 174 of it. The original shows only the logo and the burger on a
+     phone; the accounts are still one scroll away in the footer. */
+  .header-top .social-chips{display:none}
   /* the original's phone menu is the same amber panel, opened from the burger,
      with the current page still carried on its green block */
   .nav-bar{background:transparent;border-top:none}

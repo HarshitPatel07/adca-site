@@ -28,6 +28,26 @@ window.ADCA = {
     hours: 'Monday to Saturday, 10:30 am – 7:00 pm'
   },
 
+  /* ---- social accounts ------------------------------------------------
+     The firm's real accounts. These are rendered into every .social-chips
+     block, in the header and the footer of every page, so they are set here
+     once rather than in twenty-six places across thirteen files.
+     -------------------------------------------------------------------- */
+  social: [
+    { name: 'Facebook',  href: 'https://www.facebook.com/adcaindia/',
+      path: 'M15 3h-3a4 4 0 0 0-4 4v3H6v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z' },
+    { name: 'X',         href: 'https://x.com/adca_india',
+      path: 'M3 3h4.6l4.3 6 5-6H21l-6.9 8.2L21.4 21h-4.6l-4.6-6.4L6.7 21H3.9l7.3-8.7z' },
+    { name: 'LinkedIn',  href: 'https://in.linkedin.com/company/adcaindia',
+      path: 'M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3.3 9h3.4v12H3.3zM9.2 9h3.3v1.7c.6-1.1 1.9-2 3.6-2 2.6 0 4.1 1.7 4.1 4.8V21h-3.4v-6.9c0-1.6-.6-2.5-1.9-2.5-1.2 0-2 .8-2 2.5V21H9.2z' },
+    { name: 'Instagram', href: 'https://www.instagram.com/agarwalndhandhania/',
+      path: 'M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 3.2a6.6 6.6 0 1 0 0 13.2 6.6 6.6 0 0 0 0-13.2zm0 10.9a4.3 4.3 0 1 1 0-8.6 4.3 4.3 0 0 1 0 8.6zm6.9-11.2a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z' },
+    { name: 'YouTube',   href: 'https://www.youtube.com/channel/UC-wV-nR3GnHGD6bFoumniRA',
+      path: 'M22 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.8C18.3 5 12 5 12 5s-6.3 0-7.9.5A2.5 2.5 0 0 0 2.4 7.3C2 8.8 2 12 2 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.7 1.8C5.7 19 12 19 12 19s6.3 0 7.9-.5a2.5 2.5 0 0 0 1.7-1.8C22 15.2 22 12 22 12zM10 15.2V8.8L15.5 12z' },
+    { name: 'Email',     href: 'mailto:connect@adcaindia.com',
+      path: 'M3 5h18v14H3zm1.8 1.6L12 12l7.2-5.4z' }
+  ],
+
   /* ---- hero slider --------------------------------------------------- */
   slides: [
     { img: 'assets/img/New-Project.png',

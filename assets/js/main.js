@@ -57,6 +57,26 @@
   }
 
   /* ======================================================================
+     SOCIAL ACCOUNTS
+     ----------------------------------------------------------------------
+     Fills every .social-chips block — header and footer, every page — from
+     the one list in data.js. These used to be twenty-six copies of the same
+     markup across thirteen files, each with href="#", so none of them went
+     anywhere and correcting them meant twenty-six edits.
+     ====================================================================== */
+  function renderSocial() {
+    var links = D.social || [];
+    if (!links.length) return;
+    var html = links.map(function (s) {
+      var external = s.href.indexOf('http') === 0;
+      return '<a href="' + s.href + '" aria-label="' + s.name + '"' +
+        (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
+        '<svg viewBox="0 0 24 24"><path d="' + s.path + '"/></svg></a>';
+    }).join('');
+    $$('.social-chips').forEach(function (box) { box.innerHTML = html; });
+  }
+
+  /* ======================================================================
      HERO SLIDER
      ====================================================================== */
   function renderSlider() {
@@ -566,6 +586,7 @@
      ====================================================================== */
   function boot() {
     renderNav();
+    renderSocial();
     renderSlider();
     renderStats();
     renderAbout();
