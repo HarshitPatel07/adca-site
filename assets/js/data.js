@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    EVERY repeated block on the site is rendered from this one file: the slider,
    the service tiles and their detail lists, the "Why" arc labels, the counters,
-   the branch list, the camp-office network, the budget publications and the
+   the branch list, the budget publications and the
    gallery.
 
    To change site content you edit THIS file only — not the HTML. Counts such as
@@ -40,7 +40,7 @@ window.ADCA = {
       cta: 'Our Services', href: 'services.html' },
     { img: 'assets/img/3.png',
       h: 'Seven partners, <span>PAN India</span>',
-      p: 'Supported by a team of more than 300 professionals across eight branches and a camp-office network reaching 20 states.',
+      p: 'Supported by a team of more than 300 professionals across eight branches PAN India.',
       cta: 'Our Network', href: 'network.html' },
     { img: 'assets/img/2.png',
       h: 'A partner in your <span>business strategy</span>',
@@ -223,33 +223,6 @@ window.ADCA = {
     { city: 'Kolkata',   addr: 'Shantiniketan Bldg, 9th Floor Room No.913, 8 Carnac Street, Kolkata 700017', phone: '' }
   ],
 
-  /* ---- camp office network (city counts are computed, not typed) ------ */
-  campIntro: '“Agarwal & Dhandhania” is the brand under which dedicated professionals and ' +
-    'associates throughout the country collaborate to provide audit, consulting, financial ' +
-    'advisory, risk advisory, tax and related services to its clients. “We don’t consider ' +
-    'boundaries to be constraint in providing the services to our clients”',
-  camp: [
-    { state: 'Gujarat',        cities: ['Surat','Ahmadabad','Vadodara','Rajkot','Porbandar','Mehsana','Kutch','Amreli','Morbi','Ghandhinagar','Surendranagar','Bhavnagar','Jamnagar','Junagadh'] },
-    { state: 'Maharashtra',    cities: ['Mumbai','Pune','Nagpur','Aurangabad','Kolhapur','Nashik','Akola-Jalgaon','Ratnagiri','Satara','Solapur','Yavatmal','Latur'] },
-    { state: 'Uttar Pradesh',  cities: ['Noida','Lucknow','Kanpur','Ghaziabad','Varanasi','Bareilly','Gorakhpur','Prayagraj'] },
-    { state: 'Karnataka',      cities: ['Bengaluru','Mysuru','Hubli','Kalaburagi','Mangaluru','Davanagere','Ballari'] },
-    { state: 'Andhra Pradesh', cities: ['Vishakhapatnam','Vijaywada','Tirupati','Rajahmundry-Guntur','Nellore','Chittoor','Kurnool'] },
-    { state: 'Tamil Nadu',     cities: ['Chennai','Coimbatore','Madurai','Salem','Erode','Tirunelveli','Puducherry'] },
-    { state: 'Rajasthan',      cities: ['Jaipur','Ajmer','Kota','Jodhpur','Chittorgarth','Banswara'] },
-    { state: 'West Bengal',    cities: ['Kolkata','Siliguri','Kharagpur','Darjeeling','Jalpaiguri'] },
-    { state: 'Bihar',          cities: ['Patna','Gaya','Muzaffarpur','Darbhanga','Chhapra'] },
-    { state: 'Assam',          cities: ['Guwahati','Tezpur','Shillong','Dimapur','Agartala'] },
-    { state: 'Delhi',          cities: ['Faridabad','Gurgaon','Panipat','Rohtak','Sonipat'] },
-    { state: 'Haryana',        cities: ['Faridabad','Gurugram','Panipat','Rohtak','Sonipat'] },
-    { state: 'Madhya Pradesh', cities: ['Bhopal','Indore','Jabalpur','Gwalior','Ujjain'] },
-    { state: 'Orissa',         cities: ['Bhubneswar','Cuttak','Puri','Rourkela'] },
-    { state: 'Jharkhand',      cities: ['Ranchi','Jamshedpur','Dhanbad','Bokaro'] },
-    { state: 'Punjab',         cities: ['Chandigarh','Ludhiana','Amritsar','Patiala'] },
-    { state: 'Kerala',         cities: ['Thrissur','Ernakulam','Kozhikode','Trivandrum'] },
-    { state: 'Telangana',      cities: ['Hyderabad','Warangal','Khammam','Karimnagar'] },
-    { state: 'Uttarakhand',    cities: ['Dehradun','Haridwar','Rudrapur-Haldwani'] },
-    { state: 'Chhattisgarh',   cities: ['Raipur','Bilaspur','Rajnandgaon'] }
-  ],
 
   /* ---- publications -------------------------------------------------- */
   publicationIntro: 'Our wide and extensive range of publications includes Expert Advice on ' +
@@ -332,9 +305,7 @@ window.ADCA = {
         { label: 'Our Team',   href: 'team.html' },
         { label: 'Our Values', href: 'values.html' } ] },
     { key: 'services', label: 'Services',        href: 'services.html' },
-    { key: 'network',  label: 'Our Network',     href: 'network.html', sub: [
-        { label: 'Our Branches', href: 'network.html#branches' },
-        { label: 'Camp Office',  href: 'network.html#camp' } ] },
+    { key: 'network',  label: 'Our Network',     href: 'network.html' },
     { key: 'pub',      label: 'Publication',     href: 'publication.html', sub: 'budgets' },
     { key: 'careers',  label: 'Careers',         href: 'careers.html' },
     { key: 'gallery',  label: 'Gallery & Events', href: 'gallery.html' },

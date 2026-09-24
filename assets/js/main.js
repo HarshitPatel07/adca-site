@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    Reads window.ADCA (assets/js/data.js) and renders the navigation, slider,
    counters, service tiles and detail accordions, the "Why" arch, branches,
-   camp-office network, publications and gallery.
+   publications and gallery.
 
    Each page carries <body data-page="KEY"> plus empty mount points; whatever
    is present on the page gets filled, whatever is absent is skipped.
@@ -272,7 +272,7 @@
   }
 
   /* ======================================================================
-     BRANCHES + CAMP OFFICE
+     BRANCHES
      ====================================================================== */
   function renderBranches() {
     var box = $('#branch-grid');
@@ -290,27 +290,6 @@
     }).join('');
   }
 
-  function renderCamp() {
-    var box = $('#camp-list');
-    if (!box) return;
-
-    /* counts are derived from the data, never hand-typed */
-    var totalCities = D.camp.reduce(function (a, s) { return a + s.cities.length; }, 0);
-    var summary = $('#camp-summary');
-    if (summary) {
-      summary.textContent = D.camp.length + ' states  ·  ' + totalCities + ' cities';
-    }
-
-    box.innerHTML = D.camp.map(function (s) {
-      return '<div class="acc"><button type="button" aria-expanded="false">' +
-        '<span>' + s.state + '</span>' +
-        '<span class="count">' + s.cities.length + ' cities</span>' +
-        '<span class="plus"></span></button>' +
-        '<div class="acc-body"><ul>' +
-          s.cities.map(function (c) { return '<li>' + c + '</li>'; }).join('') +
-        '</ul></div></div>';
-    }).join('');
-  }
 
   /* ======================================================================
      PUBLICATIONS
@@ -374,7 +353,7 @@
   }
 
   /* ======================================================================
-     ACCORDIONS (delegated — works for services and camp office)
+     ACCORDIONS (delegated)
      ====================================================================== */
   function wireAccordions() {
     document.addEventListener('click', function (e) {
@@ -548,7 +527,6 @@
     renderWhy();
     renderDesignations();
     renderBranches();
-    renderCamp();
     renderBudgets();
     renderGallery();
     wireAccordions();
