@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=21">
+<link rel="stylesheet" href="assets/css/style.css?v=22">
 </head>
 <body data-page="contact">
 
@@ -72,16 +72,21 @@
       <div class="branch-grid" id="branch-grid"></div>
 
       <h2>Find Us</h2>
-      <!-- Built from the firm's own head-office address. The keyless
-           maps.google.com/maps?q=…&output=embed form needs no API key, so
-           there is nothing here to expire or bill. -->
+      <!-- The /maps/embed?pb= form, which points at the firm's own Google
+           Maps listing (place 0x3be04e4412d2f25f:0x93a4680e01d1c58b) at its
+           Surat coordinates.
+
+           The obvious maps.google.com/maps?q=…&output=embed form was tried
+           first and came out blank: it answers with a redirect, and a redirect
+           inside a frame renders nothing. This one answers 200 and sets no
+           X-Frame-Options, so it draws. Neither needs an API key. -->
       <iframe
         title="Map showing Agarwal &amp; Dhandhania, SNS Interio, Bhatar Althan Road, Surat"
-        src="https://maps.google.com/maps?q=Agarwal%20%26%20Dhandhania%20Chartered%20Accountants%2C%20SNS%20Interio%2C%20Bhatar%20Althan%20Road%2C%20Nr%20Gujarat%20Gas%20Pump%2C%20Surat%20395017&amp;z=16&amp;output=embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.1947290127364!2d72.8325129503044!3d21.184421985845116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e4412d2f25f%3A0x93a4680e01d1c58b!2sAgarwal+%26+Dhandhania%2C+Chartered+Accountants!5e0!3m2!1sen!2sin!4v1520328210902"
         style="width:100%;aspect-ratio:16/7;border:1px solid var(--gray-line);display:block"
-        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
       <p style="font-size:13px;margin-top:10px">
-        <a href="https://maps.google.com/maps?q=Agarwal+%26+Dhandhania+Chartered+Accountants,+SNS+Interio,+Bhatar+Althan+Road,+Surat+395017"
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Agarwal%20%26%20Dhandhania%20Chartered%20Accountants%2C%20Bhatar%20Althan%20Road%2C%20Surat"
            target="_blank" rel="noopener noreferrer"
            style="color:var(--green);font-weight:600">Open in Google Maps</a></p>
     </div>
@@ -180,7 +185,7 @@
 
 <button class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 5 4 13h5v6h6v-6h5z"/></svg></button>
 
-<script src="assets/js/data.js?v=21"></script>
-<script src="assets/js/main.js?v=21"></script>
+<script src="assets/js/data.js?v=22"></script>
+<script src="assets/js/main.js?v=22"></script>
 </body>
 </html>
