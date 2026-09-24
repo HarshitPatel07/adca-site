@@ -298,10 +298,11 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
    resembled the original — thin outlines and small grey labels against the
    real site's coloured illustrations and bold dark ones.
    -------------------------------------------------------------------------- */
-.why-agarwal-list{position:relative;width:1170px;max-width:100%;height:470px;
-  margin:0 auto;list-style:none}
-.why-agarwal-list>li{position:relative;font-family:var(--font-body);
-  font-size:19px;font-weight:700;line-height:28.5px;color:#333}
+.why-agarwal-list{position:relative;width:1170px;max-width:100%;min-height:470px;
+  margin:0 auto;list-style:none;z-index:1}
+.why-agarwal-list>li{float:left;width:300px;min-height:90px;padding:16px 120px 0 0;
+  position:relative;text-align:right;color:#333;font-family:var(--font-body);
+  font-size:19px;font-weight:700;line-height:150%}
 /* The disc: white fill, 6px ring, 90x90 — the live site's own values.
 
    The icon inside it is its OWN file rather than a window onto the shared
@@ -312,47 +313,62 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
    instance — shows a stray figure beside the globe and loose stars under the
    celebrating one. Cut into separate images there is nothing to bleed, whatever
    else goes wrong. */
-.why-agarwal-list>li::after{content:"";position:absolute;width:90px;height:90px;
-  border:6px solid #99bbaa;border-radius:50%;background-color:#fff;
+.why-agarwal-list>li::after{content:"";position:absolute;top:0;right:0;bottom:0;margin:auto;
+  width:90px;height:90px;border:6px solid #99bbaa;border-radius:50%;background-color:#fff;
   background-repeat:no-repeat;background-position:center}
-.why-agarwal-list>li::before{content:"";position:absolute;width:43px;height:19px;
-  background:url('../img/why-connector.png') center no-repeat}
+/* The connectors are placed by margin alone. The original's stylesheet carries
+   a set of rotate() rules for them that look authoritative and are in fact
+   overridden further down — every one computes to transform:none on the live
+   page. Following the authored rules rather than the computed ones sent all
+   seven off at angles the original does not use. */
+.why-agarwal-list>li::before{content:"";position:absolute;right:0;bottom:0;margin:auto;
+  width:43px;height:18px;background:url('../img/why-connector.png') center/43px 18px no-repeat}
 .why-arch{position:absolute;top:196px;left:50%;transform:translateX(-50%);
   width:548px;height:274px;max-width:none}
 
-.adca-list4{width:300px;margin:0 435px;padding:0 0 125px;text-align:center}
-.adca-list4::after{top:88px;left:0;right:0;margin:0 auto;background-image:url('../img/why-cost.png')}
-.adca-list4::before{top:181px;left:0;right:0;margin:0 auto}
+/* Position is by nth-child, as on the original, because the geometry follows
+   the order round the arch rather than which strength is being named. Our DOM
+   order is theirs: top, upper-left, upper-right, mid-left, mid-right,
+   lower-left, lower-right. */
 
-/* the six side labels are 90px tall on the original whether their text runs to
-   one line or two, which is what keeps the rows level */
-.adca-list3,.adca-list5,.adca-list2,.adca-list6,.adca-list1,.adca-list7{min-height:90px}
+/* 1 — centred above the arch */
+.why-agarwal-list>li:first-child{clear:both;float:none;margin:0 auto;
+  padding:0 0 125px;text-align:center}
+.why-agarwal-list>li:first-child::after{top:auto;right:0;bottom:2px;left:0;margin:auto}
+.why-agarwal-list>li:first-child::before{bottom:-17px;left:0;margin:auto}
 
-.adca-list3{float:left;width:370px;margin:-60px 0 0 100px;padding:16px 120px 0 0;text-align:right}
-.adca-list3::after{top:0;left:278px;background-image:url('../img/why-network.png')}
-.adca-list3::before{top:87px;left:339px}
+/* 3, 5, 7 — the right-hand column, mirrored */
+.why-agarwal-list>li:nth-child(2n+3){float:right;padding-left:120px;padding-right:0;
+  text-align:left}
+.why-agarwal-list>li:nth-child(2n+3)::after{right:auto;left:0}
+.why-agarwal-list>li:nth-child(2n+3)::before{left:0;right:auto}
 
-.adca-list5{float:right;width:370px;margin:-60px 110px 0 0;padding:16px 0 0 120px;text-align:left}
-.adca-list5::after{top:0;left:0;background-image:url('../img/why-reliable.png')}
-.adca-list5::before{top:87px;left:-12px}
+/* 2, 4, 6 — each starts its own row */
+.why-agarwal-list>li:nth-child(2n+2){clear:both}
 
-.adca-list2{float:left;width:358px;margin:3px 0 45px;padding:16px 120px 0 0;text-align:right}
-.adca-list2::after{top:0;left:266px;background-image:url('../img/why-qualified.png')}
-.adca-list2::before{top:77px;left:335px}
+.why-agarwal-list>li:nth-child(2),.why-agarwal-list>li:nth-child(3){
+  margin-left:100px;margin-top:-60px;width:370px}
+.why-agarwal-list>li:nth-child(3){margin-right:110px;margin-left:0}
+.why-agarwal-list>li:nth-child(4),.why-agarwal-list>li:nth-child(5){
+  margin:3px 0 45px;width:358px}
 
-.adca-list6{float:right;width:358px;margin:3px 0 45px;padding:16px 0 0 120px;text-align:left}
-.adca-list6::after{top:0;left:0;background-image:url('../img/why-clients.png')}
-.adca-list6::before{top:77px;left:-20px}
+/* the nudge that puts each stalk between its disc and the arch — the live
+   page's computed values, not the ones its stylesheet appears to declare */
+.why-agarwal-list>li:nth-child(2)::before{margin:0 -12px -15px 0}
+.why-agarwal-list>li:nth-child(3)::before{margin:0 -13px -16px -9px}
+.why-agarwal-list>li:nth-child(4)::before{margin:0 -20px -5px 0}
+.why-agarwal-list>li:nth-child(5)::before{margin:0 0 -5px -20px}
+.why-agarwal-list>li:nth-child(6)::before{margin:0 -32px 27px 0}
+.why-agarwal-list>li:nth-child(7)::before{margin:0 0 28px -30px}
 
-/* the bottom pair start their own row — without the clear they tuck in beside
-   the pair above, because 358 + 300 still fits inside 1170 */
-.adca-list1{float:left;clear:left;width:300px;padding:16px 120px 0 0;text-align:right}
-.adca-list1::after{top:0;left:208px;background-image:url('../img/why-celebrating.png')}
-.adca-list1::before{top:45px;left:289px}
-
-.adca-list7{float:right;clear:right;width:300px;padding:16px 0 0 120px;text-align:left}
-.adca-list7::after{top:0;left:0;background-image:url('../img/why-friendly.png')}
-.adca-list7::before{top:44px;left:-30px}
+/* which icon goes in which disc */
+.adca-list4::after{background-image:url('../img/why-cost.png')}
+.adca-list3::after{background-image:url('../img/why-network.png')}
+.adca-list5::after{background-image:url('../img/why-reliable.png')}
+.adca-list2::after{background-image:url('../img/why-qualified.png')}
+.adca-list6::after{background-image:url('../img/why-clients.png')}
+.adca-list1::after{background-image:url('../img/why-celebrating.png')}
+.adca-list7::after{background-image:url('../img/why-friendly.png')}
 .why-list{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
 .why-list li{display:flex;gap:10px;align-items:flex-start;background:var(--gray-bg);
   padding:14px;font-size:13px}
