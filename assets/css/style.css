@@ -240,7 +240,10 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
    ========================================================================== */
 .why{padding:56px 0 26px}
 .arc-wrap{max-width:940px;margin:14px auto 0}
-.arc-wrap svg{width:100%;height:auto;overflow:visible}
+/* the arch's node rings and icons take their green from here, so the graphic
+   cannot drift away from the palette the way it did when the colour was written
+   into the script that builds the SVG */
+.arc-wrap svg{width:100%;height:auto;overflow:visible;color:var(--green)}
 .arc-node circle{fill:#fff;stroke:var(--green);stroke-width:1.4}
 .arc-label{font-family:var(--font-body);font-size:13px;fill:#4d4d4d}
 .why-list{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}

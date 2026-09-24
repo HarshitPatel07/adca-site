@@ -258,7 +258,11 @@
       wrap.innerHTML =
         '<svg viewBox="0 0 1000 470" role="img" aria-label="Why Agarwal &amp; Dhandhania">' +
           '<image href="' + IMG + 'why-1.png" x="226" y="156" width="548" height="274"/>' +
-          '<g fill="none" stroke="#17703f" stroke-width="1.4" stroke-linecap="round" ' +
+          /* the stroke follows the stylesheet's green rather than a copy of it —
+             a hard-coded #17703f here kept the old brighter green after the
+             palette was matched to the live site, so the node rings sat a shade
+             off everything around them */
+          '<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" ' +
             'stroke-linejoin="round">' + nodes + '</g>' +
           labels +
         '</svg>';
