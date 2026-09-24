@@ -469,6 +469,27 @@
   /* ======================================================================
      FORMS (front-end validation only — nothing is transmitted)
      ====================================================================== */
+  /* Where enquiries go. Kept here rather than scattered through the markup so
+     it is changed in one place if the firm ever moves address. */
+  var MAIL = 'connect@adcaindia.com';
+
+  /* Build a mailto: from whatever the form holds. The inputs carry no name
+     attributes — only placeholders — so the placeholder is the label, with its
+     required marker trimmed off. */
+  function mailtoFrom(form, subject) {
+    var lines = [];
+    $$('input,textarea', form).forEach(function (f) {
+      if (f.type === 'checkbox' || f.type === 'submit' || f.type === 'button') return;
+      var label = (f.getAttribute('placeholder') || f.name || 'Detail')
+        .replace(/\s*\*+\s*$/, '').trim();
+      var v = (f.value || '').trim();
+      if (v) lines.push(label + ': ' + v);
+    });
+    return 'mailto:' + MAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\n') + '\n\n— sent from adcaindia.com');
+  }
+
   function wireForms() {
     var qc = $('.qc form');
     if (qc) {
@@ -491,8 +512,17 @@
         if (robot && !robot.checked) { out.textContent = 'Please confirm you are not a robot.'; return; }
         if (!ok) { out.textContent = 'Please correct the highlighted fields.'; return; }
 
-        out.textContent = 'Thank you — your enquiry has been captured. Connect this form to ' +
-          'your mail handler to receive it by email.';
+        /* The site is static, so there is nowhere on the server to post to.
+           The enquiry is handed to the visitor's own mail program instead —
+           no third party sees it, and nothing has to be signed up for. The
+           form used to say thank you and throw the enquiry away, which is
+           worse than not having the form at all. */
+        var link = mailtoFrom(qc, 'Website enquiry');
+        qc.dataset.mailto = link;          /* recorded so the build can be checked */
+        window.location.href = link;
+
+        out.textContent = 'Opening your email app with the enquiry ready to send — ' +
+          'please press send there. If nothing opens, email us at ' + MAIL + '.';
         qc.reset();
         $$('.err', qc).forEach(function (el) { el.textContent = ''; });
       });
@@ -508,7 +538,13 @@
           if (out) out.textContent = 'Please enter a valid email address.';
           return;
         }
-        if (out) out.textContent = 'Subscribed — thank you for signing up.';
+        var nlLink = 'mailto:' + MAIL +
+          '?subject=' + encodeURIComponent('Newsletter subscription') +
+          '&body=' + encodeURIComponent('Please add this address to the newsletter: ' + v +
+                                        '\n\n— sent from adcaindia.com');
+        nl.dataset.mailto = nlLink;
+        window.location.href = nlLink;
+        if (out) out.textContent = 'Opening your email app to confirm — please press send there.';
         nl.reset();
       });
     }
