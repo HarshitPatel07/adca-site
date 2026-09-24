@@ -275,7 +275,13 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 /* ==========================================================================
    WHY — the firm's arch graphic with labels placed around it
    ========================================================================== */
-.why{padding:56px 0 26px}
+/* Spacing read off the live section rather than chosen: 50px above, nothing
+   below — the arch's own bottom edge is the section's bottom edge — and the
+   heading sits 35px clear of the list with its rule in GREY, not the amber the
+   other headings on the page use. */
+.why{padding:50px 0 0}
+.why .sec-head{font-size:25px;margin-bottom:40px;padding-bottom:17px}
+.why .sec-head.underline::after{width:80px;height:4px;background:#777}
 /* 1170 is the width the arch layout is keyed to — the floats, the negative
    margins and the sprite offsets all assume it. Capping this at 940 pulled the
    right-hand labels 230px in from where they belong. */
