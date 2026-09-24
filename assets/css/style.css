@@ -88,6 +88,27 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 /* ==========================================================================
    HEADER
    ========================================================================== */
+/* --------------------------------------------------------------------------
+   The header flicker, and why these two rules exist.
+
+   The header sheds 75px when it sticks — two rows collapse into one — and it
+   sits in normal flow, so the browser's scroll anchoring compensates by moving
+   the scroll position 75px to keep the view steady. Measured: collapsing it by
+   hand moved scrollY by exactly -75, expanding it moved it back. Any test of
+   "are we past N pixels" therefore answers differently the instant it acts on
+   its own answer, and the header oscillates.
+
+   overflow-anchor stops the browser making that correction. The two markers
+   below give the decision hysteresis as well: the header sticks when the page
+   has passed 160px and only lets go again above 50px, a 110px gap that a 75px
+   shift cannot cross.
+   -------------------------------------------------------------------------- */
+body{overflow-anchor:none}
+.stick-mark{position:absolute;left:0;width:1px;height:1px;
+  pointer-events:none;background:transparent}
+.stick-mark--on{top:160px}
+.stick-mark--off{top:50px}
+
 .site-header{position:sticky;top:0;z-index:900;background:#fff;box-shadow:0 1px 0 var(--gray-line)}
 .header-top{display:flex;align-items:center;justify-content:space-between;gap:24px;
   padding:14px 0;transition:padding .25s}

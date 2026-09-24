@@ -373,9 +373,50 @@
     var toTop  = $('.to-top');
     var bar    = $('.progress');
 
+    /* --------------------------------------------------------------------
+       Why the header is not stuck from a scroll position.
+
+       It shrinks by 75px when it sticks — two rows collapse into one — and it
+       is in normal flow, so everything below rises by that much. Deciding on a
+       single scroll threshold therefore feeds back on itself: collapse, page
+       rises, y falls back under the threshold, expand, page drops, y rises,
+       collapse. Measured at thirteen class flips while nudging around y=70,
+       which is the flicker.
+
+       A marker pinned 70px down the DOCUMENT settles it. It sits above the
+       header and is positioned against the initial containing block, so no
+       change in the header's height can move it, and watching it with an
+       IntersectionObserver cannot feed back into its own trigger.
+       -------------------------------------------------------------------- */
+    if (header) {
+      if ('IntersectionObserver' in window) {
+        var mark = function (mod) {
+          var el = document.createElement('span');
+          el.className = 'stick-mark stick-mark--' + mod;
+          document.body.insertBefore(el, document.body.firstChild);
+          return el;
+        };
+        /* Two separate marks, so sticking and unsticking happen at different
+           depths and neither can trigger the other. */
+        new IntersectionObserver(function (e) {
+          if (!e[0].isIntersecting) header.classList.add('is-stuck');
+        }).observe(mark('on'));
+
+        new IntersectionObserver(function (e) {
+          if (e[0].isIntersecting) header.classList.remove('is-stuck');
+        }).observe(mark('off'));
+      } else {
+        /* Same two thresholds, for browsers without the observer. */
+        window.addEventListener('scroll', function () {
+          var y = window.scrollY || document.documentElement.scrollTop;
+          if (y > 160) header.classList.add('is-stuck');
+          else if (y < 50) header.classList.remove('is-stuck');
+        }, { passive: true });
+      }
+    }
+
     function onScroll() {
       var y = window.scrollY || document.documentElement.scrollTop;
-      if (header) header.classList.toggle('is-stuck', y > 70);
       if (toTop)  toTop.classList.toggle('is-on', y > 400);
       if (bar) {
         var h = document.documentElement.scrollHeight - window.innerHeight;
