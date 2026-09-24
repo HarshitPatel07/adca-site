@@ -284,7 +284,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
    The "Why" arch, laid out the way the live site lays it out.
 
    Every number here was read off adcaindia.com: the list is 1170x470, the
-   labels are 19px/700 Lato at #333, each icon is a 92x92 slice of why-sprite.png
+   labels are 19px/700 Lato at #333, each icon sits in a 90x90 disc
    and each connector a 43x18 slice of the same sheet at -82px -222px. The arch
    itself is why-1.png at 548x274, centred, 196px down.
 
@@ -296,22 +296,26 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
   margin:0 auto;list-style:none}
 .why-agarwal-list>li{position:relative;font-family:var(--font-body);
   font-size:19px;font-weight:700;line-height:28.5px;color:#333}
-/* The icon is not a bare slice of the sheet — it is a white disc with a 6px
-   ring, and the round border is what CLIPS the sprite. Each 90x90 window
-   necessarily overruns into the neighbouring cell of a 125x250 sheet, and
-   without the disc those neighbours show: a stray figure beside the globe,
-   loose stars under the celebrating one. The circle is doing real work here,
-   not decoration. */
+/* The disc: white fill, 6px ring, 90x90 — the live site's own values.
+
+   The icon inside it is its OWN file rather than a window onto the shared
+   sheet. The original draws a 90x90 window onto a 125x250 sheet whose cells are
+   about 62px, so every window overruns into its neighbours and relies on the
+   round border to clip them. That works, but it fails open: any version of this
+   stylesheet that arrives without the border — a cached older copy, for
+   instance — shows a stray figure beside the globe and loose stars under the
+   celebrating one. Cut into separate images there is nothing to bleed, whatever
+   else goes wrong. */
 .why-agarwal-list>li::after{content:"";position:absolute;width:90px;height:90px;
   border:6px solid #99bbaa;border-radius:50%;background-color:#fff;
-  background-image:url('../img/why-sprite.png');background-repeat:no-repeat}
-.why-agarwal-list>li::before{content:"";position:absolute;width:43px;height:18px;
-  background:url('../img/why-sprite.png') -82px -222px no-repeat}
+  background-repeat:no-repeat;background-position:center}
+.why-agarwal-list>li::before{content:"";position:absolute;width:43px;height:19px;
+  background:url('../img/why-connector.png') center no-repeat}
 .why-arch{position:absolute;top:196px;left:50%;transform:translateX(-50%);
   width:548px;height:274px;max-width:none}
 
 .adca-list4{width:300px;margin:0 435px;padding:0 0 125px;text-align:center}
-.adca-list4::after{top:88px;left:0;right:0;margin:0 auto;background-position:-61px 13px}
+.adca-list4::after{top:88px;left:0;right:0;margin:0 auto;background-image:url('../img/why-cost.png')}
 .adca-list4::before{top:181px;left:0;right:0;margin:0 auto}
 
 /* the six side labels are 90px tall on the original whether their text runs to
@@ -319,29 +323,29 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .adca-list3,.adca-list5,.adca-list2,.adca-list6,.adca-list1,.adca-list7{min-height:90px}
 
 .adca-list3{float:left;width:370px;margin:-60px 0 0 100px;padding:16px 120px 0 0;text-align:right}
-.adca-list3::after{top:0;left:278px;background-position:17px -121px}
+.adca-list3::after{top:0;left:278px;background-image:url('../img/why-network.png')}
 .adca-list3::before{top:87px;left:339px}
 
 .adca-list5{float:right;width:370px;margin:-60px 110px 0 0;padding:16px 0 0 120px;text-align:left}
-.adca-list5::after{top:0;left:0;background-position:-46px -54px}
+.adca-list5::after{top:0;left:0;background-image:url('../img/why-reliable.png')}
 .adca-list5::before{top:87px;left:-12px}
 
 .adca-list2{float:left;width:358px;margin:3px 0 45px;padding:16px 120px 0 0;text-align:right}
-.adca-list2::after{top:0;left:266px;background-position:16px -54px}
+.adca-list2::after{top:0;left:266px;background-image:url('../img/why-qualified.png')}
 .adca-list2::before{top:77px;left:335px}
 
 .adca-list6{float:right;width:358px;margin:3px 0 45px;padding:16px 0 0 120px;text-align:left}
-.adca-list6::after{top:0;left:0;background-position:-54px -127px}
+.adca-list6::after{top:0;left:0;background-image:url('../img/why-clients.png')}
 .adca-list6::before{top:77px;left:-20px}
 
 /* the bottom pair start their own row — without the clear they tuck in beside
    the pair above, because 358 + 300 still fits inside 1170 */
 .adca-list1{float:left;clear:left;width:300px;padding:16px 120px 0 0;text-align:right}
-.adca-list1::after{top:0;left:208px;background-position:15px 13px}
+.adca-list1::after{top:0;left:208px;background-image:url('../img/why-celebrating.png')}
 .adca-list1::before{top:45px;left:289px}
 
 .adca-list7{float:right;clear:right;width:300px;padding:16px 0 0 120px;text-align:left}
-.adca-list7::after{top:0;left:0;background-position:18px -189px}
+.adca-list7::after{top:0;left:0;background-image:url('../img/why-friendly.png')}
 .adca-list7::before{top:44px;left:-30px}
 .why-list{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
 .why-list li{display:flex;gap:10px;align-items:flex-start;background:var(--gray-bg);
