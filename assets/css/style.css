@@ -3,19 +3,29 @@
    assets/css/style.css
    ========================================================================== */
 
+/* Taken from adcaindia.com itself rather than matched by eye. The live site is
+   overwhelmingly white with amber as the accent that carries the brand; green
+   is a punctuation colour, not a field colour. Measured against white as 100,
+   the real site runs green at about 6 and amber at about 6, where this replica
+   was running green at 14 — more than twice as much — which is what made it
+   read as a green site rather than a white one with green in it.
+
+   The neutrals matter as much as the greens: every grey here used to carry a
+   green tint (#f2f3f2, #e2e5e3, #555b57), so even the body text and the page
+   background were faintly green. The real site's neutrals are neutral. */
 :root{
-  --green:#17703f;
-  --green-dark:#0d5730;
-  --green-deep:#0a4526;
-  --green-panel:#0f6b3a;
-  --orange:#f0a02a;
-  --orange-dark:#d98d18;
-  --orange-panel:#f2a12c;
-  --gray-bg:#f2f3f2;
-  --gray-line:#e2e5e3;
-  --dark:#333333;
-  --heading:#2b2b2b;
-  --text:#555b57;
+  --green:#19653e;          /* live site's green, slightly deeper and calmer */
+  --green-dark:#125133;     /* hover/active shade of it */
+  --green-deep:#00562a;     /* used sparingly — buttons, back-to-top */
+  --green-panel:#19653e;
+  --orange:#f6a12a;         /* the accent that actually carries the brand */
+  --orange-dark:#e59b32;
+  --orange-panel:#e59b32;
+  --gray-bg:#f2f2f2;        /* neutral, was green-tinted */
+  --gray-line:#d6d6d6;
+  --dark:#303030;
+  --heading:#111111;
+  --text:#6e7177;           /* neutral grey, was #555b57 */
   --white:#ffffff;
 
   --container:1170px;
@@ -86,26 +96,31 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 
 .social-chips{display:flex;gap:6px;flex:none}
 .social-chips a{width:24px;height:24px;display:grid;place-items:center;
-  border:1px solid var(--gray-line);color:#7d857f;transition:.22s}
+  border:1px solid var(--gray-line);color:#7f7f7f;transition:.22s}
 .social-chips a:hover{background:var(--green);border-color:var(--green);color:#fff}
 .social-chips svg{width:12px;height:12px;fill:currentColor}
 
-.nav-bar{background:var(--green)}
+/* The menu strip is white on the live site, with green on the one tab you are
+   on — not a green band the width of the page. This was the largest single
+   area of green here and the main reason the replica read greener than the
+   original. */
+.nav-bar{background:#fff;border-top:1px solid var(--gray-line);
+  border-bottom:1px solid var(--gray-line)}
 .nav-bar .container{display:flex;justify-content:flex-end}
 .main-nav{display:flex;flex-wrap:wrap}
 .main-nav>li{position:relative}
-.main-nav>li>a{display:flex;align-items:center;gap:5px;color:#eaf3ed;
+.main-nav>li>a{display:flex;align-items:center;gap:5px;color:var(--heading);
   font-family:var(--font-head);font-size:11.5px;font-weight:500;letter-spacing:.05em;
   padding:11px 15px;transition:.2s}
 .main-nav>li>a .caret{width:7px;height:7px;fill:currentColor;opacity:.85;transition:.2s}
-.main-nav>li:hover>a,.main-nav>li>a.active{background:var(--green-dark);color:#fff}
+.main-nav>li:hover>a,.main-nav>li>a.active{background:var(--green);color:#fff}
 
 .main-nav .sub{position:absolute;top:100%;left:0;min-width:240px;background:#fff;
   border-top:3px solid var(--orange);box-shadow:0 12px 28px rgba(0,0,0,.14);
   opacity:0;visibility:hidden;transform:translateY(8px);transition:.22s;z-index:20}
 .main-nav>li:hover .sub{opacity:1;visibility:visible;transform:translateY(0)}
-.main-nav .sub a{display:block;padding:9px 16px;font-size:12.5px;color:#4c554f;
-  border-bottom:1px solid #f0f2f0;transition:.18s}
+.main-nav .sub a{display:block;padding:9px 16px;font-size:12.5px;color:#4e4e4e;
+  border-bottom:1px solid #f0f0f0;transition:.18s}
 .main-nav .sub a:last-child{border-bottom:none}
 .main-nav .sub a:hover{background:var(--gray-bg);color:var(--green);padding-left:22px}
 /* long submenu (budget publications) scrolls instead of running off screen */
@@ -128,21 +143,29 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 /* ==========================================================================
    HERO SLIDER
    ========================================================================== */
-.hero{position:relative;overflow:hidden;background:var(--green-deep)}
+/* This only shows while the slide photographs are still loading, so it wants to
+   be the neutral dark the live site fades its slides against, not a slab of
+   green that flashes up on every first visit. */
+.hero{position:relative;overflow:hidden;background:#1c1c1c}
 .slides{position:relative;height:clamp(320px,36vw,560px)}
 .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1s ease}
 .slide.is-active{opacity:1;visibility:visible}
 .slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .slide.is-active .slide-img{animation:kenburns 9s ease-out both}
 @keyframes kenburns{from{transform:scale(1.001)}to{transform:scale(1.09)}}
+/* The wash that makes the caption readable over the photograph. It used to be
+   a dark GREEN — a full-width, 560px-tall sheet of it over every slide, which
+   never showed up in any background-colour count because it is a gradient, and
+   was probably the single biggest reason the page read green. The live site
+   fades its slides against neutral black. */
 .slide::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(6,50,28,.86) 0%,rgba(6,50,28,.62) 42%,rgba(6,50,28,.16) 100%)}
+  background:linear-gradient(90deg,rgba(12,12,12,.84) 0%,rgba(12,12,12,.58) 42%,rgba(12,12,12,.12) 100%)}
 .slide-caption{position:absolute;inset:0;z-index:2;display:flex;align-items:center}
 .slide-caption .container{color:#fff}
 .slide-caption h2{color:#fff;font-size:clamp(21px,2.7vw,40px);max-width:22ch;
   text-transform:uppercase}
 .slide-caption h2 span{color:var(--orange)}
-.slide-caption p{color:#dceae1;max-width:48ch;margin-top:12px;font-size:15px}
+.slide-caption p{color:rgba(255,255,255,.88);max-width:48ch;margin-top:12px;font-size:15px}
 .slide-caption .btn{margin-top:22px}
 /* caption entry animation */
 .slide.is-active h2,.slide.is-active p,.slide.is-active .btn{animation:slideUp .8s both}
@@ -175,7 +198,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
   padding:30px 0;text-align:center}
 .stats .n{font-family:var(--font-head);font-size:34px;font-weight:700;color:var(--orange);
   line-height:1.1}
-.stats .l{font-size:12.5px;color:#b9c6bf;letter-spacing:.06em;text-transform:uppercase}
+.stats .l{font-size:12.5px;color:#bfbfbf;letter-spacing:.06em;text-transform:uppercase}
 
 /* ==========================================================================
    ABOUT + seal
@@ -209,7 +232,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .svc-card:hover .ico .c{opacity:0}
 .svc-card:hover .ico .w{opacity:1}
 .svc-card h3{font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:#3c443e;line-height:1.5;transition:color .3s}
+  color:#3e3e3e;line-height:1.5;transition:color .3s}
 .svc-card:hover h3{color:#fff}
 
 /* ==========================================================================
@@ -219,7 +242,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .arc-wrap{max-width:940px;margin:14px auto 0}
 .arc-wrap svg{width:100%;height:auto;overflow:visible}
 .arc-node circle{fill:#fff;stroke:var(--green);stroke-width:1.4}
-.arc-label{font-family:var(--font-body);font-size:13px;fill:#4b524d}
+.arc-label{font-family:var(--font-body);font-size:13px;fill:#4d4d4d}
 .why-list{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
 .why-list li{display:flex;gap:10px;align-items:flex-start;background:var(--gray-bg);
   padding:14px;font-size:13px}
@@ -241,7 +264,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .qc .full{grid-column:1/-1}
 .qc .fld{display:flex;flex-direction:column;gap:4px}
 .qc input,.qc textarea{width:100%;background:#fff;border:1px solid rgba(0,0,0,.06);
-  padding:9px 12px;font:inherit;font-size:13px;color:#3c433e}
+  padding:9px 12px;font:inherit;font-size:13px;color:#3e3e3e}
 .qc input:focus,.qc textarea:focus{outline:2px solid var(--green);outline-offset:0}
 .qc input[aria-invalid="true"],.qc textarea[aria-invalid="true"]{outline:2px solid #b3261e}
 .qc .err{font-size:11.5px;color:#7a1c14;font-weight:600;min-height:15px}
@@ -264,7 +287,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .ci-row h4{color:var(--orange);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
   margin-bottom:5px}
 .ci-row b{display:block;color:#fff;font-size:13px;letter-spacing:.04em}
-.ci-row p,.ci-row a{color:#d8e8dd;font-size:13.5px}
+.ci-row p,.ci-row a{color:rgba(255,255,255,.82);font-size:13.5px}
 .ci-row a:hover{color:var(--orange)}
 
 /* ==========================================================================
@@ -274,7 +297,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .foot-nav{background:var(--gray-bg);border-bottom:1px solid var(--gray-line)}
 .foot-nav ul{display:flex;flex-wrap:wrap;justify-content:center}
 .foot-nav a{display:block;padding:9px 14px;font-family:var(--font-head);font-size:11px;
-  font-weight:500;letter-spacing:.05em;color:#5b635d;transition:.2s}
+  font-weight:500;letter-spacing:.05em;color:#5d5d5d;transition:.2s}
 .foot-nav a:hover,.foot-nav a.active{background:var(--green);color:#fff}
 
 .newsletter{padding:26px 0;border-bottom:1px solid var(--gray-line)}
@@ -298,8 +321,8 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .copyright{padding:16px 0}
 .copyright .container{display:flex;align-items:center;justify-content:space-between;
   gap:18px;flex-wrap:wrap}
-.copyright p{font-size:12px;color:#7c847e}
-.copyright .social-chips a{border-color:#dcdfdd}
+.copyright p{font-size:12px;color:#7e7e7e}
+.copyright .social-chips a{border-color:#dddddd}
 
 .to-top{position:fixed;right:16px;bottom:16px;z-index:800;width:34px;height:34px;
   background:var(--green);color:#fff;border:none;cursor:pointer;display:grid;
@@ -311,14 +334,14 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 /* ==========================================================================
    INNER PAGES
    ========================================================================== */
-.page-banner{background:#eef0ee url('../img/inner-banner.jpg') center/cover no-repeat;
+.page-banner{background:#eeeeee url('../img/inner-banner.jpg') center/cover no-repeat;
   padding:52px 0;position:relative;border-bottom:1px solid var(--gray-line)}
 .page-banner::before{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.72) 55%,rgba(255,255,255,.3) 100%)}
 .page-banner .container{position:relative;display:flex;align-items:center;
   justify-content:space-between;gap:20px;flex-wrap:wrap}
 .page-banner h1{font-size:27px;text-transform:uppercase;letter-spacing:.03em;color:var(--green)}
-.crumb{font-size:12.5px;color:#6d766f}
+.crumb{font-size:12.5px;color:#707070}
 .crumb a:hover{color:var(--orange)}
 .crumb span{color:var(--orange)}
 
@@ -330,7 +353,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .prose>ul>li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;
   background:var(--orange)}
 .prose blockquote{border-left:3px solid var(--orange);background:var(--gray-bg);
-  padding:16px 20px;margin:0 0 14px;font-size:14.5px;font-style:italic;color:#474e49}
+  padding:16px 20px;margin:0 0 14px;font-size:14.5px;font-style:italic;color:#494949}
 .prose blockquote cite{display:block;margin-top:6px;font-style:normal;font-size:12.5px;
   color:var(--green);font-weight:600}
 
@@ -351,14 +374,14 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 
 .chip-grid{display:flex;flex-wrap:wrap;gap:9px}
 .chip{background:var(--gray-bg);border-left:3px solid var(--green);padding:8px 14px;
-  font-size:13px;font-family:var(--font-head);font-weight:500;color:#3f463f}
+  font-size:13px;font-family:var(--font-head);font-weight:500;color:#414141}
 
 /* accordion (services + camp office) */
 .acc{border:1px solid var(--gray-line)}
 .acc+.acc{border-top:none}
 .acc>button{width:100%;display:flex;align-items:center;gap:14px;background:#fff;
   border:none;cursor:pointer;padding:15px 18px;text-align:left;font-family:var(--font-head);
-  font-size:13.5px;font-weight:600;color:#39413b;letter-spacing:.03em;transition:.2s}
+  font-size:13.5px;font-weight:600;color:#3b3b3b;letter-spacing:.03em;transition:.2s}
 .acc>button:hover{background:var(--gray-bg)}
 .acc.is-open>button{background:var(--green);color:#fff}
 .acc>button .ai{flex:none;width:26px;height:26px;display:grid;place-items:center}
@@ -404,11 +427,11 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
   overflow:hidden;position:relative;display:block}
 .gal-grid img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .45s}
 .gal-grid button:hover img{transform:scale(1.07)}
-.gal-grid button::after{content:"";position:absolute;inset:0;background:rgba(10,69,38,.5);
+.gal-grid button::after{content:"";position:absolute;inset:0;background:rgba(17,17,17,.5);
   opacity:0;transition:.3s}
 .gal-grid button:hover::after{opacity:1}
 
-.lightbox{position:fixed;inset:0;z-index:1100;background:rgba(8,20,13,.94);
+.lightbox{position:fixed;inset:0;z-index:1100;background:rgba(12,12,12,.94);
   display:none;place-items:center}
 .lightbox.is-on{display:grid}
 .lightbox img{max-width:92vw;max-height:82vh;object-fit:contain}
@@ -418,7 +441,7 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .lightbox .lb-prev{left:10px;top:50%;transform:translateY(-50%);font-size:40px}
 .lightbox .lb-next{right:10px;top:50%;transform:translateY(-50%);font-size:40px}
 .lightbox .lb-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
-  color:#cfe3d6;font-size:13px;letter-spacing:.08em}
+  color:rgba(255,255,255,.72);font-size:13px;letter-spacing:.08em}
 
 /* tables */
 table.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
@@ -432,7 +455,7 @@ table.tbl tr:nth-child(even) td{background:var(--gray-bg)}
 .pub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .pub-grid a{display:flex;align-items:center;gap:10px;border:1px solid var(--gray-line);
   padding:13px 15px;font-family:var(--font-head);font-size:12.5px;font-weight:500;
-  color:#3f463f;transition:.22s}
+  color:#414141;transition:.22s}
 .pub-grid a:hover{background:var(--green);border-color:var(--green);color:#fff}
 .pub-grid svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6}
 
@@ -453,7 +476,7 @@ table.tbl tr:nth-child(even) td{background:var(--gray-bg)}
   .nav-bar .container{justify-content:stretch}
   .main-nav{display:none;flex-direction:column;width:100%;padding:6px 0}
   .main-nav.is-open{display:flex}
-  .main-nav>li>a{color:#3c443e;padding:11px 4px;font-size:13px;
+  .main-nav>li>a{color:var(--heading);padding:11px 4px;font-size:13px;
     border-bottom:1px solid var(--gray-line);justify-content:space-between}
   .main-nav>li:hover>a,.main-nav>li>a.active{background:transparent;color:var(--green)}
   .main-nav>li.is-open>a .caret{transform:rotate(180deg)}
