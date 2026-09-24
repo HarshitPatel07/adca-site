@@ -148,9 +148,30 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 .burger.is-open span:nth-child(2){opacity:0}
 .burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* --------------------------------------------------------------------------
+   The header once the page has been scrolled.
+
+   The live site does not simply shrink the two rows — it collapses them into
+   one: the logo drops to 180x55 at the left of the container and the amber bar
+   moves up beside it, 970px wide, its items falling back to their natural
+   widths instead of the eight equal columns they take at the top of the page.
+   180 + 20 + 970 is the 1170 container.
+   -------------------------------------------------------------------------- */
 .site-header.is-stuck .header-top{padding:7px 0}
 .site-header.is-stuck .logo>img{height:36px}
 .site-header.is-stuck .logo-tag,.site-header.is-stuck .logo-sep{display:none}
+
+@media (min-width:861px){
+  .site-header.is-stuck{display:flex;align-items:center;justify-content:center;gap:20px}
+  .site-header.is-stuck .header-top{width:auto;max-width:none;margin:0;padding:6px 0;flex:0 0 auto}
+  .site-header.is-stuck .social-chips{display:none}
+  .site-header.is-stuck .logo>img{height:46px}
+  .site-header.is-stuck .nav-bar{flex:0 0 970px}
+  .site-header.is-stuck .nav-bar .container{width:970px;max-width:none;margin:0}
+  /* natural widths here, not the equal columns of the unscrolled bar */
+  .site-header.is-stuck .main-nav>li{flex:0 1 auto}
+  .site-header.is-stuck .main-nav>li>a{padding:15px 17px;font-size:15px}
+}
 
 /* scroll progress bar */
 .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--orange);
@@ -255,13 +276,66 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
    WHY — the firm's arch graphic with labels placed around it
    ========================================================================== */
 .why{padding:56px 0 26px}
-.arc-wrap{max-width:940px;margin:14px auto 0}
-/* the arch's node rings and icons take their green from here, so the graphic
-   cannot drift away from the palette the way it did when the colour was written
-   into the script that builds the SVG */
-.arc-wrap svg{width:100%;height:auto;overflow:visible;color:var(--green)}
-.arc-node circle{fill:#fff;stroke:var(--green);stroke-width:1.4}
-.arc-label{font-family:var(--font-body);font-size:13px;fill:#4d4d4d}
+/* 1170 is the width the arch layout is keyed to — the floats, the negative
+   margins and the sprite offsets all assume it. Capping this at 940 pulled the
+   right-hand labels 230px in from where they belong. */
+.arc-wrap{margin:14px auto 0}
+/* --------------------------------------------------------------------------
+   The "Why" arch, laid out the way the live site lays it out.
+
+   Every number here was read off adcaindia.com: the list is 1170x470, the
+   labels are 19px/700 Lato at #333, each icon is a 92x92 slice of why-sprite.png
+   and each connector a 43x18 slice of the same sheet at -82px -222px. The arch
+   itself is why-1.png at 548x274, centred, 196px down.
+
+   It used to be an SVG with icon paths written by hand, which is why it never
+   resembled the original — thin outlines and small grey labels against the
+   real site's coloured illustrations and bold dark ones.
+   -------------------------------------------------------------------------- */
+.why-agarwal-list{position:relative;width:1170px;max-width:100%;height:470px;
+  margin:0 auto;list-style:none}
+.why-agarwal-list>li{position:relative;font-family:var(--font-body);
+  font-size:19px;font-weight:700;line-height:28.5px;color:#333}
+.why-agarwal-list>li::after{content:"";position:absolute;width:92px;height:92px;
+  background-image:url('../img/why-sprite.png');background-repeat:no-repeat}
+.why-agarwal-list>li::before{content:"";position:absolute;width:43px;height:18px;
+  background:url('../img/why-sprite.png') -82px -222px no-repeat}
+.why-arch{position:absolute;top:196px;left:50%;transform:translateX(-50%);
+  width:548px;height:274px;max-width:none}
+
+.adca-list4{width:300px;margin:0 435px;padding:0 0 125px;text-align:center}
+.adca-list4::after{top:88px;left:0;right:0;margin:0 auto;background-position:-61px 13px}
+.adca-list4::before{top:181px;left:0;right:0;margin:0 auto}
+
+/* the six side labels are 90px tall on the original whether their text runs to
+   one line or two, which is what keeps the rows level */
+.adca-list3,.adca-list5,.adca-list2,.adca-list6,.adca-list1,.adca-list7{min-height:90px}
+
+.adca-list3{float:left;width:370px;margin:-60px 0 0 100px;padding:16px 120px 0 0;text-align:right}
+.adca-list3::after{top:0;left:278px;background-position:17px -121px}
+.adca-list3::before{top:87px;left:339px}
+
+.adca-list5{float:right;width:370px;margin:-60px 110px 0 0;padding:16px 0 0 120px;text-align:left}
+.adca-list5::after{top:0;left:0;background-position:-46px -54px}
+.adca-list5::before{top:87px;left:-12px}
+
+.adca-list2{float:left;width:358px;margin:3px 0 45px;padding:16px 120px 0 0;text-align:right}
+.adca-list2::after{top:0;left:266px;background-position:16px -54px}
+.adca-list2::before{top:77px;left:335px}
+
+.adca-list6{float:right;width:358px;margin:3px 0 45px;padding:16px 0 0 120px;text-align:left}
+.adca-list6::after{top:0;left:0;background-position:-54px -127px}
+.adca-list6::before{top:77px;left:-20px}
+
+/* the bottom pair start their own row — without the clear they tuck in beside
+   the pair above, because 358 + 300 still fits inside 1170 */
+.adca-list1{float:left;clear:left;width:300px;padding:16px 120px 0 0;text-align:right}
+.adca-list1::after{top:0;left:208px;background-position:15px 13px}
+.adca-list1::before{top:45px;left:289px}
+
+.adca-list7{float:right;clear:right;width:300px;padding:16px 0 0 120px;text-align:left}
+.adca-list7::after{top:0;left:0;background-position:18px -189px}
+.adca-list7::before{top:44px;left:-30px}
 .why-list{display:none;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
 .why-list li{display:flex;gap:10px;align-items:flex-start;background:var(--gray-bg);
   padding:14px;font-size:13px}

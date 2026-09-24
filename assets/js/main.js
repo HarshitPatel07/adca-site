@@ -223,49 +223,33 @@
     var wrap = $('#arc-wrap');
     var list = $('#why-list');
 
-    /* centre (500,430), node ring r=300 — outside the arch's 274px radius */
-    var POS = {
-      l3:  { x: 200, y: 430, anchor: 'end',    ico: 'M12 3l2 5 5 .4-3.8 3.3 1.1 5-4.3-2.6L7.7 16.7l1.1-5L5 8.4 10 8z' },
-      l2:  { x: 240, y: 280, anchor: 'end',    ico: 'M12 8.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 20a6 6 0 0 1 12 0' },
-      l1:  { x: 350, y: 170, anchor: 'end',    ico: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM3 12h18M12 3c3 3.6 3 14.4 0 18M12 3c-3 3.6-3 14.4 0 18' },
-      top: { x: 500, y: 130, anchor: 'middle', ico: 'M4 18l6-7 4 3 6-8M20 6h-4M20 6v4' },
-      r1:  { x: 650, y: 170, anchor: 'start',  ico: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l4 2' },
-      r2:  { x: 760, y: 280, anchor: 'start',  ico: 'M4 5h16v11h-8l-4 4v-4H4zM8 9h8M8 12.5h5' },
-      r3:  { x: 800, y: 430, anchor: 'start',  ico: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM8.5 14a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01' }
-    };
+    /* --------------------------------------------------------------------
+       This was drawn here as an SVG with hand-written icon paths, which is
+       why it never looked like the original: the live site lays the seven
+       strengths out as a floated list around a centred arch, with each
+       label's icon and its little connector cut from one sprite. The class
+       names and the DOM order below are the live site's own, because the
+       whole layout - the floats, the negative margins, the sprite offsets -
+       is keyed to them.
+       -------------------------------------------------------------------- */
+    var SLOT = { top: 'adca-list4', l1: 'adca-list3', r1: 'adca-list5',
+                 l2: 'adca-list2', r2: 'adca-list6', l3: 'adca-list1',
+                 r3: 'adca-list7' };
+    /* the order the floats have to arrive in, not the order they read in */
+    var ORDER = ['top', 'l1', 'r1', 'l2', 'r2', 'l3', 'r3'];
 
     if (wrap) {
-      var nodes = '', labels = '';
-      D.why.forEach(function (w) {
-        var p = POS[w.pos];
-        if (!p) return;
-        nodes += '<g class="arc-node"><circle cx="' + p.x + '" cy="' + p.y + '" r="26"/>' +
-          '<g transform="translate(' + (p.x - 11) + ',' + (p.y - 11) + ') scale(.92)">' +
-          '<path d="' + p.ico + '"/></g></g>';
-
-        var lines = w.text.split(/<br\s*\/?>/i);
-        var lx = p.anchor === 'end' ? p.x - 32 : p.anchor === 'start' ? p.x + 32 : p.x;
-        var ly;
-        if (p.anchor === 'middle') ly = p.y - 42;                    /* above the top node */
-        else ly = lines.length > 1 ? p.y - 3 : p.y + 5;
-        labels += '<text class="arc-label" x="' + lx + '" y="' + ly +
-          '" text-anchor="' + p.anchor + '">' + lines[0] +
-          lines.slice(1).map(function (l) {
-            return '<tspan x="' + lx + '" dy="16">' + l + '</tspan>';
-          }).join('') + '</text>';
-      });
+      var bySlot = {};
+      D.why.forEach(function (w) { bySlot[w.pos] = w; });
 
       wrap.innerHTML =
-        '<svg viewBox="0 0 1000 470" role="img" aria-label="Why Agarwal &amp; Dhandhania">' +
-          '<image href="' + IMG + 'why-1.png" x="226" y="156" width="548" height="274"/>' +
-          /* the stroke follows the stylesheet's green rather than a copy of it —
-             a hard-coded #17703f here kept the old brighter green after the
-             palette was matched to the live site, so the node rings sat a shade
-             off everything around them */
-          '<g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" ' +
-            'stroke-linejoin="round">' + nodes + '</g>' +
-          labels +
-        '</svg>';
+        '<ul class="why-agarwal-list">' +
+          ORDER.map(function (slot) {
+            var w = bySlot[slot];
+            return w ? '<li class="' + SLOT[slot] + '">' + w.text + '</li>' : '';
+          }).join('') +
+          '<img class="why-arch" src="' + IMG + 'why-1.png" alt="" width="548" height="274">' +
+        '</ul>';
     }
 
     if (list) {
