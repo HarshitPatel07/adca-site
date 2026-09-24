@@ -296,7 +296,14 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
   margin:0 auto;list-style:none}
 .why-agarwal-list>li{position:relative;font-family:var(--font-body);
   font-size:19px;font-weight:700;line-height:28.5px;color:#333}
-.why-agarwal-list>li::after{content:"";position:absolute;width:92px;height:92px;
+/* The icon is not a bare slice of the sheet — it is a white disc with a 6px
+   ring, and the round border is what CLIPS the sprite. Each 90x90 window
+   necessarily overruns into the neighbouring cell of a 125x250 sheet, and
+   without the disc those neighbours show: a stray figure beside the globe,
+   loose stars under the celebrating one. The circle is doing real work here,
+   not decoration. */
+.why-agarwal-list>li::after{content:"";position:absolute;width:90px;height:90px;
+  border:6px solid #99bbaa;border-radius:50%;background-color:#fff;
   background-image:url('../img/why-sprite.png');background-repeat:no-repeat}
 .why-agarwal-list>li::before{content:"";position:absolute;width:43px;height:18px;
   background:url('../img/why-sprite.png') -82px -222px no-repeat}
