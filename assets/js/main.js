@@ -298,9 +298,16 @@
     var box = $('#pub-grid');
     if (!box) return;
     var ico = '<svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/></svg>';
+    /* Every publication is served from this site. These used to open the old
+       site, which meant the whole archive went with it whenever that host was
+       down — and it was down repeatedly. The seventeen that exist as PDFs are
+       in assets/pdf; the three oldest were only ever web pages and are pages
+       here too. */
     box.innerHTML = D.budgets.map(function (b) {
-      return '<a id="' + b.slug + '" href="https://www.adcaindia.com/publication/' + b.slug +
-             '/" target="_blank" rel="noopener">' + ico + '<span>' + b.label + '</span></a>';
+      var pdf = /\.pdf$/i.test(b.file);
+      return '<a id="' + b.slug + '" href="' + b.file + '"' +
+             (pdf ? ' target="_blank" rel="noopener"' : '') + '>' +
+             ico + '<span>' + b.label + '</span></a>';
     }).join('');
   }
 
