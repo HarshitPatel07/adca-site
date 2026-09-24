@@ -337,15 +337,19 @@ h1,h2,h3,h4,h5{font-family:var(--font-head);color:var(--heading);line-height:1.2
 /* ==========================================================================
    INNER PAGES
    ========================================================================== */
-.page-banner{background:#eeeeee url('../img/inner-banner.jpg') center/cover no-repeat;
-  padding:52px 0;position:relative;border-bottom:1px solid var(--gray-line)}
-.page-banner::before{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.72) 55%,rgba(255,255,255,.3) 100%)}
-.page-banner .container{position:relative;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;flex-wrap:wrap}
-.page-banner h1{font-size:27px;text-transform:uppercase;letter-spacing:.03em;color:var(--green)}
-.crumb{font-size:12.5px;color:#707070}
-.crumb a:hover{color:var(--orange)}
+/* The strip under the menu on an inner page, measured off the live site: a flat
+   grey band 60px tall with a hairline under it, carrying only the breadcrumb.
+
+   It used to carry a large green page title as well, which is why every inner
+   page announced itself twice — "OUR NETWORK" in the banner and "OUR NETWORK"
+   again as the first heading below it. The live site has no <h1> on these pages
+   at all; the section heading is the title. */
+.page-banner{background:#f2f2f2;padding:17px 0;
+  border-bottom:1px solid #dbdbdb}
+.page-banner .container{display:flex;align-items:center}
+.crumb{font-size:14px;color:var(--orange)}
+.crumb a{color:var(--orange)}
+.crumb a:hover{color:var(--green)}
 .crumb span{color:var(--orange)}
 
 .prose h2{font-size:20px;margin:28px 0 10px;text-transform:uppercase;letter-spacing:.03em}
