@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20">
+<link rel="stylesheet" href="assets/css/style.css?v=21">
 </head>
 <body data-page="contact">
 
@@ -72,13 +72,18 @@
       <div class="branch-grid" id="branch-grid"></div>
 
       <h2>Find Us</h2>
-      <p style="font-size:13px;color:#7c847e">Paste your Google Maps embed in place of the block
-        below to show the live map.</p>
-      <div style="background:var(--gray-bg);border:1px solid var(--gray-line);aspect-ratio:16/7;
-                  display:grid;place-items:center;text-align:center">
-        <p style="font-size:13px;color:#7c847e;max-width:36ch">Google Maps embed<br>
-          Agarwal &amp; Dhandhania, Chartered Accountants &mdash; Bhatar Althan Road, Surat</p>
-      </div>
+      <!-- Built from the firm's own head-office address. The keyless
+           maps.google.com/maps?q=…&output=embed form needs no API key, so
+           there is nothing here to expire or bill. -->
+      <iframe
+        title="Map showing Agarwal &amp; Dhandhania, SNS Interio, Bhatar Althan Road, Surat"
+        src="https://maps.google.com/maps?q=Agarwal%20%26%20Dhandhania%20Chartered%20Accountants%2C%20SNS%20Interio%2C%20Bhatar%20Althan%20Road%2C%20Nr%20Gujarat%20Gas%20Pump%2C%20Surat%20395017&amp;z=16&amp;output=embed"
+        style="width:100%;aspect-ratio:16/7;border:1px solid var(--gray-line);display:block"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p style="font-size:13px;margin-top:10px">
+        <a href="https://maps.google.com/maps?q=Agarwal+%26+Dhandhania+Chartered+Accountants,+SNS+Interio,+Bhatar+Althan+Road,+Surat+395017"
+           target="_blank" rel="noopener noreferrer"
+           style="color:var(--green);font-weight:600">Open in Google Maps</a></p>
     </div>
 
     <aside class="side-card">
@@ -175,7 +180,7 @@
 
 <button class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 5 4 13h5v6h6v-6h5z"/></svg></button>
 
-<script src="assets/js/data.js?v=20"></script>
-<script src="assets/js/main.js?v=20"></script>
+<script src="assets/js/data.js?v=21"></script>
+<script src="assets/js/main.js?v=21"></script>
 </body>
 </html>
