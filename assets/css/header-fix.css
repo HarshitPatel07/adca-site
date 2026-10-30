@@ -92,3 +92,17 @@
   .site-header>.header-top{min-height:62px!important}
   .site-header .logo>img{width:146px!important;max-height:44px!important}
 }
+
+/* The homepage uses one featured reception photo with a readable glass panel. */
+.hero .slide-img{object-position:center 52%;filter:saturate(1.05) contrast(1.03)}
+.hero .slide::after{
+  background:linear-gradient(90deg,rgba(0,35,19,.48) 0%,rgba(0,53,28,.22) 48%,rgba(0,28,14,.05) 100%)!important
+}
+.hero .slide-caption .container{
+  background:rgba(255,255,255,.84)!important;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.72)!important;
+  border-left:5px solid #f6a12a!important;
+  border-radius:4px 14px 4px 4px!important;
+  box-shadow:0 24px 58px rgba(0,20,10,.24)!important
+}
