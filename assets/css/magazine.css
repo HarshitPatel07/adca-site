@@ -34,6 +34,8 @@
 .magazine-reader-stage--inline.is-opening .magazine-book-scene{pointer-events:none}
 .magazine-reader-stage--inline.is-open .magazine-book-scene{pointer-events:auto}
 .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation:cover-opening .84s cubic-bezier(.55,.03,.24,1) forwards}
+.magazine-reader-stage--inline.is-closing .magazine-book-scene{opacity:0;pointer-events:none;transition:opacity .54s ease}
+.magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation:cover-closing .84s cubic-bezier(.55,.03,.24,1) forwards}
 .magazine-reader-stage--inline.is-opening .magazine-cover-hint{opacity:0;transition:opacity .18s ease}
 .magazine-flipbook{width:100%;height:100%;margin:auto;overflow:visible;outline:0}
 .magazine-flipbook .stf__parent{margin:auto}
@@ -59,6 +61,11 @@
   27%{transform:translateX(50%) rotateY(0) rotateZ(0);opacity:1}
   100%{transform:translateX(50%) rotateY(-165deg) rotateZ(0);opacity:0}
 }
+@keyframes cover-closing{
+  0%{transform:translateX(50%) rotateY(-165deg) rotateZ(0);opacity:0}
+  27%{transform:translateX(50%) rotateY(0) rotateZ(0);opacity:1}
+  100%{transform:translateX(0) rotateY(-5deg) rotateZ(-.65deg);opacity:1}
+}
 
 @media(max-width:760px){
   .issue-feature--reader{margin:26px 0 38px}
@@ -68,6 +75,7 @@
   .magazine-cover-trigger{width:min(58vw,42vh,300px);min-width:210px}
   .magazine-cover-hint{bottom:14px}
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation-name:cover-opening-mobile}
+  .magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation-name:cover-closing-mobile}
   .magazine-inline-reader__controls{justify-content:center;gap:14px;min-height:54px;padding:8px 4px}
   .magazine-page-status{min-width:112px;font-size:10px}
   .magazine-progress{width:min(32vw,150px)}
@@ -77,6 +85,11 @@
   0%{transform:rotateY(-5deg) rotateZ(-.65deg);opacity:1}
   27%{transform:rotateY(0) rotateZ(0);opacity:1}
   100%{transform:rotateY(-165deg) rotateZ(0);opacity:0}
+}
+@keyframes cover-closing-mobile{
+  0%{transform:rotateY(-165deg) rotateZ(0);opacity:0}
+  27%{transform:rotateY(0) rotateZ(0);opacity:1}
+  100%{transform:rotateY(-5deg) rotateZ(-.65deg);opacity:1}
 }
 @media(prefers-reduced-motion:reduce){
   .magazine-cover-trigger{animation:none}

@@ -15,6 +15,7 @@
   var isReady = false;
   var isOpen = false;
   var isOpening = false;
+  var isClosing = false;
   var pendingOpen = false;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -74,7 +75,7 @@
   pageFlip.loadFromImages(pages);
 
   function openMagazine() {
-    if (isOpen || isOpening) return;
+    if (isOpen || isOpening || isClosing) return;
     if (!isReady) {
       pendingOpen = true;
       return;
@@ -96,13 +97,47 @@
     }, reducedMotion ? 20 : 840);
   }
 
+  function closeMagazine() {
+    if (!isOpen || isClosing) return;
+    isClosing = true;
+    coverIntro.hidden = false;
+    stage.classList.add('is-closing');
+    window.setTimeout(function () {
+      stage.classList.remove('is-open', 'is-closing');
+      bookScene.setAttribute('aria-hidden', 'true');
+      host.setAttribute('tabindex', '-1');
+      controls.hidden = true;
+      isOpen = false;
+      isClosing = false;
+      coverButton.focus({ preventScroll: true });
+    }, reducedMotion ? 20 : 840);
+  }
+
   function turnPage(direction) {
-    if (!isReady || !isOpen) return;
+    if (!isReady || !isOpen || isClosing) return;
     if (direction === 'next') pageFlip.flipNext('bottom');
+    else if (currentIndex <= 0) closeMagazine();
     else pageFlip.flipPrev('bottom');
   }
 
+  function closeFromFirstPageCorner(event) {
+    if (!isReady || !isOpen || isClosing || currentIndex > 0) return;
+    var point = event.touches && event.touches.length ? event.touches[0] : event;
+    var rect = bookScene.getBoundingClientRect();
+    var x = point.clientX - rect.left;
+    var y = point.clientY - rect.top;
+    var nearOuterLeftCorner = x <= Math.min(86, rect.width * 0.16);
+    var nearPageTopOrBottom = y <= 86 || y >= rect.height - 86;
+    if (!nearOuterLeftCorner || !nearPageTopOrBottom) return;
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+    closeMagazine();
+  }
+
   coverButton.addEventListener('click', openMagazine);
+  bookScene.addEventListener('mousedown', closeFromFirstPageCorner, true);
+  bookScene.addEventListener('touchstart', closeFromFirstPageCorner, { capture: true, passive: false });
   bookScene.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
