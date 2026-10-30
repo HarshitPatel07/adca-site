@@ -24,6 +24,8 @@
 .camp-office-pin:hover,.camp-office-pin.is-active{z-index:2;background:#00562a;color:#fff;transform:translate(-50%,-50%) scale(1.22);box-shadow:0 4px 13px rgba(0,60,30,.34)}
 .camp-office-pin.is-active::before{opacity:1;transform:scale(1)}
 .camp-office-pin span{font:700 8px/1 'Saira',sans-serif}
+.camp-office-pin::after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 8px);padding:5px 8px;border:1px solid #e4ebe3;border-radius:4px;background:#fff;color:#173525;box-shadow:0 5px 15px rgba(16,45,28,.14);font:600 10px 'Saira',sans-serif;white-space:nowrap;opacity:0;transform:translate(-50%,4px);transition:opacity .16s,transform .16s;pointer-events:none}
+.camp-office-pin:hover::after,.camp-office-pin.is-active::after{opacity:1;transform:translate(-50%,0)}
 .camp-map-legend{display:flex;align-items:center;justify-content:center;gap:8px;padding-top:12px;border-top:1px solid #eef1ec;color:#78837b;font-size:11px}
 .camp-map-legend__dot{width:8px;height:8px;border:2px solid #fff;border-radius:50%;background:#f6a12a;box-shadow:0 0 0 1px #df9a2c}
 .camp-directory{position:sticky;top:96px;min-width:0;padding:17px;border:1px solid #e5ebe3;border-radius:9px;background:#fff;box-shadow:0 12px 34px rgba(16,45,28,.055)}
