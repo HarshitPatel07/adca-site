@@ -312,13 +312,42 @@
       '<a href="' + f.phoneHref + '">' + f.phone + '</a> &nbsp;·&nbsp; ' +
       '<a href="mailto:' + f.email + '">' + f.email + '</a></div>';
 
-    box.innerHTML = head + D.branches.map(function (b) {
-      return '<div class="branch reveal"><h3>' + b.city + '</h3><p>' + b.addr + '</p>' +
-        (b.phone ? '<a href="tel:' + b.phone.replace(/[^0-9+]/g, '') + '">' + b.phone + '</a>' : '') +
-        '</div>';
-    }).join('');
-  }
+    var search = $('#branch-search');
+    if (!search) {
+      box.innerHTML = head + D.branches.map(function (b) {
+        return '<div class="branch reveal"><h3>' + b.city + '</h3><p>' + b.addr + '</p>' +
+          (b.phone ? '<a href="tel:' + b.phone.replace(/[^0-9+]/g, '') + '">' + b.phone + '</a>' : '') +
+          '</div>';
+      }).join('');
+      return;
+    }
 
+    var count = $('#branch-count');
+    function renderMatches() {
+      var query = search.value.trim().toLowerCase();
+      var matches = D.branches.filter(function (b) {
+        return (b.city + ' ' + b.addr).toLowerCase().indexOf(query) !== -1;
+      });
+      if (count) count.textContent = matches.length + (matches.length === 1 ? ' office' : ' offices');
+      if (!matches.length) {
+        box.innerHTML = '<p class="branch-empty">No offices match that search. Try another city or address.</p>';
+        return;
+      }
+      box.innerHTML = matches.map(function (b) {
+        var phone = b.phone ? '<a href="tel:' + b.phone.replace(/[^0-9+]/g, '') + '">' + b.phone + '</a>' : '';
+        var mapQuery = encodeURIComponent(b.addr + ', ' + b.city);
+        return '<article class="contact-branch reveal">' +
+          '<div class="contact-branch__heading"><span class="contact-branch__pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.3"></circle></svg></span>' +
+          '<h3>' + b.city + '</h3></div>' +
+          '<p class="contact-branch__address">' + b.addr + '</p>' +
+          '<div class="contact-branch__actions">' + (phone ? '<span>' + phone + '</span>' : '<span class="contact-branch__muted">Contact details on request</span>') +
+          '<a href="https://www.google.com/maps/search/?api=1&amp;query=' + mapQuery + '" target="_blank" rel="noopener noreferrer">Directions <span aria-hidden="true">↗</span></a></div>' +
+          '</article>';
+      }).join('');
+    }
+    search.addEventListener('input', renderMatches);
+    renderMatches();
+  }
 
   /* ======================================================================
      PUBLICATIONS
