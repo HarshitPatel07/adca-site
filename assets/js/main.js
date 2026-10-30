@@ -95,10 +95,20 @@
 
     var slides = $$('.slide', wrap);
     var dotsWrap = $('.hero-dots');
+    var prev = $('.hero-arrow.prev'), next = $('.hero-arrow.next');
+
+    /* A single featured image has no paging controls or autoplay. */
+    if (slides.length <= 1) {
+      if (dotsWrap) { dotsWrap.innerHTML = ''; dotsWrap.style.display = 'none'; }
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+      return;
+    }
+
     var i = 0, timer = null;
     var DELAY = 6000;
-
     var dots = [];
+
     if (dotsWrap) {
       dotsWrap.innerHTML = slides.map(function (_, n) {
         return '<button type="button" aria-label="Slide ' + (n + 1) + '"></button>';
@@ -114,7 +124,6 @@
     function go(n) { i = (n + slides.length) % slides.length; paint(); restart(); }
     function restart() { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, DELAY); }
 
-    var prev = $('.hero-arrow.prev'), next = $('.hero-arrow.next');
     if (prev) prev.addEventListener('click', function () { go(i - 1); });
     if (next) next.addEventListener('click', function () { go(i + 1); });
 
