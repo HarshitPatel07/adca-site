@@ -3,9 +3,11 @@
   'use strict';
 
   var host = document.getElementById('magazine-flipbook');
-  if (!host || !window.St || !window.St.PageFlip) return;
-
+  var stage = document.querySelector('.magazine-reader-stage--inline');
+  var coverIntro = document.getElementById('magazine-cover-intro');
+  var coverButton = document.querySelector('[data-open-magazine]');
   var bookScene = document.getElementById('magazine-book-scene');
+  var controls = document.querySelector('.magazine-inline-reader__controls');
   var previousButton = document.querySelector('[data-page-prev]');
   var nextButton = document.querySelector('[data-page-next]');
   var pageRange = document.querySelector('[data-page-range]');
@@ -13,6 +15,12 @@
   var pageCount = 18;
   var currentIndex = 0;
   var isReady = false;
+  var isOpen = false;
+  var isOpening = false;
+  var pendingOpen = false;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!host || !stage || !coverIntro || !coverButton || !bookScene || !window.St || !window.St.PageFlip) return;
 
   function isPortrait() {
     return pageFlip.getOrientation() === 'portrait';
@@ -20,15 +28,14 @@
 
   function updateSpread(index) {
     if (typeof index === 'number') currentIndex = index;
-    var isCover = currentIndex === 0 || currentIndex === pageCount - 1;
-    var firstPage = Math.min(currentIndex + 1, pageCount);
-    var lastPage = isPortrait() || isCover ? firstPage : Math.min(currentIndex + 2, pageCount);
-    pageRange.textContent = isPortrait() || isCover
+    var firstPage = Math.min(currentIndex + 2, pageCount);
+    var lastPage = isPortrait() ? firstPage : Math.min(firstPage + 1, pageCount);
+    pageRange.textContent = isPortrait() || firstPage === lastPage
       ? 'Page ' + firstPage + ' of ' + pageCount
       : 'Pages ' + firstPage + '\u2013' + lastPage + ' of ' + pageCount;
     pageProgress.style.width = (lastPage / pageCount * 100) + '%';
-    previousButton.disabled = !isReady || currentIndex <= 0;
-    nextButton.disabled = !isReady || currentIndex >= pageCount - 1;
+    previousButton.disabled = !isReady || !isOpen || currentIndex <= 0;
+    nextButton.disabled = !isReady || !isOpen || currentIndex >= pageCount - 2;
     host.setAttribute('aria-label', 'The Bottom Line, page ' + firstPage + ' of ' + pageCount);
   }
 
@@ -42,12 +49,12 @@
     maxHeight: 708,
     autoSize: true,
     usePortrait: true,
-    showCover: true,
+    showCover: false,
     drawShadow: true,
-    maxShadowOpacity: 0.42,
-    flippingTime: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 1 : 880,
+    maxShadowOpacity: 0.32,
+    flippingTime: reducedMotion ? 1 : 900,
     mobileScrollSupport: false,
-    swipeDistance: 24,
+    swipeDistance: 22,
     useMouseEvents: true,
     disableFlipByClick: false
   });
@@ -55,6 +62,7 @@
   pageFlip.on('init', function () {
     isReady = true;
     updateSpread(pageFlip.getCurrentPageIndex());
+    if (pendingOpen) openMagazine();
   });
   pageFlip.on('flip', function () {
     updateSpread(pageFlip.getCurrentPageIndex());
@@ -64,17 +72,41 @@
   });
 
   var pages = [];
-  for (var index = 1; index <= pageCount; index += 1) {
+  for (var index = 2; index <= pageCount; index += 1) {
     pages.push('assets/newsletter/pages/page-' + String(index).padStart(2, '0') + '.webp');
   }
   pageFlip.loadFromImages(pages);
 
+  function openMagazine() {
+    if (isOpen || isOpening) return;
+    if (!isReady) {
+      pendingOpen = true;
+      return;
+    }
+    pendingOpen = false;
+    isOpening = true;
+    stage.classList.add('is-opening');
+    window.setTimeout(function () {
+      coverIntro.hidden = true;
+      stage.classList.remove('is-opening');
+      stage.classList.add('is-open');
+      bookScene.setAttribute('aria-hidden', 'false');
+      host.setAttribute('tabindex', '0');
+      controls.hidden = false;
+      isOpen = true;
+      isOpening = false;
+      updateSpread(pageFlip.getCurrentPageIndex());
+      host.focus({ preventScroll: true });
+    }, reducedMotion ? 20 : 840);
+  }
+
   function turnPage(direction) {
-    if (!isReady) return;
+    if (!isReady || !isOpen) return;
     if (direction === 'next') pageFlip.flipNext('bottom');
     else pageFlip.flipPrev('bottom');
   }
 
+  coverButton.addEventListener('click', openMagazine);
   previousButton.addEventListener('click', function () { turnPage('prev'); });
   nextButton.addEventListener('click', function () { turnPage('next'); });
   bookScene.addEventListener('keydown', function (event) {

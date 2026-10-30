@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="assets/css/dynamic.css">
 <link rel="stylesheet" href="assets/css/polish.css">
 <link rel="stylesheet" href="assets/css/header-fix.css">
-<link rel="stylesheet" href="assets/css/magazine.css">
+<link rel="stylesheet" href="assets/css/magazine.css?v=3">
 </head>
 <body data-page="pub">
 
@@ -88,14 +88,22 @@
 
       <section class="magazine-inline-reader" aria-label="Read The Bottom Line online">
         <div class="magazine-reader-stage magazine-reader-stage--inline">
-          <div class="magazine-book-scene" id="magazine-book-scene" aria-label="Interactive 18-page newsletter">
-            <div class="magazine-flipbook" id="magazine-flipbook" tabindex="0" aria-label="The Bottom Line, page 1 of 18"></div>
+          <div class="magazine-cover-intro" id="magazine-cover-intro">
+            <button class="magazine-cover-trigger" type="button" data-open-magazine aria-controls="magazine-book-scene" aria-label="Open The Bottom Line newsletter">
+              <span class="magazine-cover-trigger__pages" aria-hidden="true"></span>
+              <img src="assets/newsletter/pages/page-01.webp" alt="The Bottom Line, September 2026 newsletter cover" fetchpriority="high">
+              <span class="magazine-cover-trigger__spine" aria-hidden="true"></span>
+            </button>
+            <p class="magazine-cover-hint">Tap the cover to open</p>
+          </div>
+          <div class="magazine-book-scene" id="magazine-book-scene" aria-label="Interactive 18-page newsletter" aria-hidden="true">
+            <div class="magazine-flipbook" id="magazine-flipbook" tabindex="-1" aria-label="The Bottom Line, page 2 of 18"></div>
           </div>
         </div>
-        <footer class="magazine-dialog__controls magazine-inline-reader__controls">
+        <footer class="magazine-dialog__controls magazine-inline-reader__controls" hidden>
           <button class="magazine-nav-button" type="button" data-page-prev aria-label="Previous page" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m7 7-7-7 7-7"/></svg><span>Previous</span></button>
           <div class="magazine-page-status" aria-live="polite">
-            <span data-page-range>Page 1 of 18</span>
+            <span data-page-range>Page 2 of 18</span>
             <span class="magazine-progress"><i data-page-progress></i></span>
           </div>
           <button class="magazine-nav-button" type="button" data-page-next aria-label="Next page"><span>Next</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-7-7 7 7-7 7"/></svg></button>
