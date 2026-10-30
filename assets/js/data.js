@@ -309,7 +309,9 @@ window.ADCA = {
         { label: 'Our Team',   href: 'team.html' },
         { label: 'Our Values', href: 'values.html' } ] },
     { key: 'services', label: 'Services',        href: 'services.html' },
-    { key: 'network',  label: 'Our Network',     href: 'network.html' },
+    { key: 'network',  label: 'Our Network',     href: 'network.html', sub: [
+        { label: 'Office Directory', href: 'network.html#branches' },
+        { label: 'Camp Office', href: 'camp-office.html' } ] },
     { key: 'pub',      label: 'Publication',     href: 'publication.html', sub: 'budgets' },
     { key: 'careers',  label: 'Careers',         href: 'careers.html' },
     { key: 'gallery',  label: 'Gallery & Events', href: 'gallery.html' },

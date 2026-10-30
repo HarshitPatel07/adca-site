@@ -1,0 +1,97 @@
+/* Camp Office network map */
+.camp-page{padding:clamp(38px,5vw,68px) 0 76px;background:linear-gradient(180deg,#f7f8f5 0%,#fff 75%);color:#173525}
+.camp-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:30px}
+.camp-eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 13px;color:#d58a1e;font:700 10px/1.3 'Saira',sans-serif;letter-spacing:.16em}
+.camp-eyebrow>span{display:inline-block;width:22px;height:2px;background:#f6a12a}
+.camp-intro h1{margin:0;color:#123521;font:700 clamp(39px,5.3vw,66px)/.99 'Saira',sans-serif;letter-spacing:-.045em}
+.camp-intro h1 em{color:#d98b19;font-style:normal}
+.camp-intro__text{max-width:530px;margin:16px 0 0;color:#68746c;font-size:14px;line-height:1.7}
+.camp-intro__stat{display:flex;align-items:center;gap:12px;flex:none;padding:12px 17px 12px 13px;border:1px solid #e5ebe3;border-radius:6px;background:#fff;box-shadow:0 8px 22px rgba(16,45,28,.05)}
+.camp-intro__stat strong{color:#00562a;font:700 31px/.95 'Saira',sans-serif;letter-spacing:-.04em}
+.camp-intro__stat span{color:#718077;font:700 9px/1.5 'Saira',sans-serif;letter-spacing:.1em}
+.camp-dashboard{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(310px,.72fr);align-items:start;gap:18px}
+.camp-map-card{min-width:0;padding:22px 24px 17px;border:1px solid #e5ebe3;border-radius:9px;background:#fff;box-shadow:0 12px 34px rgba(16,45,28,.055)}
+.camp-map-card__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.camp-eyebrow--muted{margin-bottom:7px;color:#78837b}
+.camp-map-card__head h2,.camp-directory__head h2{margin:0;color:#173525;font:600 23px/1.15 'Saira',sans-serif;letter-spacing:-.025em}
+.camp-map-card__badge{flex:none;margin-top:6px;padding:7px 10px;border-radius:99px;background:#f4f7f2;color:#68766c;font:600 10px 'Saira',sans-serif}
+.camp-map-card__badge i{padding:0 3px;color:#d98b19;font-style:normal}
+.camp-map-stage{position:relative;width:min(100%,620px);aspect-ratio:728/771;margin:4px auto 0;isolation:isolate}
+.camp-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:-1}
+.camp-office-pins{position:absolute;inset:0}
+.camp-office-pin{position:absolute;display:grid;place-items:center;width:20px;height:20px;padding:0;border:2px solid #fff;border-radius:50%;background:#f6a12a;color:#173525;box-shadow:0 2px 8px rgba(14,47,29,.27);transform:translate(-50%,-50%);cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+.camp-office-pin::before{content:"";position:absolute;inset:-5px;border:1px solid rgba(246,161,42,.52);border-radius:50%;opacity:0;transform:scale(.7);transition:opacity .18s,transform .18s}
+.camp-office-pin:hover,.camp-office-pin.is-active{z-index:2;background:#00562a;color:#fff;transform:translate(-50%,-50%) scale(1.22);box-shadow:0 4px 13px rgba(0,60,30,.34)}
+.camp-office-pin.is-active::before{opacity:1;transform:scale(1)}
+.camp-office-pin span{font:700 8px/1 'Saira',sans-serif}
+.camp-map-legend{display:flex;align-items:center;justify-content:center;gap:8px;padding-top:12px;border-top:1px solid #eef1ec;color:#78837b;font-size:11px}
+.camp-map-legend__dot{width:8px;height:8px;border:2px solid #fff;border-radius:50%;background:#f6a12a;box-shadow:0 0 0 1px #df9a2c}
+.camp-directory{position:sticky;top:96px;min-width:0;padding:17px;border:1px solid #e5ebe3;border-radius:9px;background:#fff;box-shadow:0 12px 34px rgba(16,45,28,.055)}
+.camp-office-detail{position:relative;overflow:hidden;padding:22px;border-radius:7px;background:linear-gradient(135deg,#103724 0%,#00562a 100%);color:#fff}
+.camp-office-detail::after{content:"";position:absolute;width:220px;height:220px;right:-135px;top:-135px;border:1px solid rgba(255,255,255,.13);border-radius:50%;box-shadow:0 0 0 24px rgba(255,255,255,.035),0 0 0 50px rgba(255,255,255,.025);pointer-events:none}
+.camp-office-detail__tag{position:relative;z-index:1;color:#f6b44d;font:700 9px 'Saira',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.camp-office-detail h3{position:relative;z-index:1;margin:9px 0 7px;color:#fff;font:600 29px/1.1 'Saira',sans-serif}
+.camp-office-detail__address{position:relative;z-index:1;margin:0;color:#dce8df;font-size:12px;line-height:1.65}
+.camp-office-detail__actions{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.camp-office-detail__actions a{display:inline-flex;align-items:center;gap:7px;min-height:35px;padding:0 11px;border:1px solid rgba(255,255,255,.23);border-radius:4px;color:#fff;font:600 10px 'Saira',sans-serif;transition:background .18s,border .18s}
+.camp-office-detail__actions a:hover{border-color:#f6a12a;background:rgba(255,255,255,.1)}
+.camp-office-detail__actions a:first-child{border-color:#f6a12a;background:#f6a12a;color:#173525}
+.camp-directory__head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:23px 1px 12px}
+.camp-directory__head h2{font-size:19px}
+.camp-directory__count{color:#758179;font-size:10px;white-space:nowrap}
+.camp-office-search{display:flex;align-items:center;gap:9px;height:40px;padding:0 11px;border:1px solid #e0e8de;border-radius:4px;background:#fbfcfa;transition:border-color .18s,box-shadow .18s}
+.camp-office-search:focus-within{border-color:#00562a;box-shadow:0 0 0 3px rgba(0,86,42,.09)}
+.camp-office-search svg{width:17px;height:17px;fill:none;stroke:#77857a;stroke-width:1.7;stroke-linecap:round}
+.camp-office-search input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#24382b;font:12px 'Lato',sans-serif}
+.camp-office-search input::placeholder{color:#8d9990}
+.camp-office-list{display:grid;gap:5px;max-height:290px;margin-top:9px;overflow:auto;overscroll-behavior:contain}
+.camp-office-option{display:flex;align-items:center;gap:10px;width:100%;min-height:43px;padding:6px 9px;border:1px solid transparent;border-radius:4px;background:#fff;color:#24382b;text-align:left;cursor:pointer;transition:background .16s,border-color .16s}
+.camp-office-option:hover{background:#f6f8f4}
+.camp-office-option.is-active{border-color:#dfebdf;background:#f2f7f1}
+.camp-office-option__number{display:grid;place-items:center;flex:none;width:27px;height:27px;border-radius:50%;background:#f1f5ef;color:#00562a;font:700 10px 'Saira',sans-serif}
+.camp-office-option.is-active .camp-office-option__number{background:#00562a;color:#fff}
+.camp-office-option__text{min-width:0}
+.camp-office-option__text strong,.camp-office-option__text small{display:block}
+.camp-office-option__text strong{color:#173525;font:600 13px 'Saira',sans-serif}
+.camp-office-option__text small{overflow:hidden;margin-top:1px;color:#7c877e;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+.camp-office-option__arrow{margin-left:auto;color:#d98b19;font-size:14px}
+.camp-office-option[hidden],.camp-office-pin[hidden]{display:none}
+.camp-office-empty{padding:18px 10px;color:#7c877e;font-size:12px;text-align:center}
+.camp-map-footnote{margin:12px 2px 0;color:#89938b;font-size:10px;text-align:right}
+.network-camp-callout{display:flex;align-items:center;gap:13px;max-width:620px;margin:22px 0 28px;padding:14px 17px;border:1px solid #e3eae1;border-radius:6px;background:#fff;box-shadow:0 7px 18px rgba(16,45,28,.04);transition:transform .18s,border-color .18s,box-shadow .18s}
+.network-camp-callout:hover{transform:translateY(-2px);border-color:#e5bd77;box-shadow:0 12px 24px rgba(16,45,28,.08)}
+.network-camp-callout__icon{display:grid;place-items:center;flex:none;width:37px;height:37px;border-radius:50%;background:#eef4ec;color:#00562a;font-size:24px}
+.network-camp-callout__copy{min-width:0}
+.network-camp-callout__copy strong,.network-camp-callout__copy small{display:block}
+.network-camp-callout__copy strong{color:#173525;font:600 14px 'Saira',sans-serif}
+.network-camp-callout__copy small{margin-top:3px;color:#78837b;font-size:11px;line-height:1.5}
+.network-camp-callout__arrow{margin-left:auto;color:#d98b19;font-size:17px}
+@media(max-width:980px){
+ .camp-dashboard{grid-template-columns:minmax(0,1fr) minmax(280px,.7fr);gap:12px}
+ .camp-map-card{padding:18px}
+ .camp-directory{padding:13px}
+}
+@media(max-width:760px){
+ .camp-page{padding:36px 0 54px}
+ .camp-intro{align-items:flex-start}
+ .camp-intro__stat{margin-top:18px}
+ .camp-dashboard{grid-template-columns:1fr}
+ .camp-directory{position:static}
+ .camp-map-stage{width:min(100%,570px)}
+ .camp-office-list{max-height:245px}
+}
+@media(max-width:520px){
+ .camp-intro{display:block;margin-bottom:20px}
+ .camp-intro h1{font-size:clamp(39px,11vw,54px)}
+ .camp-intro__text{font-size:13px}
+ .camp-intro__stat{display:inline-flex;margin-top:17px}
+ .camp-map-card{padding:15px 12px 13px}
+ .camp-map-card__head{display:block}
+ .camp-map-card__badge{display:inline-block;margin-top:10px}
+ .camp-directory{padding:12px}
+ .camp-office-detail{padding:19px}
+ .camp-map-footnote{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+ .camp-office-pin,.camp-office-option,.network-camp-callout{transition:none}
+}
