@@ -133,3 +133,6 @@
   .contact-hero__copy,.contact-hero__panel{animation:none}
   .contact-method,.contact-branch{transition:none}
 }
+
+/* Keep in-page destinations clear of the sticky header. */
+#enquiry,#offices,#visit{scroll-margin-top:88px}
