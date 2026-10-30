@@ -8,9 +8,6 @@
   var coverButton = document.querySelector('[data-open-magazine]');
   var bookScene = document.getElementById('magazine-book-scene');
   var backCover = document.getElementById('magazine-back-cover');
-  var controls = document.querySelector('.magazine-inline-reader__controls');
-  var pageRange = document.querySelector('[data-page-range]');
-  var pageProgress = document.querySelector('[data-page-progress]');
   var pageCount = 18;
   var currentIndex = 0;
   var isReady = false;
@@ -23,10 +20,6 @@
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (!host || !stage || !coverIntro || !coverButton || !bookScene || !backCover || !window.St || !window.St.PageFlip) return;
-
-  function isPortrait() {
-    return pageFlip.getOrientation() === 'portrait';
-  }
 
   function showBackCover() {
     if (isBackCover) return;
@@ -57,15 +50,7 @@
   function updateSpread(index) {
     if (typeof index === 'number') currentIndex = index;
     var isEndCover = currentIndex === pageCount - 1;
-    var isFrontCover = currentIndex === 0;
     var firstPage = Math.min(currentIndex + 1, pageCount);
-    var lastPage = isPortrait() || isFrontCover || isEndCover
-      ? firstPage
-      : Math.min(firstPage + 1, pageCount);
-    pageRange.textContent = isPortrait() || firstPage === lastPage
-      ? 'Page ' + firstPage + ' of ' + pageCount
-      : 'Pages ' + firstPage + '\u2013' + lastPage + ' of ' + pageCount;
-    pageProgress.style.width = (lastPage / pageCount * 100) + '%';
     host.setAttribute('aria-label', 'The Bottom Line, page ' + firstPage + ' of ' + pageCount);
     if (isOpen && isEndCover) showBackCover();
     else if (isBackCover && !isBackCoverClosing) hideBackCover();
@@ -127,7 +112,6 @@
       stage.classList.add('is-open');
       bookScene.setAttribute('aria-hidden', 'false');
       host.setAttribute('tabindex', '0');
-      controls.hidden = false;
       isOpen = true;
       isOpening = false;
       updateSpread(pageFlip.getCurrentPageIndex());
@@ -144,7 +128,6 @@
       stage.classList.remove('is-open', 'is-closing');
       bookScene.setAttribute('aria-hidden', 'true');
       host.setAttribute('tabindex', '-1');
-      controls.hidden = true;
       isOpen = false;
       isClosing = false;
       coverButton.focus({ preventScroll: true });
@@ -218,5 +201,4 @@
     }
   });
 
-  pageRange.textContent = 'Page 1 of ' + pageCount;
 }());

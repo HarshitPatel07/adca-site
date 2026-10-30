@@ -51,17 +51,6 @@
 .magazine-flipbook canvas:active{cursor:grabbing}
 .magazine-flipbook:focus-visible{outline:2px solid #f6a12a;outline-offset:5px}
 
-.magazine-inline-reader__controls{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,56px);min-height:48px;padding:8px 12px;border:0;background:transparent;color:#163d25}
-.magazine-inline-reader__controls[hidden]{display:none!important}
-.magazine-nav-button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 13px;border:1px solid #d8e2d6;border-radius:6px;background:#fff;color:#20452b;font:600 11px 'Saira',sans-serif;cursor:pointer;transition:border-color .2s,background .2s,color .2s,transform .2s,box-shadow .2s}
-.magazine-nav-button:hover:not(:disabled){transform:translateY(-1px);border-color:#d6952e;background:#fffaf0;color:#153e25;box-shadow:0 5px 12px rgba(24,54,32,.08)}
-.magazine-nav-button:disabled{opacity:.4;cursor:default}
-.magazine-nav-button svg{width:15px;height:15px;fill:none;stroke:#bd781c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.magazine-page-status{display:grid;justify-items:center;gap:7px;min-width:170px;color:#31543a;font:600 11px 'Saira',sans-serif;letter-spacing:.04em}
-.magazine-progress{width:min(20vw,230px);height:4px;overflow:hidden;border-radius:4px;background:#e8ece5}
-.magazine-progress i{display:block;width:6%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#f6a12a,#d1821e);transition:width .5s ease}
-.magazine-key-hint{display:flex;align-items:center;gap:5px;color:#718074;font:10px 'Saira',sans-serif}
-.magazine-key-hint kbd{display:inline-grid;place-items:center;width:22px;height:22px;border:1px solid #dce4da;border-radius:4px;background:#fbfcf9;color:#375441;font:12px 'Lato',sans-serif}
 
 @keyframes cover-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
 @keyframes cover-opening{
@@ -87,10 +76,6 @@
   .magazine-cover-hint{bottom:14px}
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation-name:cover-opening-mobile}
   .magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation-name:cover-closing-mobile}
-  .magazine-inline-reader__controls{justify-content:center;gap:14px;min-height:54px;padding:8px 4px}
-  .magazine-page-status{min-width:112px;font-size:10px}
-  .magazine-progress{width:min(32vw,150px)}
-  .magazine-key-hint{display:none}
 }
 @keyframes cover-opening-mobile{
   0%{transform:rotateY(-5deg) rotateZ(-.65deg);opacity:1}
@@ -105,5 +90,5 @@
 @media(prefers-reduced-motion:reduce){
   .magazine-cover-trigger{animation:none}
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger,.magazine-reader-stage--inline.is-closing .magazine-cover-trigger,.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img,.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation-duration:.02ms}
-  .magazine-book-scene,.magazine-cover-hint,.magazine-progress i,.magazine-nav-button{transition-duration:.01ms!important}
+  .magazine-book-scene,.magazine-cover-hint{transition-duration:.01ms!important}
 }
