@@ -10,6 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=22">
+<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/dynamic.css">
+<link rel="stylesheet" href="assets/css/polish.css">
+<link rel="stylesheet" href="assets/css/header-fix.css">
+<link rel="stylesheet" href="assets/css/magazine.css">
 </head>
 <body data-page="pub">
 
@@ -68,6 +73,31 @@
       only put our observations in it but also provide the recommendations on it which helps our
       clients to unfold optimum opportunities for their development.</p>
 
+    <article class="issue-feature" aria-labelledby="issue-feature-title">
+      <div class="issue-feature__art">
+        <span class="issue-feature__glow" aria-hidden="true"></span>
+        <div class="issue-feature__book">
+          <img src="assets/newsletter/pages/page-01.webp" alt="The Bottom Line newsletter cover, September 2026">
+        </div>
+        <span class="issue-feature__edition">LATEST ISSUE <b>SEP 2026</b></span>
+      </div>
+      <div class="issue-feature__copy">
+        <p class="issue-feature__eyebrow"><span></span> Monthly newsletter</p>
+        <h2 id="issue-feature-title">The Bottom Line</h2>
+        <p class="issue-feature__date">September 2026 edition</p>
+        <p class="issue-feature__summary">A monthly read on regulatory updates, compliance dates and business changes, with a brain break at the end.</p>
+        <div class="issue-feature__facts"><span>18 pages</span><span>Read online</span><span>PDF available</span></div>
+        <div class="issue-feature__actions">
+          <button class="issue-feature__read" type="button" data-open-magazine>
+            <span>Read this issue</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg>
+          </button>
+          <a class="issue-feature__download" href="assets/newsletter/the-bottom-line-september-2026.pdf" download>Download PDF <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="issue-feature__note">Open the cover, then click or drag pages with your mouse, use the arrows, or swipe on touch screens.</p>
+      </div>
+    </article>
+
     <h2>Budget Publications</h2>
     <p style="font-size:13px;color:#7c847e;margin-bottom:14px">Every budget publication released
       since 2009. These open the corresponding page on adcaindia.com &mdash; repoint them at your
@@ -75,6 +105,48 @@
     <div class="pub-grid" id="pub-grid"></div>
   </div>
 </section>
+
+<div class="magazine-modal" id="magazine-modal" hidden>
+  <div class="magazine-modal__backdrop" data-close-magazine></div>
+  <section class="magazine-dialog" role="dialog" aria-modal="true" aria-labelledby="magazine-title" tabindex="-1">
+    <header class="magazine-dialog__header">
+      <div class="magazine-dialog__brand"><img src="assets/img/logo.png" alt="Agarwal &amp; Dhandhania, Chartered Accountants"><span>PUBLICATIONS</span></div>
+      <div class="magazine-dialog__issue"><strong id="magazine-title">The Bottom Line</strong><span>September 2026 · Edition 02</span></div>
+      <a class="magazine-dialog__download" href="assets/newsletter/the-bottom-line-september-2026.pdf" download>Download PDF <span aria-hidden="true">↓</span></a>
+      <button class="magazine-dialog__close" type="button" data-close-magazine aria-label="Close magazine reader"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </header>
+
+    <div class="magazine-reader-stage">
+      <div class="magazine-cover-state">
+        <div class="magazine-closed-book" aria-label="Closed copy of The Bottom Line, September 2026">
+          <span class="magazine-closed-book__pages" aria-hidden="true"></span>
+          <img src="assets/newsletter/pages/page-01.webp" alt="">
+        </div>
+        <p class="magazine-cover-state__caption">September 2026 · Edition 02</p>
+        <button class="magazine-open-button" type="button" data-open-cover>
+          <span class="magazine-open-button__icon" aria-hidden="true">↗</span>
+          <span>Open magazine</span>
+        </button>
+      </div>
+
+      <div class="magazine-book-state" hidden>
+        <div class="magazine-book-scene" id="magazine-book-scene" aria-label="Interactive newsletter flipbook">
+          <div class="magazine-flipbook" id="magazine-flipbook" aria-label="The Bottom Line, pages 2 to 18"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="magazine-dialog__controls">
+      <button class="magazine-nav-button" type="button" data-page-prev aria-label="Previous page" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5m7 7-7-7 7-7"/></svg><span>Previous</span></button>
+      <div class="magazine-page-status" aria-live="polite">
+        <span data-page-range>Pages 2–3 of 18</span>
+        <span class="magazine-progress"><i data-page-progress></i></span>
+      </div>
+      <button class="magazine-nav-button" type="button" data-page-next aria-label="Next page"><span>Next</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-7-7 7 7-7 7"/></svg></button>
+      <span class="magazine-key-hint"><span>Click or drag pages</span><kbd>←</kbd><kbd>→</kbd></span>
+    </footer>
+  </section>
+</div>
 
 <!-- ===================== QUICK CONTACT / CONTACT INFO ===================== -->
 <section class="contact-band" id="quick-contact">
@@ -158,5 +230,8 @@
 
 <script src="assets/js/data.js?v=22"></script>
 <script src="assets/js/main.js?v=22"></script>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+<script src="assets/js/magazine.js"></script>
 </body>
 </html>
+
