@@ -20,6 +20,10 @@
 .magazine-reader-stage--inline{position:relative;display:grid;grid-template-areas:"reader";place-items:center;min-height:0;overflow:visible;padding:12px 0;background:transparent;isolation:isolate}
 .magazine-cover-intro[hidden]{display:none!important}
 .magazine-cover-intro,.magazine-book-scene{grid-area:reader;position:relative;display:grid;place-items:center;align-self:stretch;width:min(100%,1000px,102vh);aspect-ratio:1.414;max-height:72vh}
+.magazine-back-cover[hidden]{display:none!important}
+.magazine-back-cover{position:absolute;inset:0;z-index:4;display:grid;place-items:center;perspective:1500px;cursor:pointer}
+.magazine-back-cover img{display:block;width:min(50vw,52vh,500px);min-width:230px;height:auto;aspect-ratio:595.5/842.25;object-fit:cover;box-shadow:13px 23px 40px rgba(14,48,27,.2),0 3px 8px rgba(12,37,20,.12);transform-origin:left center;user-select:none;-webkit-user-drag:none}
+.magazine-back-cover:focus-visible img{outline:3px solid #efa02a;outline-offset:5px}
 .magazine-cover-intro{z-index:3;perspective:1500px;perspective-origin:50% 48%;overflow:visible}
 .magazine-cover-trigger{position:relative;display:block;width:min(50vw,52vh,500px);min-width:230px;padding:0;border:0;border-radius:2px;background:#fff;box-shadow:13px 23px 40px rgba(14,48,27,.2),0 3px 8px rgba(12,37,20,.12);cursor:pointer;transform-origin:left center;transform:rotateY(-5deg) rotateZ(-.65deg);transform-style:preserve-3d;transition:filter .3s ease,box-shadow .3s ease;animation:cover-float 5.5s ease-in-out infinite}
 .magazine-cover-trigger__pages{position:absolute;z-index:-1;inset:5px -8px 4px 1px;border-radius:1px;background:repeating-linear-gradient(90deg,#fff 0 2px,#e9ece7 2px 3px);box-shadow:3px 3px 7px rgba(12,37,20,.16);transform:translateZ(-7px)}
@@ -36,6 +40,10 @@
 .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation:cover-opening .84s cubic-bezier(.55,.03,.24,1) forwards}
 .magazine-reader-stage--inline.is-closing .magazine-book-scene{opacity:0;pointer-events:none;transition:opacity .54s ease}
 .magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation:cover-closing .84s cubic-bezier(.55,.03,.24,1) forwards}
+.magazine-reader-stage--inline.is-back-cover .magazine-book-scene{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .32s ease,visibility 0s linear .32s}
+.magazine-reader-stage--inline.is-back-cover-closing .magazine-book-scene{visibility:visible;opacity:1;pointer-events:none;transition:opacity .56s ease .14s,visibility 0s}
+.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img{animation:back-cover-reveal .34s ease-out both}
+.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation:back-cover-closing .84s cubic-bezier(.55,.03,.24,1) forwards}
 .magazine-reader-stage--inline.is-opening .magazine-cover-hint{opacity:0;transition:opacity .18s ease}
 .magazine-flipbook{width:100%;height:100%;margin:auto;overflow:visible;outline:0}
 .magazine-flipbook .stf__parent{margin:auto}
@@ -66,6 +74,8 @@
   27%{transform:translateX(50%) rotateY(0) rotateZ(0);opacity:1}
   100%{transform:translateX(0) rotateY(-5deg) rotateZ(-.65deg);opacity:1}
 }
+@keyframes back-cover-reveal{from{transform:rotateY(-8deg) scale(.98);opacity:0}to{transform:rotateY(0) scale(1);opacity:1}}
+@keyframes back-cover-closing{from{transform:rotateY(0) scale(1);opacity:1}to{transform:rotateY(-160deg) scale(.98);opacity:0}}
 
 @media(max-width:760px){
   .issue-feature--reader{margin:26px 0 38px}
@@ -73,6 +83,7 @@
   .magazine-reader-stage--inline{padding:16px 10px}
   .magazine-cover-intro,.magazine-book-scene{width:min(84vw,46vh,420px);max-height:68vh;aspect-ratio:.707}
   .magazine-cover-trigger{width:min(58vw,42vh,300px);min-width:210px}
+  .magazine-back-cover img{width:min(58vw,42vh,300px);min-width:210px}
   .magazine-cover-hint{bottom:14px}
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation-name:cover-opening-mobile}
   .magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation-name:cover-closing-mobile}
@@ -93,6 +104,6 @@
 }
 @media(prefers-reduced-motion:reduce){
   .magazine-cover-trigger{animation:none}
-  .magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation-duration:.02ms}
+  .magazine-reader-stage--inline.is-opening .magazine-cover-trigger,.magazine-reader-stage--inline.is-closing .magazine-cover-trigger,.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img,.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation-duration:.02ms}
   .magazine-book-scene,.magazine-cover-hint,.magazine-progress i,.magazine-nav-button{transition-duration:.01ms!important}
 }
