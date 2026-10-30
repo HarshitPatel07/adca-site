@@ -67,7 +67,7 @@
     function renderList(query) {
       var q = query.trim().toLowerCase();
       var matched = offices.filter(function (office) {
-        return (office.city + ' ' + office.address).toLowerCase().indexOf(q) !== -1;
+        return (office.city + ' ' + office.kind).toLowerCase().indexOf(q) !== -1;
       });
       list.innerHTML = matched.length ? matched.map(function (office) {
         var index = offices.indexOf(office);
@@ -76,9 +76,9 @@
           (office.city === activeCity) + '">' +
           '<span class="camp-office-option__number">' + String(index + 1).padStart(2, '0') + '</span>' +
           '<span class="camp-office-option__text"><strong>' + escapeHtml(office.city) +
-          '</strong><small>' + escapeHtml(office.kind) + ' · ' + escapeHtml(office.address) +
+          '</strong><small>' + escapeHtml(office.kind) +
           '</small></span><span class="camp-office-option__arrow" aria-hidden="true">↗</span></button>';
-      }).join('') : '<p class="camp-office-empty">No office matches that search. Try another city or address.</p>';
+      }).join('') : '<p class="camp-office-empty">No office matches that search. Try another city.</p>';
       if (count) count.textContent = matched.length + (matched.length === 1 ? ' office' : ' offices');
       pins.querySelectorAll('.camp-office-pin').forEach(function (pin) {
         pin.hidden = matched.every(function (office) { return office.city !== pin.getAttribute('data-city'); });
@@ -91,8 +91,7 @@
       detail.innerHTML = '<span class="camp-office-detail__tag">' + escapeHtml(office.kind) +
         ' · AGARWAL &amp; DHANDHANIA</span><h3>' + escapeHtml(office.city) +
         (office.city === 'Surat' ? ' <span>· Gujarat</span>' : '') +
-        '</h3><p class="camp-office-detail__address">' + escapeHtml(office.address) +
-        '</p><div class="camp-office-detail__actions"><a href="' + escapeHtml(office.phoneHref) +
+        '</h3><div class="camp-office-detail__actions"><a href="' + escapeHtml(office.phoneHref) +
         '">Call ' + escapeHtml(office.city === 'Surat' || office.phone !== D.firm.phone ? office.phone : 'Surat office') +
         '</a><a href="' + mapHref(office) + '" target="_blank" rel="noopener noreferrer">Directions ↗</a></div>';
       renderPins();
