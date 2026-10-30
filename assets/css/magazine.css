@@ -30,6 +30,7 @@
 .magazine-cover-hint{position:absolute;left:50%;bottom:clamp(18px,4vh,44px);margin:0!important;padding:9px 15px;border:1px solid #e1e8dd;border-radius:999px;background:rgba(255,255,255,.82);color:#49624d!important;font:600 10px/1.2 'Saira',sans-serif!important;letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;transform:translateX(-50%);box-shadow:0 4px 14px rgba(24,54,32,.06)}
 .magazine-cover-hint::before{content:"";display:inline-block;width:6px;height:6px;margin:0 8px 1px 0;border-radius:50%;background:#f6a12a;box-shadow:0 0 0 3px rgba(246,161,42,.14)}
 .magazine-book-scene{z-index:1;display:grid;visibility:hidden;opacity:0;pointer-events:none;place-items:center;touch-action:pan-y;isolation:isolate;scroll-margin-top:76px;transition:opacity .48s ease,visibility 0s linear .48s}
+.magazine-book-scene::after{content:"";position:absolute;inset:0;z-index:5;border:1px solid rgba(28,58,39,.2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);pointer-events:none}
 .magazine-reader-stage--inline.is-opening .magazine-book-scene,.magazine-reader-stage--inline.is-open .magazine-book-scene{visibility:visible;opacity:1;transition:opacity .54s ease .22s,visibility 0s}
 .magazine-reader-stage--inline.is-opening .magazine-book-scene{pointer-events:none}
 .magazine-reader-stage--inline.is-open .magazine-book-scene{pointer-events:auto}
