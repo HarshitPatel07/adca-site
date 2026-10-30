@@ -50,26 +50,10 @@ window.ADCA = {
 
   /* ---- hero slider --------------------------------------------------- */
   slides: [
-    { img: 'assets/img/New-Project.png',
-      h: 'Celebrating <span>66 years</span> of existence',
-      p: 'Founded in 1960, Agarwal & Dhandhania can trace its roots back well over half a century.',
-      cta: 'About The Firm', href: 'about.html' },
-    { img: 'assets/img/1.png',
-      h: 'Sound practical advice at a <span>reasonable price</span>',
-      p: 'A broad-based provider of management consultancy, accounting and taxation advice to a diverse set of geographically dispersed organizations.',
-      cta: 'Our Services', href: 'services.html' },
-    { img: 'assets/img/3.png',
-      h: 'Seven partners, <span>PAN India</span>',
-      p: 'Supported by a team of more than 300 professionals across eight branches PAN India.',
-      cta: 'Our Network', href: 'network.html' },
     { img: 'assets/img/2.png',
       h: 'A partner in your <span>business strategy</span>',
       p: 'Information and risk management, tax-minimisation plans, business information systems and strategic financial advice.',
-      cta: 'Who We Are', href: 'about.html#who' },
-    { img: 'assets/img/13.png',
-      h: 'Quality is not an act, <span>it is a habit</span>',
-      p: 'Professional integrity and a rigorous selection process — our people are our underpinning strength.',
-      cta: 'Our Values', href: 'values.html' }
+      cta: 'Who We Are', href: 'about.html#who' }
   ],
 
   /* ---- counters (home) ----------------------------------------------- */
