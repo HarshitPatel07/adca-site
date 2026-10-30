@@ -8,8 +8,6 @@
   var coverButton = document.querySelector('[data-open-magazine]');
   var bookScene = document.getElementById('magazine-book-scene');
   var controls = document.querySelector('.magazine-inline-reader__controls');
-  var previousButton = document.querySelector('[data-page-prev]');
-  var nextButton = document.querySelector('[data-page-next]');
   var pageRange = document.querySelector('[data-page-range]');
   var pageProgress = document.querySelector('[data-page-progress]');
   var pageCount = 18;
@@ -34,8 +32,6 @@
       ? 'Page ' + firstPage + ' of ' + pageCount
       : 'Pages ' + firstPage + '\u2013' + lastPage + ' of ' + pageCount;
     pageProgress.style.width = (lastPage / pageCount * 100) + '%';
-    previousButton.disabled = !isReady || !isOpen || currentIndex <= 0;
-    nextButton.disabled = !isReady || !isOpen || currentIndex >= pageCount - 2;
     host.setAttribute('aria-label', 'The Bottom Line, page ' + firstPage + ' of ' + pageCount);
   }
 
@@ -43,10 +39,10 @@
     width: 550,
     height: 778,
     size: 'stretch',
-    minWidth: 400,
-    maxWidth: 760,
+    minWidth: 260,
+    maxWidth: 1000,
     minHeight: 360,
-    maxHeight: 1000,
+    maxHeight: 708,
     autoSize: true,
     usePortrait: true,
     showCover: false,
@@ -107,8 +103,6 @@
   }
 
   coverButton.addEventListener('click', openMagazine);
-  previousButton.addEventListener('click', function () { turnPage('prev'); });
-  nextButton.addEventListener('click', function () { turnPage('next'); });
   bookScene.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowRight') {
       event.preventDefault();
