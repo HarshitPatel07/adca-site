@@ -13,13 +13,13 @@
     if (!pins || !list || !detail || !search) return;
 
     var positions = {
-      'Surat':     { x: 16, y: 56, state: 'Gujarat', kind: 'Head Office' },
+      'Surat':     { x: 19, y: 56, state: 'Gujarat', kind: 'Head Office' },
       'Delhi':     { x: 33, y: 32, state: 'Delhi', kind: 'Branch Office' },
-      'Mumbai':    { x: 21, y: 61, state: 'Maharashtra', kind: 'Branch Office' },
-      'Ahmedabad': { x: 14, y: 45, state: 'Gujarat', kind: 'Branch Office' },
+      'Mumbai':    { x: 19, y: 61, state: 'Maharashtra', kind: 'Branch Office' },
+      'Ahmedabad': { x: 18, y: 45, state: 'Gujarat', kind: 'Branch Office' },
       'Jaipur':    { x: 28, y: 37, state: 'Rajasthan', kind: 'Branch Office' },
       'Hyderabad': { x: 50, y: 62, state: 'Telangana', kind: 'Branch Office' },
-      'Vapi':      { x: 18, y: 59, state: 'Gujarat', kind: 'Branch Office' },
+      'Vapi':      { x: 19, y: 59, state: 'Gujarat', kind: 'Branch Office' },
       'Chennai':   { x: 42, y: 85, state: 'Tamil Nadu', kind: 'Branch Office' },
       'Kolkata':   { x: 78, y: 43, state: 'West Bengal', kind: 'Branch Office' }
     };
