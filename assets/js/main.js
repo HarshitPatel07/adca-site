@@ -336,7 +336,7 @@
       box.innerHTML = matches.map(function (b) {
         var phone = b.phone ? '<a href="tel:' + b.phone.replace(/[^0-9+]/g, '') + '">' + b.phone + '</a>' : '';
         var mapQuery = encodeURIComponent(b.addr + ', ' + b.city);
-        return '<article class="contact-branch reveal">' +
+        return '<article class="contact-branch reveal is-in">' +
           '<div class="contact-branch__heading"><span class="contact-branch__pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"></path><circle cx="12" cy="10" r="2.3"></circle></svg></span>' +
           '<h3>' + b.city + '</h3></div>' +
           '<p class="contact-branch__address">' + b.addr + '</p>' +
