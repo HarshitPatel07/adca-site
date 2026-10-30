@@ -222,3 +222,39 @@
   .contact-band--modern .qc,.contact-band--modern .ci{padding:22px}
   .contact-band--modern .contact-map-wrap iframe{height:225px}
 }
+
+
+/* Compact the stacked inner padding and field rhythm. */
+.contact-band--modern{
+  gap:18px;
+  padding:28px max(4%,calc((100% - 1320px)/2))
+}
+.contact-band--modern .qc,.contact-band--modern .ci{padding:30px}
+.contact-band--modern .qc-inner,.contact-band--modern .ci-inner{
+  padding:0!important;
+  margin:0!important
+}
+.contact-band--modern .qc .contact-form-intro{margin:8px 0 16px}
+.contact-band--modern .qc form{gap:9px 12px}
+.contact-band--modern .qc .fld{gap:4px}
+.contact-band--modern .qc .fld input{min-height:42px;padding:9px 11px}
+.contact-band--modern .qc .fld textarea{min-height:88px;padding:10px 11px}
+.contact-band--modern .qc .err{min-height:0}
+.contact-band--modern .contact-address{margin:8px 0 14px}
+.contact-band--modern .contact-map-wrap iframe{height:clamp(220px,20vw,280px)}
+.contact-band--modern .contact-directions{margin-top:11px}
+@media(max-width:900px){
+  .contact-band--modern{padding:24px 4%;gap:14px}
+  .contact-band--modern .qc,.contact-band--modern .ci{padding:24px}
+  .contact-band--modern .contact-map-wrap iframe{height:235px}
+}
+@media(max-width:760px){
+  .contact-band--modern{padding:22px 4%;gap:14px}
+  .contact-band--modern .qc,.contact-band--modern .ci{padding:22px}
+  .contact-band--modern .contact-map-wrap iframe{height:230px}
+}
+@media(max-width:520px){
+  .contact-band--modern{padding:16px 4%}
+  .contact-band--modern .qc,.contact-band--modern .ci{padding:19px}
+  .contact-band--modern .contact-map-wrap iframe{height:210px}
+}
