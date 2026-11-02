@@ -7,53 +7,21 @@
   var coverIntro = document.getElementById('magazine-cover-intro');
   var coverButton = document.querySelector('[data-open-magazine]');
   var bookScene = document.getElementById('magazine-book-scene');
-  var backCover = document.getElementById('magazine-back-cover');
   var pageCount = 18;
   var currentIndex = 0;
   var isReady = false;
   var isOpen = false;
   var isOpening = false;
   var isClosing = false;
-  var isBackCover = false;
-  var isBackCoverClosing = false;
   var pendingOpen = false;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!host || !stage || !coverIntro || !coverButton || !bookScene || !backCover || !window.St || !window.St.PageFlip) return;
-
-  function showBackCover() {
-    if (isBackCover) return;
-    isBackCover = true;
-    backCover.hidden = false;
-    backCover.setAttribute('aria-hidden', 'false');
-    backCover.setAttribute('tabindex', '0');
-    bookScene.setAttribute('aria-hidden', 'true');
-    host.setAttribute('tabindex', '-1');
-    stage.classList.add('is-back-cover');
-    backCover.focus({ preventScroll: true });
-  }
-
-  function hideBackCover() {
-    isBackCover = false;
-    isBackCoverClosing = false;
-    stage.classList.remove('is-back-cover', 'is-back-cover-closing');
-    backCover.hidden = true;
-    backCover.setAttribute('aria-hidden', 'true');
-    backCover.setAttribute('tabindex', '-1');
-    if (isOpen) {
-      bookScene.setAttribute('aria-hidden', 'false');
-      host.setAttribute('tabindex', '0');
-      host.focus({ preventScroll: true });
-    }
-  }
+  if (!host || !stage || !coverIntro || !coverButton || !bookScene || !window.St || !window.St.PageFlip) return;
 
   function updateSpread(index) {
     if (typeof index === 'number') currentIndex = index;
-    var isEndCover = currentIndex === pageCount - 1;
     var firstPage = Math.min(currentIndex + 1, pageCount);
     host.setAttribute('aria-label', 'The Bottom Line, page ' + firstPage + ' of ' + pageCount);
-    if (isOpen && isEndCover) showBackCover();
-    else if (isBackCover && !isBackCoverClosing) hideBackCover();
   }
 
   var pageFlip = new window.St.PageFlip(host, {
@@ -82,9 +50,10 @@
     updateSpread(pageFlip.getCurrentPageIndex());
     if (pendingOpen) openMagazine();
   });
-  pageFlip.on('flip', function () {
-    var index = pageFlip.getCurrentPageIndex();
-    if (isBackCoverClosing && index < pageCount - 1) hideBackCover();
+  pageFlip.on('flip', function (event) {
+    var index = event && typeof event.data === 'number'
+      ? event.data
+      : pageFlip.getCurrentPageIndex();
     updateSpread(index);
   });
   pageFlip.on('changeOrientation', function () {
@@ -134,22 +103,15 @@
     }, reducedMotion ? 20 : 840);
   }
 
-  function closeBackCover() {
-    if (!isOpen || !isBackCover || isBackCoverClosing) return;
-    isBackCoverClosing = true;
-    stage.classList.add('is-back-cover-closing');
-    pageFlip.flipPrev('bottom');
-  }
-
   function turnPage(direction) {
-    if (!isReady || !isOpen || isClosing || isBackCoverClosing) return;
+    if (!isReady || !isOpen || isClosing) return;
     if (direction === 'next') pageFlip.flipNext('bottom');
     else if (currentIndex <= 1) closeMagazine();
     else pageFlip.flipPrev('bottom');
   }
 
   function closeFromFirstPageCorner(event) {
-    if (!isReady || !isOpen || isClosing || isBackCoverClosing || currentIndex > 1) return;
+    if (!isReady || !isOpen || isClosing || currentIndex > 1) return;
     var point = event.touches && event.touches.length ? event.touches[0] : event;
     var rect = bookScene.getBoundingClientRect();
     var x = point.clientX - rect.left;
@@ -161,22 +123,6 @@
     event.stopPropagation();
     if (event.stopImmediatePropagation) event.stopImmediatePropagation();
     closeMagazine();
-  }
-
-  function closeFromBackCoverCorner(event) {
-    if (!isOpen || !isBackCover || isBackCoverClosing) return;
-    var point = event.touches && event.touches.length ? event.touches[0] : event;
-    var coverImage = backCover.querySelector('img');
-    var rect = coverImage.getBoundingClientRect();
-    var x = point.clientX - rect.left;
-    var y = point.clientY - rect.top;
-    var nearOuterCorner = x <= 80 || x >= rect.width - 80;
-    var nearPageTopOrBottom = y <= 86 || y >= rect.height - 86;
-    if (!nearOuterCorner || !nearPageTopOrBottom) return;
-    event.preventDefault();
-    event.stopPropagation();
-    if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-    closeBackCover();
   }
 
   coverButton.addEventListener('click', openMagazine);
@@ -191,14 +137,4 @@
       turnPage('prev');
     }
   });
-  backCover.addEventListener('click', closeBackCover);
-  backCover.addEventListener('mousedown', closeFromBackCoverCorner, true);
-  backCover.addEventListener('touchstart', closeFromBackCoverCorner, { capture: true, passive: false });
-  backCover.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowLeft' || event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      closeBackCover();
-    }
-  });
-
 }());
