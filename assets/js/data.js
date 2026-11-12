@@ -181,12 +181,12 @@ window.ADCA = {
 
   /* ---- why (arc labels, in visual order left→right) ------------------- */
   why: [
-    { pos: 'l2', text: 'Well-qualified &amp;<br>Experienced Professionals' },
-    { pos: 'l1', text: 'Our Usp-country<br>Wide Network' },
-    { pos: 'top', text: 'Cost Competitive<br>Services' },
-    { pos: 'r1', text: 'Reliable And<br>Timely Services' },
-    { pos: 'r2', text: 'Understanding Clients<br>Requirements' },
-    { pos: 'r3', text: 'Customer Friendly<br>Approach' }
+    { pos: 'l2', text: 'Well-qualified &amp;<br>Experienced Professionals', desc: 'Experienced professionals bring practical, considered advice.' },
+    { pos: 'l1', text: 'Our Usp-country<br>Wide Network', desc: 'Connected offices support clients across India.' },
+    { pos: 'top', text: 'Cost Competitive<br>Services', desc: 'Focused advice and efficient delivery keep value clear.' },
+    { pos: 'r1', text: 'Reliable And<br>Timely Services', desc: 'Responsive teams keep important work moving on time.' },
+    { pos: 'r2', text: 'Understanding Clients<br>Requirements', desc: 'Advice shaped around each client's business and priorities.' },
+    { pos: 'r3', text: 'Customer Friendly<br>Approach', desc: 'Approachable people and clear communication at every step.' }
   ],
 
   /* ---- team ---------------------------------------------------------- */
