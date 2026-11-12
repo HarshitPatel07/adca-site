@@ -261,13 +261,13 @@
       r3: 'why-friendly.png'
     };
     list.innerHTML = D.why.map(function (w, n) {
-      var label = w.text.replace(/<br\s*\/?\s*>/i, ' ');
+      var label = w.text.replace('<br>', ' ');
       var number = (n + 1 < 10 ? '0' : '') + (n + 1);
-      return '<li class="why-card reveal" style="--why-order:' + n + '">' +
-        '<span class="why-card__index">' + number + '</span>' +
-        '<span class="why-card__icon"><img src="' + IMG + icons[w.pos] + '" alt="" loading="lazy"></span>' +
-        '<span class="why-card__title">' + label + '</span>' +
-        '<span class="why-card__arrow" aria-hidden="true">↗</span>' +
+      return '<li class="why-row reveal" style="--why-order:' + n + '">' +
+        '<span class="why-row__number">' + number + '</span>' +
+        '<span class="why-row__icon"><img src="' + IMG + icons[w.pos] + '" alt="" loading="lazy"></span>' +
+        '<span class="why-row__title">' + label + '</span>' +
+        '<span class="why-row__arrow" aria-hidden="true">→</span>' +
         '</li>';
     }).join('');
   }
