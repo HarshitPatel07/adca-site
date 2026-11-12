@@ -249,8 +249,10 @@
      WHY — the firm's arch graphic with labels placed geometrically
      ====================================================================== */
   function renderWhy() {
-    var list = $('#why-list');
-    if (!list) return;
+    var selector = $('#why-list');
+    var stage = $('#why-stage');
+    if (!selector || !stage) return;
+
     var icons = {
       l3: 'why-celebrating.png',
       l2: 'why-qualified.png',
@@ -260,16 +262,64 @@
       r2: 'why-clients.png',
       r3: 'why-friendly.png'
     };
-    list.innerHTML = D.why.map(function (w, n) {
-      var label = w.text.replace('<br>', ' ');
-      var number = (n + 1 < 10 ? '0' : '') + (n + 1);
-      return '<li class="why-row reveal" style="--why-order:' + n + '">' +
-        '<span class="why-row__number">' + number + '</span>' +
-        '<span class="why-row__icon"><img src="' + IMG + icons[w.pos] + '" alt="" loading="lazy"></span>' +
-        '<span class="why-row__title">' + label + '</span>' +
-        '<span class="why-row__arrow" aria-hidden="true">→</span>' +
-        '</li>';
+
+    function labelFor(item) {
+      return item.text.replace(/<br\\s*\\/?\\s*>/i, ' ');
+    }
+
+    function showItem(index, animate) {
+      var item = D.why[index];
+      if (!item) return;
+      selector.querySelectorAll('[data-why-index]').forEach(function (button, n) {
+        var active = n === index;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      if (animate) stage.classList.add('is-changing');
+      window.setTimeout(function () {
+        var number = (index + 1 < 10 ? '0' : '') + (index + 1);
+        stage.innerHTML =
+          '<div class="why-stage__meta"><span>WHY ADCA</span><span>' + number + ' <i>/ 07</i></span></div>' +
+          '<div class="why-stage__art" aria-hidden="true">' +
+            '<span class="why-stage__orbit why-stage__orbit--one"></span>' +
+            '<span class="why-stage__orbit why-stage__orbit--two"></span>' +
+            '<span class="why-stage__spark why-stage__spark--one"></span>' +
+            '<span class="why-stage__spark why-stage__spark--two"></span>' +
+            '<span class="why-stage__icon"><img src="' + IMG + icons[item.pos] + '" alt=""></span>' +
+          '</div>' +
+          '<h3 class="why-stage__title">' + item.text + '</h3>' +
+          '<span class="why-stage__rule"></span>';
+        stage.classList.remove('is-changing');
+      }, animate ? 170 : 0);
+    }
+
+    selector.innerHTML = D.why.map(function (item, index) {
+      var number = (index + 1 < 10 ? '0' : '') + (index + 1);
+      return '<button class="why-choice reveal" type="button" data-why-index="' + index +
+        '" aria-pressed="false" aria-controls="why-stage">' +
+        '<span class="why-choice__number">' + number + '</span>' +
+        '<span class="why-choice__label">' + labelFor(item) + '</span>' +
+        '<span class="why-choice__arrow" aria-hidden="true">↗</span>' +
+        '</button>';
     }).join('');
+
+    selector.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-why-index]');
+      if (button) showItem(+button.getAttribute('data-why-index'), true);
+    });
+    selector.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowDown' && event.key !== 'ArrowRight' &&
+          event.key !== 'ArrowUp' && event.key !== 'ArrowLeft') return;
+      var buttons = Array.prototype.slice.call(selector.querySelectorAll('[data-why-index]'));
+      var current = buttons.indexOf(document.activeElement);
+      if (current < 0) return;
+      event.preventDefault();
+      var step = (event.key === 'ArrowDown' || event.key === 'ArrowRight') ? 1 : -1;
+      var next = (current + step + buttons.length) % buttons.length;
+      buttons[next].focus();
+      showItem(next, true);
+    });
+    showItem(0, false);
   }
 
   function renderDesignations() {
