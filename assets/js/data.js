@@ -59,7 +59,6 @@ window.ADCA = {
   /* ---- counters (home) ----------------------------------------------- */
   stats: [
     { n: 66,  suffix: '',  label: 'Years Of Existence' },
-    { n: 7,   suffix: '',  label: 'Partners PAN India' },
     { n: 300, suffix: '+', label: 'Professionals & Staff' },
     { n: 8,   suffix: '',  label: 'Branches Across India' }
   ],
