@@ -254,6 +254,7 @@
     var stage = $('#why-stage');
     var title = $('#why-stage-title');
     var count = $('#why-stage-count');
+    var copy = $('#why-stage-copy');
     if (!circle || !nodes || !stage || !title || !count) return;
 
     var icons = {
@@ -280,6 +281,7 @@
         count.textContent = (index + 1 < 10 ? '0' : '') + (index + 1) + ' / ' +
           (D.why.length < 10 ? '0' : '') + D.why.length;
         title.textContent = labelFor(item);
+        if (copy) copy.textContent = item.desc || '';
         stage.classList.remove('is-changing');
       };
       if (animate) {
