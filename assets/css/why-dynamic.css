@@ -1,75 +1,81 @@
-/* Interactive single-feature showcase for the seven ADCA strengths. */
+/* Calm, professional Why ADCA section. */
 .why-showcase{
   position:relative;
-  isolation:isolate;
   overflow:hidden;
-  padding:92px 0 104px;
-  color:#fff;
-  background:
-    radial-gradient(ellipse at 77% 42%,rgba(10,128,76,.52),transparent 35%),
-    radial-gradient(ellipse at 12% 100%,rgba(246,161,42,.12),transparent 32%),
-    linear-gradient(116deg,#062d1c 0%,#004a2a 50%,#00371f 100%);
+  padding:84px 0 90px;
+  background:linear-gradient(120deg,#f1f5f1 0%,#f7f8f5 55%,#fbf7ef 100%);
+  border-top:1px solid #e8ede7;
+  border-bottom:1px solid #e8ede7;
 }
-.why-showcase::before,.why-showcase::after{
-  content:"";position:absolute;z-index:-1;border:1px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none
+.why-showcase::before{
+  content:"";
+  position:absolute;
+  width:460px;
+  height:460px;
+  right:-270px;
+  top:50%;
+  transform:translateY(-50%);
+  border:1px solid rgba(0,86,42,.07);
+  border-radius:50%;
+  box-shadow:0 0 0 34px rgba(0,86,42,.018),0 0 0 72px rgba(246,161,42,.018);
+  pointer-events:none;
 }
-.why-showcase::before{width:720px;height:720px;right:-210px;top:-325px;box-shadow:0 0 0 42px rgba(255,255,255,.018),0 0 0 92px rgba(255,255,255,.012)}
-.why-showcase::after{width:300px;height:300px;left:-175px;bottom:-205px;border-color:rgba(246,161,42,.18);box-shadow:0 0 0 32px rgba(246,161,42,.035)}
 .why-showcase>.container{position:relative;z-index:1}
-.why-heading{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:45px}
-.why-kicker{display:flex;align-items:center;gap:10px;color:#f6b54d;font:700 11px/1.2 'Saira',sans-serif;letter-spacing:.19em}
-.why-kicker i{width:25px;height:2px;background:#f6a12a}
-.why-showcase .sec-head{margin:0;color:#fff;font-size:clamp(30px,4vw,48px);line-height:1.15}
-.why-showcase .sec-head .dark{color:#fff}.why-showcase .sec-head .amber{color:#f6a12a}
-.why-showcase .sec-head.underline::after{display:none}
-.why-showcase__layout{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(440px,1.1fr);gap:clamp(50px,8vw,130px);align-items:center;max-width:1280px;margin:0 auto}
-.why-selector{display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.18)}
-.why-choice{
-  position:relative;width:100%;min-height:68px;display:grid;grid-template-columns:38px minmax(0,1fr) 28px;gap:16px;align-items:center;
-  padding:11px 10px 11px 0;border:0;border-bottom:1px solid rgba(255,255,255,.16);background:transparent;color:#d9e5dd;text-align:left;cursor:pointer;
-  transition:color .25s,background .25s,padding .25s,border-color .25s,opacity .55s,transform .55s
+.why-layout{
+  display:grid;
+  grid-template-columns:minmax(260px,.72fr) minmax(480px,1.28fr);
+  align-items:center;
+  gap:clamp(52px,8vw,110px);
+  max-width:1240px;
+  margin:0 auto;
 }
-.why-choice:hover,.why-choice.is-active{color:#fff}
-.why-choice.is-active{padding-left:14px;border-bottom-color:rgba(246,161,42,.55);background:linear-gradient(90deg,rgba(246,161,42,.11),transparent 72%)}
-.why-choice__number{color:#91aa9a;font:700 12px/1 'Saira',sans-serif;letter-spacing:.1em;transition:color .25s}
-.why-choice.is-active .why-choice__number,.why-choice:hover .why-choice__number{color:#f6a12a}
-.why-choice__label{font:600 16px/1.35 'Saira',sans-serif;letter-spacing:.005em}
-.why-choice__arrow{color:#f6a12a;font-size:17px;opacity:0;transform:translateX(-5px);transition:opacity .25s,transform .25s}
-.why-choice.is-active .why-choice__arrow,.why-choice:hover .why-choice__arrow{opacity:1;transform:translateX(0)}
-.why-stage{position:relative;min-height:530px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .22s,transform .22s}
-.why-stage.is-changing{opacity:0;transform:translateY(12px)}
-.why-stage__meta{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;color:rgba(255,255,255,.55);font:700 10px/1 'Saira',sans-serif;letter-spacing:.16em}
-.why-stage__meta span:last-child{color:#f6a12a}.why-stage__meta i{color:rgba(255,255,255,.45);font-style:normal}
-.why-stage__art{position:relative;width:min(350px,70%);aspect-ratio:1;display:grid;place-items:center;margin:10px auto 28px}
-.why-stage__orbit{position:absolute;inset:4%;border:1px solid rgba(255,255,255,.22);border-radius:50%}
-.why-stage__orbit--one{border-style:dashed;animation:why-stage-spin 38s linear infinite}
-.why-stage__orbit--two{inset:16%;border-color:rgba(246,161,42,.55);box-shadow:0 0 0 12px rgba(246,161,42,.045);animation:why-stage-spin 28s linear infinite reverse}
-.why-stage__spark{position:absolute;width:12px;height:12px;border:3px solid #fff;border-radius:50%;background:#f6a12a;box-shadow:0 0 18px rgba(246,161,42,.6)}
-.why-stage__spark--one{top:7%;left:51%}.why-stage__spark--two{right:8%;bottom:25%;width:9px;height:9px;background:#53bd88}
-.why-stage__icon{position:relative;width:48%;aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:radial-gradient(circle at 35% 25%,#fff,#eaf3eb);box-shadow:0 20px 60px rgba(0,0,0,.24),inset 0 0 0 9px rgba(0,86,42,.055);animation:why-stage-float 4.8s ease-in-out infinite}
-.why-stage__icon img{width:58%;height:58%;object-fit:contain;filter:drop-shadow(0 5px 8px rgba(0,63,32,.14))}
-.why-stage__title{max-width:18ch;margin:0;color:#fff;font:700 clamp(29px,3.4vw,42px)/1.15 'Saira',sans-serif;letter-spacing:-.02em}
-.why-stage__rule{width:62px;height:4px;margin-top:20px;border-radius:5px;background:#f6a12a;transform-origin:left;animation:why-rule-in .5s ease both}
-@keyframes why-stage-spin{to{transform:rotate(360deg)}}
-@keyframes why-stage-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes why-rule-in{from{transform:scaleX(.2);opacity:.35}to{transform:scaleX(1);opacity:1}}
-@media(max-width:980px){
-  .why-showcase{padding:72px 0 80px}
-  .why-showcase__layout{grid-template-columns:1fr;gap:38px}
-  .why-selector{max-width:720px;width:100%;margin:0 auto}
-  .why-stage{min-height:460px}
-  .why-stage__art{width:min(310px,54vw)}
+.why-intro{max-width:390px}
+.why-kicker{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:#68776d;font:700 11px/1.2 'Saira',sans-serif;letter-spacing:.18em}
+.why-kicker i{display:block;width:26px;height:2px;background:#f6a12a}
+.why-intro .sec-head{margin:0;font-size:clamp(32px,3.5vw,46px);line-height:1.12;letter-spacing:-.02em;color:#18241d}
+.why-intro .sec-head .amber{color:#d78618}
+.why-list{display:block!important;margin:0;padding:0;list-style:none;border-top:1px solid #dce5dc}
+.why-list .why-row{
+  position:relative;
+  min-height:78px;
+  display:grid;
+  grid-template-columns:34px 52px minmax(0,1fr);
+  align-items:center;
+  gap:17px;
+  margin:0;
+  padding:11px 6px;
+  border:0;
+  border-bottom:1px solid #dce5dc;
+  background:transparent;
+  box-shadow:none;
+  color:#26372c;
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1),padding .22s;
+  transition-delay:calc(var(--why-order,0) * 45ms);
+}
+.why-row__number{color:#8a968c;font:700 11px/1 'Saira',sans-serif;letter-spacing:.12em;transition:color .22s}
+.why-row__icon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#fff;border:1px solid #e1e9e1;transition:transform .25s,border-color .25s}
+.why-row__icon img{width:34px;height:34px;object-fit:contain;transition:transform .25s}
+.why-row__title{color:#314037;font:600 16px/1.4 'Saira',sans-serif;transition:color .22s}
+.why-list .why-row:hover{padding-left:12px}
+.why-row:hover .why-row__number{color:#d78618}
+.why-row:hover .why-row__icon{transform:scale(1.04);border-color:#f0c782}
+.why-row:hover .why-row__icon img{transform:scale(1.04)}
+.why-row:hover .why-row__title{color:#00562a}
+@media(max-width:900px){
+  .why-showcase{padding:66px 0 72px}
+  .why-layout{grid-template-columns:1fr;gap:28px;max-width:760px}
+  .why-intro{max-width:600px}
+  .why-intro .sec-head br{display:none}
 }
 @media(max-width:600px){
-  .why-showcase{padding:54px 0 64px}
-  .why-heading{margin-bottom:30px}.why-showcase .sec-head{font-size:28px}
-  .why-choice{min-height:60px;grid-template-columns:30px minmax(0,1fr) 22px;gap:10px;padding:9px 3px 9px 0}
-  .why-choice.is-active{padding-left:9px}.why-choice__label{font-size:14px}.why-choice__number{font-size:10px}
-  .why-stage{min-height:370px}.why-stage__meta{font-size:9px}
-  .why-stage__art{width:min(250px,68vw);margin:4px auto 22px}
-  .why-stage__title{font-size:29px}
+  .why-showcase{padding:52px 0 60px}
+  .why-layout{gap:20px}
+  .why-intro .sec-head{font-size:30px}
+  .why-list .why-row{min-height:68px;grid-template-columns:28px 44px minmax(0,1fr);gap:12px;padding:9px 2px}
+  .why-row__icon{width:42px;height:42px}
+  .why-row__icon img{width:29px;height:29px}
+  .why-row__title{font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){
-  .why-stage__orbit--one,.why-stage__orbit--two,.why-stage__icon{animation:none!important}
-  .why-stage,.why-choice{transition:none!important}
+  .why-row,.why-row__icon,.why-row__icon img{transition:none!important}
 }
