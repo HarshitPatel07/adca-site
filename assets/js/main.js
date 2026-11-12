@@ -315,6 +315,19 @@
       select(next, true);
     });
     select(0, false);
+
+    /* Reveal the orbit when it enters view; without this, .why-point stays hidden. */
+    if ('IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      var revealCircle = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        circle.classList.add('is-in');
+        revealCircle.disconnect();
+      }, { threshold: 0.18 });
+      revealCircle.observe(circle);
+    } else {
+      circle.classList.add('is-in');
+    }
   }
 
   function renderDesignations() {
