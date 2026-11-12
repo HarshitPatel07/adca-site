@@ -249,10 +249,14 @@
      WHY — the firm's arch graphic with labels placed geometrically
      ====================================================================== */
   function renderWhy() {
-    var list = $('#why-list');
-    if (!list) return;
+    var circle = $('#why-circle');
+    var nodes = $('#why-list');
+    var stage = $('#why-stage');
+    var title = $('#why-stage-title');
+    var count = $('#why-stage-count');
+    if (!circle || !nodes || !stage || !title || !count) return;
+
     var icons = {
-      l3: 'why-celebrating.png',
       l2: 'why-qualified.png',
       l1: 'why-network.png',
       top: 'why-cost.png',
@@ -260,15 +264,57 @@
       r2: 'why-clients.png',
       r3: 'why-friendly.png'
     };
-    list.innerHTML = D.why.map(function (item, index) {
-      var label = item.text.replace('<br>', ' ');
+
+    function labelFor(item) {
+      return item.text.replace('<br>', ' ');
+    }
+    function select(index, animate) {
+      var item = D.why[index];
+      if (!item) return;
+      nodes.querySelectorAll('[data-why-index]').forEach(function (button, n) {
+        var active = n === index;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      var update = function () {
+        count.textContent = (index + 1 < 10 ? '0' : '') + (index + 1) + ' / ' +
+          (D.why.length < 10 ? '0' : '') + D.why.length;
+        title.textContent = labelFor(item);
+        stage.classList.remove('is-changing');
+      };
+      if (animate) {
+        stage.classList.add('is-changing');
+        window.setTimeout(update, 160);
+      } else update();
+    }
+
+    nodes.innerHTML = D.why.map(function (item, index) {
       var number = (index + 1 < 10 ? '0' : '') + (index + 1);
-      return '<li class="why-row reveal" style="--why-order:' + index + '">' +
-        '<span class="why-row__number">' + number + '</span>' +
-        '<span class="why-row__icon"><img src="' + IMG + icons[item.pos] + '" alt="" loading="lazy"></span>' +
-        '<span class="why-row__title">' + label + '</span>' +
-        '</li>';
+      return '<button class="why-point" type="button" data-why-index="' + index +
+        '" aria-label="' + labelFor(item) + '" aria-pressed="false" style="--point-index:' + index + '">' +
+        '<span class="why-point__halo"></span>' +
+        '<img src="' + IMG + icons[item.pos] + '" alt="" aria-hidden="true" loading="lazy">' +
+        '<span class="why-point__number">' + number + '</span>' +
+        '</button>';
     }).join('');
+
+    nodes.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-why-index]');
+      if (button) select(+button.getAttribute('data-why-index'), true);
+    });
+    nodes.addEventListener('keydown', function (event) {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowDown' &&
+          event.key !== 'ArrowLeft' && event.key !== 'ArrowUp') return;
+      var buttons = Array.prototype.slice.call(nodes.querySelectorAll('[data-why-index]'));
+      var current = buttons.indexOf(document.activeElement);
+      if (current < 0) return;
+      event.preventDefault();
+      var step = (event.key === 'ArrowRight' || event.key === 'ArrowDown') ? 1 : -1;
+      var next = (current + step + buttons.length) % buttons.length;
+      buttons[next].focus();
+      select(next, true);
+    });
+    select(0, false);
   }
 
   function renderDesignations() {

@@ -1,81 +1,46 @@
-/* Calm, professional Why ADCA section. */
-.why-showcase{
-  position:relative;
-  overflow:hidden;
-  padding:84px 0 90px;
-  background:linear-gradient(120deg,#f1f5f1 0%,#f7f8f5 55%,#fbf7ef 100%);
-  border-top:1px solid #e8ede7;
-  border-bottom:1px solid #e8ede7;
-}
-.why-showcase::before{
-  content:"";
-  position:absolute;
-  width:460px;
-  height:460px;
-  right:-270px;
-  top:50%;
-  transform:translateY(-50%);
-  border:1px solid rgba(0,86,42,.07);
-  border-radius:50%;
-  box-shadow:0 0 0 34px rgba(0,86,42,.018),0 0 0 72px rgba(246,161,42,.018);
-  pointer-events:none;
-}
+/* Six-point circular Why ADCA selector. */
+.why-showcase{position:relative;overflow:hidden;padding:82px 0 92px;background:linear-gradient(135deg,#eef4ef 0%,#f7f8f5 58%,#fbf6ed 100%);border-top:1px solid #e5ebe5;border-bottom:1px solid #e5ebe5}
+.why-showcase::before,.why-showcase::after{content:"";position:absolute;width:400px;aspect-ratio:1;border:1px solid rgba(0,86,42,.07);border-radius:50%;pointer-events:none}
+.why-showcase::before{left:-280px;top:-200px;box-shadow:0 0 0 32px rgba(0,86,42,.018),0 0 0 66px rgba(0,86,42,.012)}
+.why-showcase::after{right:-280px;bottom:-220px;border-color:rgba(246,161,42,.14);box-shadow:0 0 0 32px rgba(246,161,42,.025),0 0 0 66px rgba(246,161,42,.015)}
 .why-showcase>.container{position:relative;z-index:1}
-.why-layout{
-  display:grid;
-  grid-template-columns:minmax(260px,.72fr) minmax(480px,1.28fr);
-  align-items:center;
-  gap:clamp(52px,8vw,110px);
-  max-width:1240px;
-  margin:0 auto;
-}
-.why-intro{max-width:390px}
-.why-kicker{display:flex;align-items:center;gap:10px;margin-bottom:18px;color:#68776d;font:700 11px/1.2 'Saira',sans-serif;letter-spacing:.18em}
-.why-kicker i{display:block;width:26px;height:2px;background:#f6a12a}
-.why-intro .sec-head{margin:0;font-size:clamp(32px,3.5vw,46px);line-height:1.12;letter-spacing:-.02em;color:#18241d}
-.why-intro .sec-head .amber{color:#d78618}
-.why-list{display:block!important;margin:0;padding:0;list-style:none;border-top:1px solid #dce5dc}
-.why-list .why-row{
-  position:relative;
-  min-height:78px;
-  display:grid;
-  grid-template-columns:34px 52px minmax(0,1fr);
-  align-items:center;
-  gap:17px;
-  margin:0;
-  padding:11px 6px;
-  border:0;
-  border-bottom:1px solid #dce5dc;
-  background:transparent;
-  box-shadow:none;
-  color:#26372c;
-  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1),padding .22s;
-  transition-delay:calc(var(--why-order,0) * 45ms);
-}
-.why-row__number{color:#8a968c;font:700 11px/1 'Saira',sans-serif;letter-spacing:.12em;transition:color .22s}
-.why-row__icon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#fff;border:1px solid #e1e9e1;transition:transform .25s,border-color .25s}
-.why-row__icon img{width:34px;height:34px;object-fit:contain;transition:transform .25s}
-.why-row__title{color:#314037;font:600 16px/1.4 'Saira',sans-serif;transition:color .22s}
-.why-list .why-row:hover{padding-left:12px}
-.why-row:hover .why-row__number{color:#d78618}
-.why-row:hover .why-row__icon{transform:scale(1.04);border-color:#f0c782}
-.why-row:hover .why-row__icon img{transform:scale(1.04)}
-.why-row:hover .why-row__title{color:#00562a}
-@media(max-width:900px){
-  .why-showcase{padding:66px 0 72px}
-  .why-layout{grid-template-columns:1fr;gap:28px;max-width:760px}
-  .why-intro{max-width:600px}
-  .why-intro .sec-head br{display:none}
-}
-@media(max-width:600px){
-  .why-showcase{padding:52px 0 60px}
-  .why-layout{gap:20px}
-  .why-intro .sec-head{font-size:30px}
-  .why-list .why-row{min-height:68px;grid-template-columns:28px 44px minmax(0,1fr);gap:12px;padding:9px 2px}
-  .why-row__icon{width:42px;height:42px}
-  .why-row__icon img{width:29px;height:29px}
-  .why-row__title{font-size:14px}
+.why-showcase .sec-head{margin:0 auto 32px;font-size:clamp(27px,3vw,38px);text-align:center;color:#18241d}
+.why-showcase .sec-head .dark{color:#18241d}.why-showcase .sec-head .amber{color:#d78618}
+.why-showcase .sec-head.underline::after{background:#f6a12a;width:66px;height:3px}
+.why-circle{position:relative;width:min(680px,86vw);aspect-ratio:1;margin:0 auto;display:grid;place-items:center}
+.why-circle__ring{position:absolute;border-radius:50%;pointer-events:none}
+.why-circle__ring--outer{inset:5%;border:1px dashed rgba(0,86,42,.26)}
+.why-circle__ring--inner{inset:17%;border:1px solid rgba(246,161,42,.46);box-shadow:0 0 0 12px rgba(246,161,42,.035)}
+.why-circle.is-in .why-circle__ring--outer{animation:why-circle-turn 70s linear infinite}
+.why-circle.is-in .why-circle__ring--inner{animation:why-circle-turn 48s linear infinite reverse}
+.why-circle__nodes{position:absolute;inset:0}
+.why-point{position:absolute;left:50%;top:50%;width:88px;aspect-ratio:1;display:grid;place-items:center;padding:0;border:1px solid #dbe6dd;border-radius:50%;background:linear-gradient(145deg,#fff,#f8faf7);box-shadow:0 8px 20px rgba(20,58,35,.08);cursor:pointer;transform:translate(-50%,-50%);transition:background .25s,border-color .25s,box-shadow .25s,transform .25s;opacity:0}
+.why-circle.is-in .why-point{animation:why-point-in .55s ease both;animation-delay:calc(var(--point-index,0) * 75ms)}
+.why-point img{position:relative;z-index:1;width:46px;height:46px;object-fit:contain;transition:transform .25s}
+.why-point__halo{position:absolute;inset:-7px;border:1px solid transparent;border-radius:50%;transition:border-color .25s,transform .25s}
+.why-point__number{position:absolute;right:-1px;top:-2px;width:22px;height:22px;display:grid;place-items:center;border:2px solid #f6f8f4;border-radius:50%;background:#00562a;color:#fff;font:700 8px/1 'Saira',sans-serif}
+.why-point.is-active{border:2px solid #f6a12a;background:#fff;box-shadow:0 0 0 7px rgba(246,161,42,.12),0 13px 28px rgba(0,65,35,.15);transform:translate(-50%,-50%) scale(1.08)}
+.why-point.is-active .why-point__halo{border-color:rgba(0,86,42,.24);transform:scale(1.12)}
+.why-point:hover:not(.is-active){transform:translate(-50%,-50%) scale(1.05);border-color:#a6bfae}
+.why-point:hover img,.why-point.is-active img{transform:scale(1.06)}
+.why-point:nth-child(1){left:50%;top:5%}.why-point:nth-child(2){left:83%;top:24%}.why-point:nth-child(3){left:83%;top:76%}.why-point:nth-child(4){left:50%;top:95%}.why-point:nth-child(5){left:17%;top:76%}.why-point:nth-child(6){left:17%;top:24%}
+.why-circle__center{position:relative;z-index:2;width:39%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px;border:7px solid #fff;border-radius:50%;background:radial-gradient(circle at 35% 25%,#087444,#004523);box-shadow:0 0 0 1px rgba(0,86,42,.15),0 18px 42px rgba(0,65,35,.18);color:#fff;text-align:center;transition:opacity .16s,transform .16s}
+.why-circle__center.is-changing{opacity:0;transform:scale(.96)}
+.why-circle__eyebrow{color:#b8d2c2;font:700 9px/1 'Saira',sans-serif;letter-spacing:.19em}
+.why-circle__count{margin:12px 0 9px;color:#f6c16e;font:700 10px/1 'Saira',sans-serif;letter-spacing:.15em}
+.why-circle__title{max-width:18ch;margin:0;color:#fff;font:600 clamp(15px,1.55vw,20px)/1.28 'Saira',sans-serif}
+.why-circle__accent{width:32px;height:2px;margin-top:13px;border-radius:4px;background:#f6a12a}
+@keyframes why-circle-turn{to{transform:rotate(360deg)}}
+@keyframes why-point-in{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){
+ .why-showcase{padding:55px 0 62px}.why-showcase .sec-head{font-size:25px;margin-bottom:24px}
+ .why-circle{width:min(430px,94vw)}
+ .why-point{width:62px}.why-point img{width:34px;height:34px}.why-point__number{width:18px;height:18px;font-size:7px}
+ .why-circle__center{width:48%;padding:17px;border-width:5px}
+ .why-circle__eyebrow{font-size:7px}.why-circle__count{font-size:8px;margin:9px 0 7px}
+ .why-circle__title{font-size:clamp(12px,3.4vw,16px)}.why-circle__accent{width:24px;margin-top:9px}
 }
 @media(prefers-reduced-motion:reduce){
-  .why-row,.why-row__icon,.why-row__icon img{transition:none!important}
+ .why-circle.is-in .why-circle__ring--outer,.why-circle.is-in .why-circle__ring--inner,.why-circle.is-in .why-point{animation:none!important}
+ .why-point{opacity:1}.why-point,.why-point img,.why-circle__center{transition:none!important}
 }

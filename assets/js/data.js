@@ -181,7 +181,6 @@ window.ADCA = {
 
   /* ---- why (arc labels, in visual order left→right) ------------------- */
   why: [
-    { pos: 'l3', text: 'Celebrating 66 Years<br>Of Existence' },
     { pos: 'l2', text: 'Well-qualified &amp;<br>Experienced Professionals' },
     { pos: 'l1', text: 'Our Usp-country<br>Wide Network' },
     { pos: 'top', text: 'Cost Competitive<br>Services' },
