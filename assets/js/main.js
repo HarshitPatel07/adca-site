@@ -249,49 +249,29 @@
      WHY — the firm's arch graphic with labels placed geometrically
      ====================================================================== */
   function renderWhy() {
-    var wrap = $('#arc-wrap');
     var list = $('#why-list');
-
-    /* --------------------------------------------------------------------
-       This was drawn here as an SVG with hand-written icon paths, which is
-       why it never looked like the original: the live site lays the seven
-       strengths out as a floated list around a centred arch, with each
-       label's icon and its little connector cut from one sprite. The class
-       names and the DOM order below are the live site's own, because the
-       whole layout - the floats, the negative margins, the sprite offsets -
-       is keyed to them.
-       -------------------------------------------------------------------- */
-    var SLOT = { top: 'adca-list4', l1: 'adca-list3', r1: 'adca-list5',
-                 l2: 'adca-list2', r2: 'adca-list6', l3: 'adca-list1',
-                 r3: 'adca-list7' };
-    /* the order the floats have to arrive in, not the order they read in */
-    var ORDER = ['top', 'l1', 'r1', 'l2', 'r2', 'l3', 'r3'];
-
-    if (wrap) {
-      var bySlot = {};
-      D.why.forEach(function (w) { bySlot[w.pos] = w; });
-
-      wrap.innerHTML =
-        '<ul class="why-agarwal-list">' +
-          ORDER.map(function (slot) {
-            var w = bySlot[slot];
-            return w ? '<li class="' + SLOT[slot] + '">' + w.text + '</li>' : '';
-          }).join('') +
-          '<img class="why-arch" src="' + IMG + 'why-1.png" alt="" width="548" height="274">' +
-        '</ul>';
-    }
-
-    if (list) {
-      list.innerHTML = D.why.map(function (w, n) {
-        return '<li><b>' + (n < 9 ? '0' : '') + (n + 1) + '</b><span>' +
-               w.text.replace(/<br\s*\/?>/i, ' ') + '</span></li>';
-      }).join('');
-    }
+    if (!list) return;
+    var icons = {
+      l3: 'why-celebrating.png',
+      l2: 'why-qualified.png',
+      l1: 'why-network.png',
+      top: 'why-cost.png',
+      r1: 'why-reliable.png',
+      r2: 'why-clients.png',
+      r3: 'why-friendly.png'
+    };
+    list.innerHTML = D.why.map(function (w, n) {
+      var label = w.text.replace(/<br\s*\/?\s*>/i, ' ');
+      var number = (n + 1 < 10 ? '0' : '') + (n + 1);
+      return '<li class="why-card reveal" style="--why-order:' + n + '">' +
+        '<span class="why-card__index">' + number + '</span>' +
+        '<span class="why-card__icon"><img src="' + IMG + icons[w.pos] + '" alt="" loading="lazy"></span>' +
+        '<span class="why-card__title">' + label + '</span>' +
+        '<span class="why-card__arrow" aria-hidden="true">↗</span>' +
+        '</li>';
+    }).join('');
   }
 
-  /* ======================================================================
-     TEAM / DESIGNATIONS
-     ====================================================================== */
   function renderDesignations() {
     var box = $('#designations');
     if (!box) return;
