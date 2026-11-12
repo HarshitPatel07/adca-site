@@ -29,6 +29,7 @@
 .why-circle__eyebrow{color:#b8d2c2;font:700 9px/1 'Saira',sans-serif;letter-spacing:.19em}
 .why-circle__count{margin:12px 0 9px;color:#f6c16e;font:700 10px/1 'Saira',sans-serif;letter-spacing:.15em}
 .why-circle__title{max-width:18ch;margin:0;color:#fff;font:600 clamp(15px,1.55vw,20px)/1.28 'Saira',sans-serif}
+.why-circle__copy{max-width:29ch;margin:9px 0 0;color:#d8e7dd;font:400 clamp(10px,.95vw,12px)/1.45 'Saira',sans-serif}
 .why-circle__accent{width:32px;height:2px;margin-top:13px;border-radius:4px;background:#f6a12a}
 @keyframes why-circle-turn{to{transform:rotate(360deg)}}
 @keyframes why-point-in{from{opacity:0}to{opacity:1}}
@@ -38,7 +39,7 @@
  .why-point{width:62px}.why-point img{width:34px;height:34px}.why-point__number{width:18px;height:18px;font-size:7px}
  .why-circle__center{width:48%;padding:17px;border-width:5px}
  .why-circle__eyebrow{font-size:7px}.why-circle__count{font-size:8px;margin:9px 0 7px}
- .why-circle__title{font-size:clamp(12px,3.4vw,16px)}.why-circle__accent{width:24px;margin-top:9px}
+ .why-circle__center{padding:12px}.why-circle__title{font-size:clamp(11px,2.8vw,13px)}.why-circle__copy{font-size:9px;margin-top:6px}.why-circle__accent{width:24px;margin-top:8px}
 }
 @media(prefers-reduced-motion:reduce){
  .why-circle.is-in .why-circle__ring--outer,.why-circle.is-in .why-circle__ring--inner,.why-circle.is-in .why-point{animation:none!important}
