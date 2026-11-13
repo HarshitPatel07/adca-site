@@ -97,3 +97,14 @@
 @media(prefers-reduced-motion:reduce){
  .camp-office-pin,.camp-office-option,.network-camp-callout{transition:none}
 }
+
+/* Compact integrated Network page: put the office map near the top. */
+body[data-page="network"] .camp-page{padding:30px 0 52px}
+body[data-page="network"] .camp-intro{margin-bottom:20px}
+body[data-page="network"] .camp-intro h1{font-size:clamp(34px,3.2vw,48px)}
+@media(max-width:760px){
+ body[data-page="network"] .camp-page{padding:26px 0 42px}
+}
+@media(max-width:520px){
+ body[data-page="network"] .camp-intro h1{font-size:clamp(34px,9vw,46px)}
+}
