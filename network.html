@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="assets/css/dynamic.css">
 <link rel="stylesheet" href="assets/css/polish.css">
 <link rel="stylesheet" href="assets/css/header-fix.css">
-  <link rel="stylesheet" href="assets/css/camp-office.css?v=1">
+  <link rel="stylesheet" href="assets/css/camp-office.css?v=5">
 </head>
 <body data-page="network">
 
@@ -50,78 +50,55 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section network-overview">
   <div class="container prose">
     <h2 class="sec-head sec-head--inline underline">
       <span class="dark">Our</span> <span class="amber">Network</span>
     </h2>
-
-    <p style="margin-top:22px">&ldquo;Agarwal &amp; Dhandhania&rdquo; is the brand under which
-      dedicated professionals and associates throughout the country collaborate to provide audit,
-      consulting, financial advisory, risk advisory, tax and related services to its clients.</p>
-    <blockquote>&ldquo;We don&rsquo;t consider boundaries to be constraint in providing the
-      services to our clients&rdquo;</blockquote>
-    <p>Below are the key locations where we have our widespread network that provides the local
-      flexible and effective execution capability:</p>
-
-    <a class="network-camp-callout" href="camp-office.html">
-      <span class="network-camp-callout__icon" aria-hidden="true">⌖</span>
-      <span class="network-camp-callout__copy"><strong>Explore our Camp Offices</strong><small>See our office locations across India on the interactive map.</small></span>
-      <span class="network-camp-callout__arrow" aria-hidden="true">↗</span>
-    </a>
-
-    <h2 id="branches">Head Office &amp; Branches</h2>
-    <div class="branch-grid" id="branch-grid"></div>
+    <p style="margin-top:22px">&ldquo;Agarwal &amp; Dhandhania&rdquo; brings together dedicated professionals and associates across India to provide audit, consulting, financial advisory, risk advisory, tax and related services.</p>
   </div>
 </section>
 
-<!-- ===================== QUICK CONTACT / CONTACT INFO ===================== -->
-<section class="contact-band" id="quick-contact">
+<section class="camp-page" id="camp-offices">
+  <div class="container">
+    <header class="camp-intro">
+      <div>
+        <p class="camp-eyebrow"><span></span> OUR NETWORK · INDIA</p>
+        <h1>Our offices.<br><em>Across India.</em></h1>
+        <p class="camp-intro__text">Find an Agarwal &amp; Dhandhania office and connect with our team wherever your business takes you.</p>
+      </div>
+      <div class="camp-intro__stat" aria-label="Nine offices across India">
+        <strong>09</strong><span>OFFICES ACROSS<br>INDIA</span>
+      </div>
+    </header>
 
-  <div class="qc">
-    <div class="qc-inner">
-      <h2>Quick Contact</h2>
-      <form novalidate>
-        <div class="fld"><input type="text" placeholder="First Name *" required><span class="err"></span></div>
-        <div class="fld"><input type="text" placeholder="Last Name *" required><span class="err"></span></div>
-        <div class="fld"><input type="email" placeholder="Email *" required><span class="err"></span></div>
-        <div class="fld"><input type="tel" placeholder="Phone *" required><span class="err"></span></div>
-        <div class="fld full"><textarea placeholder="Message *" required></textarea><span class="err"></span></div>
-        <label class="robot">
-          <input type="checkbox">
-          <span>I'm not a robot</span>
-          <span class="cap">reCAPTCHA<br>Privacy - Terms</span>
-        </label>
-        <button class="btn full" type="submit">Submit</button>
-        <p class="msg"></p>
-      </form>
-    </div>
-  </div>
-
-  <div class="ci">
-    <div class="ci-inner">
-      <h2>Contact Info</h2>
-
-      <div class="ci-row">
-        <span class="ci-ico"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-        <div>
-          <h4>Head Office</h4>
-          <b>Agarwal &amp; Dhandhania</b>
-          <p>204-205, SNS Interio, 4th Floor, Bhatar Althan Road, Nr Gujarat Gas Pump, Surat-395017 (Gujarat).</p>
+    <div class="camp-dashboard">
+      <section class="camp-map-card" aria-label="Interactive office map">
+        <div class="camp-map-card__head">
+          <div><p class="camp-eyebrow camp-eyebrow--muted"><span></span> FIND AN OFFICE</p><h2>Our presence in India</h2></div>
+          <span class="camp-map-card__badge">8 branches <i>+</i> Surat head office</span>
         </div>
-      </div>
+        <div class="camp-map-stage" id="camp-map">
+          <img class="camp-map-image" src="https://www.adcaindia.com/wp-content/uploads/2022/04/India-map-1.png" alt="Map of India with the office network regions marked" loading="eager">
+          <div class="camp-office-pins" id="camp-map-pins"></div>
+        </div>
+        <div class="camp-map-legend"><span class="camp-map-legend__dot"></span> Select a pin or office to view details</div>
+      </section>
 
-      <div class="ci-row">
-        <span class="ci-ico"><svg viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span>
-        <div><p><a href="tel:02612269131">0261-2269131</a></p></div>
-      </div>
-
-      <div class="ci-row">
-        <span class="ci-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="m3.5 6 8.5 6 8.5-6"/></svg></span>
-        <div><p><a href="mailto:connect@adcaindia.com">connect@adcaindia.com</a></p></div>
-      </div>
-
+      <aside class="camp-directory" aria-label="Office directory">
+        <section class="camp-office-detail" id="camp-office-detail" aria-live="polite"></section>
+        <div class="camp-directory__head">
+          <div><p class="camp-eyebrow camp-eyebrow--muted"><span></span> OUR LOCATIONS</p><h2>Choose an office</h2></div>
+          <span class="camp-directory__count" id="camp-office-count">9 offices</span>
+        </div>
+        <label class="camp-office-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+          <input id="camp-office-search" type="search" placeholder="Search office city" autocomplete="off">
+        </label>
+        <div class="camp-office-list" id="camp-office-list"></div>
+      </aside>
     </div>
+    <p class="camp-map-footnote">Office pins show the locations listed in our current directory.</p>
   </div>
 </section>
 
@@ -155,8 +132,9 @@
 
 <button class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 5 4 13h5v6h6v-6h5z"/></svg></button>
 
-<script src="assets/js/data.js?v=23"></script>
-<script src="assets/js/main.js?v=22"></script>
+<script src="assets/js/data.js?v=27"></script>
+<script src="assets/js/main.js?v=31"></script>
+<script src="assets/js/camp-office.js?v=5"></script>
 </body>
 </html>
 
