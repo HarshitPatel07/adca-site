@@ -495,3 +495,30 @@
     transform:none;
   }
 }
+
+
+/* Keep the download and page-turn guidance grouped below the newsletter details. */
+@media(min-width:901px){
+  .issue-feature--reader .issue-feature__copy{
+    grid-template-areas:
+      "eyebrow eyebrow"
+      "title summary"
+      "date summary"
+      "facts summary"
+      "actions summary";
+  }
+  .issue-feature--reader .issue-feature__actions{
+    grid-area:actions;
+    justify-self:start;
+    align-self:start;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:8px 14px;
+    max-width:100%;
+    margin-top:4px;
+  }
+  .issue-feature--reader .issue-feature__note{
+    max-width:100%;
+  }
+}
