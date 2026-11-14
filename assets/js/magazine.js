@@ -66,7 +66,7 @@
     showCover: true,
     drawShadow: true,
     maxShadowOpacity: 0.32,
-    flippingTime: reducedMotion ? 1 : 900,
+    flippingTime: reducedMotion ? 1 : 1100,
     mobileScrollSupport: false,
     swipeDistance: 22,
     useMouseEvents: true,
