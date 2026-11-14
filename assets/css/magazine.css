@@ -203,3 +203,27 @@
   .issue-feature--reader .magazine-cover-intro,
   .issue-feature--reader .magazine-book-scene{width:min(100%,1050px)}
 }
+
+
+/* Final desktop composition: newsletter details beside a large, readable book spread. */
+@media(min-width:901px){
+  #newsletter{scroll-margin-top:90px}
+  .issue-feature--reader{
+    width:min(1646px,calc(100vw - 72px));
+    grid-template-columns:minmax(380px,.42fr) minmax(0,1fr);
+    align-items:center;
+    gap:32px;
+  }
+  .issue-feature--reader .issue-feature__copy{
+    display:block;
+    max-width:500px;
+    padding:0;
+  }
+  .issue-feature--reader .issue-feature__copy h2{font-size:clamp(36px,3.4vw,48px)!important}
+  .issue-feature--reader .magazine-inline-reader{grid-column:2;width:100%;place-items:center}
+  .issue-feature--reader .magazine-reader-stage--inline{width:100%;height:min(80vh,815px);padding:0}
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{width:min(100%,1150px);height:100%;max-height:none;aspect-ratio:auto}
+  .issue-feature--reader .magazine-cover-trigger,
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,540px);min-width:300px}
+}
