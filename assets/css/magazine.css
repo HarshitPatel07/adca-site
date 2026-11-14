@@ -366,3 +366,14 @@
     min-width:260px;
   }
 }
+
+
+/* Start the open spread immediately beside the newsletter copy. */
+@media(min-width:901px){
+  .issue-feature--reader .magazine-inline-reader{
+    justify-items:start;
+  }
+  .issue-feature--reader .magazine-reader-stage--inline{
+    margin-inline:0 auto;
+  }
+}
