@@ -661,3 +661,7 @@ table.tbl tr:nth-child(even) td{background:var(--gray-bg)}
   .newsletter form{width:100%}
   .newsletter input{min-width:0;width:100%}
 }
+
+
+/* Align prose sections with the shared site container gutter. */
+.section > .container.prose{max-width:none}
