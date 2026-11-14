@@ -262,3 +262,13 @@
   .issue-feature--reader .magazine-cover-intro,
   .issue-feature--reader .magazine-book-scene{width:100%;height:100%}
 }
+
+
+/* Align the first cover and its details on the same top edge. */
+@media(min-width:901px){
+  .issue-feature--reader .issue-feature__copy{padding-top:0}
+  .issue-feature--reader .magazine-cover-intro{place-items:start center}
+  .issue-feature--reader .magazine-back-cover{place-items:start center}
+  .issue-feature--reader .issue-feature__facts{justify-content:flex-start}
+  .issue-feature--reader .issue-feature__actions{justify-content:flex-start}
+}
