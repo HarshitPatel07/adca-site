@@ -1,0 +1,92 @@
+/* Careers page: restrained editorial layout with ADCA amber and green. */
+.careers-page{--career-green:#00562a;--career-ink:#173a27;--career-amber:#f6a12a;--career-muted:#66736a;--career-line:#dfe6df;color:var(--career-ink)}
+.careers-page a:focus-visible{outline:2px solid var(--career-amber);outline-offset:4px}
+.careers-shell{width:min(1180px,92%);max-width:none;margin-inline:auto}
+.careers-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:clamp(36px,7vw,100px);align-items:center;padding:76px 0 82px}
+.careers-hero::before{content:"";position:absolute;z-index:-1;inset:0 calc((100vw - 100%)/-2);background:linear-gradient(110deg,#f6f8f5 0%,#fbfcfa 62%,#f1f5f0 100%)}
+.careers-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 18px;color:#577061;font:700 11px/1.2 'Saira',sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.careers-eyebrow::before{content:"";width:28px;height:2px;background:var(--career-amber)}
+.careers-hero h1{max-width:12ch;margin:0;color:var(--career-ink);font:700 clamp(42px,5.4vw,68px)/.99 'Saira',sans-serif;letter-spacing:-.035em}
+.careers-hero h1 span{color:var(--career-green)}
+.careers-intro{max-width:58ch;margin:22px 0 0;color:#59675e;font-size:17px;line-height:1.75}
+.careers-hero__actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+.careers-btn{min-height:48px;padding:0 20px;border:1px solid var(--career-green);border-radius:3px;background:var(--career-green);color:#fff;font:600 13px 'Saira',sans-serif;letter-spacing:.025em;display:inline-flex;align-items:center;gap:16px;transition:background .2s,transform .2s,border-color .2s}
+.careers-btn::after{content:"→";font-size:17px;line-height:1}
+.careers-btn:hover{background:#034520;border-color:#034520;transform:translateY(-2px)}
+.careers-btn--quiet{background:transparent;color:var(--career-green)}
+.careers-btn--quiet:hover{background:#edf3ed;color:#034520}
+.careers-hero__aside{position:relative;min-height:342px;padding:32px 34px 28px;overflow:hidden;background:#064c2c;color:#fff;isolation:isolate}
+.careers-hero__aside::before,.careers-hero__aside::after{content:"";position:absolute;z-index:-1;border:1px solid rgba(255,255,255,.13);border-radius:50%;pointer-events:none}
+.careers-hero__aside::before{width:330px;height:330px;right:-115px;top:-184px;box-shadow:0 0 0 22px rgba(255,255,255,.035),0 0 0 46px rgba(255,255,255,.025)}
+.careers-hero__aside::after{width:250px;height:250px;left:-156px;bottom:-180px;box-shadow:0 0 0 24px rgba(255,255,255,.035)}
+.careers-visual__top{display:flex;justify-content:space-between;align-items:center;color:#dbe8dc;font:600 10px 'Saira',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.careers-visual__top span:last-child{color:#ffbd55}
+.careers-route{position:relative;display:grid;gap:0;margin:30px 0 23px;padding:0;list-style:none}
+.careers-route::before{content:"";position:absolute;left:18px;top:17px;bottom:17px;width:1px;background:rgba(255,255,255,.26)}
+.careers-route li{position:relative;display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:center;min-height:65px}
+.careers-route__num{z-index:1;width:37px;height:37px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:#064c2c;color:#ffbd55;font:600 11px 'Saira',sans-serif}
+.careers-route__copy b{display:block;color:#fff;font:600 16px 'Saira',sans-serif}
+.careers-route__copy span{display:block;margin-top:1px;color:#c5d6ca;font-size:12px;line-height:1.4}
+.careers-visual__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:17px;border-top:1px solid rgba(255,255,255,.18);color:#dbe8dc;font:500 11px/1.5 'Saira',sans-serif;letter-spacing:.03em}
+.careers-visual__foot strong{color:#ffbd55;font-weight:600}
+.careers-section{padding:74px 0}
+.careers-section--tint{background:#f6f8f5}
+.careers-section__heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:28px}
+.careers-section__heading .careers-eyebrow{margin-bottom:10px}
+.careers-section__heading h2,.careers-values__heading h2,.careers-apply h2{margin:0;color:var(--career-ink);font:700 clamp(30px,3.4vw,42px)/1.1 'Saira',sans-serif;letter-spacing:-.02em}
+.careers-section__heading p{max-width:45ch;margin:0;color:var(--career-muted);font-size:14px;line-height:1.65}
+.careers-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--career-line);border-bottom:1px solid var(--career-line)}
+.careers-role{position:relative;display:flex;flex-direction:column;min-height:265px;padding:25px 28px 25px 0}
+.careers-role+.careers-role{padding-left:28px;border-left:1px solid var(--career-line)}
+.careers-role__index{display:flex;align-items:center;gap:9px;color:#738077;font:600 10px 'Saira',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.careers-role__index::before{content:"";width:18px;height:2px;background:var(--career-amber)}
+.careers-role h3{margin:25px 0 10px;color:var(--career-green);font:700 22px/1.2 'Saira',sans-serif}
+.careers-role p{margin:0;color:#5f6d63;font-size:14px;line-height:1.72}
+.careers-role a{display:inline-flex;align-items:center;gap:10px;width:max-content;max-width:100%;margin-top:auto;padding-top:21px;color:var(--career-green);font:600 12px 'Saira',sans-serif}
+.careers-role a::after{content:"↗";color:var(--career-amber);font-size:16px;transition:transform .2s}
+.careers-role a:hover::after{transform:translate(2px,-2px)}
+.careers-values{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(38px,8vw,110px);align-items:start}
+.careers-values__heading .careers-eyebrow{margin-bottom:13px}
+.careers-values__heading p{max-width:35ch;margin:16px 0 0;color:var(--career-muted);font-size:15px;line-height:1.7}
+.careers-values__list{counter-reset:career-value;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;margin:0;padding:0;list-style:none}
+.careers-values__list li{counter-increment:career-value;position:relative;min-height:104px;padding:15px 8px 18px 42px;border-top:1px solid var(--career-line);color:#394b3e;font-size:14px;line-height:1.65}
+.careers-values__list li::before{content:"0" counter(career-value);position:absolute;left:0;top:18px;color:#d58a1d;font:600 11px 'Saira',sans-serif;letter-spacing:.06em}
+.careers-apply{position:relative;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:36px 42px;overflow:hidden;background:#064c2c;color:#fff}
+.careers-apply::after{content:"";position:absolute;right:175px;top:-125px;width:310px;height:310px;border:1px solid rgba(255,255,255,.13);border-radius:50%;box-shadow:0 0 0 24px rgba(255,255,255,.035),0 0 0 48px rgba(255,255,255,.025);pointer-events:none}
+.careers-apply__copy{position:relative;z-index:1}
+.careers-apply .careers-eyebrow{color:#d6e2d8}
+.careers-apply h2{max-width:20ch;color:#fff}
+.careers-apply p{max-width:62ch;margin:11px 0 0;color:#d2dfd4;font-size:14px;line-height:1.7}
+.careers-apply p a{color:#ffbd55;text-decoration:underline;text-underline-offset:3px}
+.careers-apply .careers-btn{position:relative;z-index:1;border-color:var(--career-amber);background:var(--career-amber);color:#172b1d;white-space:nowrap}
+.careers-apply .careers-btn:hover{border-color:#ffc04f;background:#ffc04f}
+@media(max-width:900px){
+ .careers-hero{grid-template-columns:minmax(0,1fr) minmax(290px,.85fr);gap:32px;padding:58px 0 64px}
+ .careers-hero__aside{min-height:320px;padding:27px 25px}
+ .careers-section{padding:60px 0}
+ .careers-role{padding-right:20px}
+ .careers-role+.careers-role{padding-left:20px}
+ .careers-values{gap:44px}
+}
+@media(max-width:680px){
+ .careers-hero{grid-template-columns:1fr;gap:30px;padding:44px 0 48px}
+ .careers-hero h1{font-size:clamp(42px,12vw,58px)}
+ .careers-intro{font-size:15px}
+ .careers-hero__aside{min-height:300px}
+ .careers-section{padding:48px 0}
+ .careers-section__heading{display:block}
+ .careers-section__heading p{margin-top:12px}
+ .careers-roles{grid-template-columns:1fr}
+ .careers-role,.careers-role+.careers-role{min-height:0;padding:23px 0;border-left:0}
+ .careers-role+.careers-role{border-top:1px solid var(--career-line)}
+ .careers-role h3{margin-top:15px}
+ .careers-role a{margin-top:15px;padding-top:4px}
+ .careers-values{grid-template-columns:1fr;gap:24px}
+ .careers-values__list{grid-template-columns:1fr}
+ .careers-values__list li{min-height:76px}
+ .careers-apply{grid-template-columns:1fr;gap:22px;padding:28px 24px}
+ .careers-apply::after{right:-120px}
+}
+@media(prefers-reduced-motion:reduce){
+ .careers-btn,.careers-role a::after{transition:none}
+}
