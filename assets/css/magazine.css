@@ -141,3 +141,16 @@
   .issue-feature--reader .magazine-cover-trigger{width:min(62%,320px)}
   .issue-feature--reader .magazine-back-cover img{width:min(62%,320px)}
 }
+
+/* Full-size two-page desktop reader with the cover aligned to the spread. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1380px,calc(100vw - 80px));
+    grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
+    align-items:start;
+    gap:clamp(28px,4vw,64px);
+  }
+  .issue-feature--reader .issue-feature__copy{padding-top:22px}
+  .issue-feature--reader .magazine-cover-trigger{width:min(50%,420px);min-width:260px}
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,420px);min-width:260px}
+}
