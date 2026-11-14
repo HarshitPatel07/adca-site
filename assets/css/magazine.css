@@ -92,3 +92,30 @@
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger,.magazine-reader-stage--inline.is-closing .magazine-cover-trigger,.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img,.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation-duration:.02ms}
   .magazine-book-scene,.magazine-cover-hint{transition-duration:.01ms!important}
 }
+
+/* Editorial two-column feature: newsletter details left, interactive book right. */
+.issue-feature--reader{
+  display:grid;
+  grid-template-columns:minmax(260px,.86fr) minmax(0,1.14fr);
+  align-items:center;
+  gap:clamp(28px,4.5vw,64px);
+  width:100%;
+  margin:34px auto 48px;
+}
+.issue-feature--reader .issue-feature__copy{max-width:500px;padding:0}
+.issue-feature--reader .magazine-inline-reader{grid-column:2;min-width:0;display:grid;place-items:center}
+.issue-feature--reader .magazine-reader-stage--inline{width:100%;padding:0}
+.issue-feature--reader .magazine-cover-trigger{width:min(50%,340px);min-width:220px}
+.issue-feature--reader .magazine-back-cover img{width:min(50%,340px);min-width:220px}
+@media(max-width:900px){
+  .issue-feature--reader{grid-template-columns:minmax(0,1fr);gap:20px}
+  .issue-feature--reader .issue-feature__copy{max-width:680px;padding:0}
+  .issue-feature--reader .magazine-inline-reader{grid-column:1}
+  .issue-feature--reader .magazine-reader-stage--inline{padding:8px 0}
+  .issue-feature--reader .magazine-cover-trigger{width:min(50%,360px);min-width:220px}
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,360px);min-width:220px}
+}
+@media(max-width:520px){
+  .issue-feature--reader .magazine-cover-trigger{width:min(62%,320px);min-width:210px}
+  .issue-feature--reader .magazine-back-cover img{width:min(62%,320px);min-width:210px}
+}
