@@ -283,3 +283,15 @@
     margin-left:0;
   }
 }
+
+
+/* Follow the centered publication column and use only the space remaining to its right. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1540px,calc(50vw + 50% - 24px),calc(100vw - 48px));
+    left:auto;
+    transform:none;
+    margin-left:0;
+  }
+  .issue-feature--reader .magazine-cover-trigger{transform:rotateY(-2deg)}
+}
