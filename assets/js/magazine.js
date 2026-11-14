@@ -65,8 +65,8 @@
     usePortrait: window.matchMedia('(max-width: 900px)').matches,
     showCover: true,
     drawShadow: true,
-    maxShadowOpacity: 0.32,
-    flippingTime: reducedMotion ? 1 : 1100,
+    maxShadowOpacity: 0.28,
+    flippingTime: reducedMotion ? 1 : 1450,
     mobileScrollSupport: false,
     swipeDistance: 22,
     useMouseEvents: true,
@@ -119,7 +119,7 @@
       isOpening = false;
       updateSpread(pageFlip.getCurrentPageIndex());
       host.focus({ preventScroll: true });
-    }, reducedMotion ? 20 : 840);
+    }, reducedMotion ? 20 : 1150);
   }
 
   function closeMagazine() {
@@ -134,7 +134,7 @@
       isOpen = false;
       isClosing = false;
       coverButton.focus({ preventScroll: true });
-    }, reducedMotion ? 20 : 840);
+    }, reducedMotion ? 20 : 1150);
   }
 
   function closeBackCover() {
