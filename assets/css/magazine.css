@@ -227,3 +227,8 @@
   .issue-feature--reader .magazine-cover-trigger,
   .issue-feature--reader .magazine-back-cover img{width:min(50%,540px);min-width:300px}
 }
+
+@media(min-width:901px){
+  .issue-feature--reader{align-items:start}
+  .issue-feature--reader .issue-feature__copy{padding-top:24px}
+}
