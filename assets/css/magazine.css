@@ -194,3 +194,12 @@
 @media(min-width:901px) and (max-height:760px){
   .issue-feature--reader .magazine-reader-stage--inline{height:min(76vh,700px)}
 }
+
+
+/* Keep the compact heading visible under the sticky navigation when linked directly. */
+@media(min-width:901px){
+  #newsletter{scroll-margin-top:90px}
+  .issue-feature--reader .magazine-reader-stage--inline{height:min(78vh,742px)}
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{width:min(100%,1050px)}
+}
