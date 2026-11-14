@@ -340,3 +340,29 @@
   backface-visibility:hidden;
   will-change:transform,opacity;
 }
+
+
+/* Balance the newsletter spread with the copy instead of pinning it to the far edge. */
+@media(min-width:901px){
+  .issue-feature--reader .magazine-inline-reader{
+    justify-items:center;
+  }
+  .issue-feature--reader .magazine-reader-stage--inline{
+    width:min(100%,calc(62vh * 1.414),820px);
+    aspect-ratio:1.414;
+    height:auto;
+    margin-inline:auto;
+  }
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{
+    width:100%;
+    height:100%;
+    max-height:none;
+    aspect-ratio:auto;
+  }
+  .issue-feature--reader .magazine-cover-trigger,
+  .issue-feature--reader .magazine-back-cover img{
+    width:min(50%,410px);
+    min-width:260px;
+  }
+}
