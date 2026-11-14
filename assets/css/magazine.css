@@ -473,3 +473,25 @@
     transform:translateX(-50%);
   }
 }
+
+/* Center the wide newsletter feature on the page while preserving the copy's text-column alignment. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    --newsletter-width:min(1540px,calc(100vw - 96px));
+    --newsletter-column:min(1200px,calc(100vw - 48px));
+    width:var(--newsletter-width);
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .issue-feature--reader .issue-feature__copy{
+    position:relative;
+    left:max(0px,calc((var(--newsletter-width) - var(--newsletter-column))/2));
+  }
+  .issue-feature--reader .magazine-inline-reader{
+    position:static;
+    left:auto;
+    width:100%;
+    transform:none;
+  }
+}
