@@ -295,3 +295,12 @@
   }
   .issue-feature--reader .magazine-cover-trigger{transform:rotateY(-2deg)}
 }
+
+
+@media(min-width:901px){
+  .issue-feature--reader .issue-feature__facts{
+    width:100%;
+    margin:0 0 16px!important;
+    justify-content:flex-start;
+  }
+}
