@@ -232,3 +232,20 @@
   .issue-feature--reader{align-items:start}
   .issue-feature--reader .issue-feature__copy{padding-top:24px}
 }
+
+
+/* Use the available desktop width for the two-page newsletter and keep its title column compact. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1780px,calc(100vw - 72px));
+    grid-template-columns:minmax(360px,.35fr) minmax(0,1fr);
+    gap:28px;
+  }
+  .issue-feature--reader .issue-feature__copy{max-width:460px;padding-top:24px}
+  .issue-feature--reader .issue-feature__copy h2{font-size:clamp(36px,3vw,46px)!important}
+  .issue-feature--reader .magazine-reader-stage--inline{height:min(100vh,980px)}
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{width:min(100%,1300px);height:100%}
+  .issue-feature--reader .magazine-cover-trigger,
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,620px);min-width:320px}
+}
