@@ -37,13 +37,13 @@
 .magazine-reader-stage--inline.is-opening .magazine-book-scene,.magazine-reader-stage--inline.is-open .magazine-book-scene{visibility:visible;opacity:1;transition:opacity .54s ease .22s,visibility 0s}
 .magazine-reader-stage--inline.is-opening .magazine-book-scene{pointer-events:none}
 .magazine-reader-stage--inline.is-open .magazine-book-scene{pointer-events:auto}
-.magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation:cover-opening .84s cubic-bezier(.55,.03,.24,1) forwards}
+.magazine-reader-stage--inline.is-opening .magazine-cover-trigger{animation:cover-opening 1.15s cubic-bezier(.4,0,.2,1) forwards}
 .magazine-reader-stage--inline.is-closing .magazine-book-scene{opacity:0;pointer-events:none;transition:opacity .54s ease}
-.magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation:cover-closing .84s cubic-bezier(.55,.03,.24,1) forwards}
+.magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation:cover-closing 1.15s cubic-bezier(.4,0,.2,1) forwards}
 .magazine-reader-stage--inline.is-back-cover .magazine-book-scene{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .32s ease,visibility 0s linear .32s}
 .magazine-reader-stage--inline.is-back-cover-closing .magazine-book-scene{visibility:visible;opacity:1;pointer-events:none;transition:opacity .56s ease .14s,visibility 0s}
-.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img{animation:back-cover-reveal .34s ease-out both}
-.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation:back-cover-closing .84s cubic-bezier(.55,.03,.24,1) forwards}
+.magazine-reader-stage--inline.is-back-cover .magazine-back-cover img{animation:back-cover-reveal .55s cubic-bezier(.4,0,.2,1) both}
+.magazine-reader-stage--inline.is-back-cover-closing .magazine-back-cover img{animation:back-cover-closing 1.15s cubic-bezier(.4,0,.2,1) forwards}
 .magazine-reader-stage--inline.is-opening .magazine-cover-hint{opacity:0;transition:opacity .18s ease}
 .magazine-flipbook{width:100%;height:100%;margin:auto;overflow:visible;outline:0}
 .magazine-flipbook .stf__parent{margin:auto}
@@ -331,4 +331,12 @@
     width:min(50%,460px);
     min-width:280px;
   }
+}
+
+
+/* Keep the physical cover on its own compositor layer for a cleaner open/close. */
+.magazine-cover-trigger,
+.magazine-back-cover img{
+  backface-visibility:hidden;
+  will-change:transform,opacity;
 }
