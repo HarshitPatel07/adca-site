@@ -272,3 +272,14 @@
   .issue-feature--reader .issue-feature__facts{justify-content:flex-start}
   .issue-feature--reader .issue-feature__actions{justify-content:flex-start}
 }
+
+
+/* Align the newsletter feature with the publication copy above while keeping the reader wide. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1540px,calc(50vw + 580px),calc(100vw - 48px));
+    left:auto;
+    transform:none;
+    margin-left:0;
+  }
+}
