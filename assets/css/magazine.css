@@ -119,3 +119,25 @@
   .issue-feature--reader .magazine-cover-trigger{width:min(62%,320px);min-width:210px}
   .issue-feature--reader .magazine-back-cover img{width:min(62%,320px);min-width:210px}
 }
+
+/* Give the desktop feature room to use the page and keep the cover at book scale. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1320px,calc(100vw - 80px));
+    max-width:none;
+    position:relative;
+    left:50%;
+    margin-left:0;
+    transform:translateX(-50%);
+  }
+}
+.issue-feature--reader .magazine-cover-trigger{width:min(50%,350px)}
+.issue-feature--reader .magazine-back-cover img{width:min(50%,350px)}
+@media(max-width:900px){
+  .issue-feature--reader .magazine-cover-trigger{width:min(50%,360px)}
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,360px)}
+}
+@media(max-width:520px){
+  .issue-feature--reader .magazine-cover-trigger{width:min(62%,320px)}
+  .issue-feature--reader .magazine-back-cover img{width:min(62%,320px)}
+}
