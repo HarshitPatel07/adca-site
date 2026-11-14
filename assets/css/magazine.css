@@ -249,3 +249,16 @@
   .issue-feature--reader .magazine-cover-trigger,
   .issue-feature--reader .magazine-back-cover img{width:min(50%,620px);min-width:320px}
 }
+
+
+/* Preserve the real magazine spread ratio and keep the whole book in view. */
+@media(min-width:901px){
+  .issue-feature--reader .magazine-reader-stage--inline{
+    width:min(100%,calc(90vh * 1.414));
+    height:auto;
+    aspect-ratio:1.414;
+    margin-inline:auto;
+  }
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{width:100%;height:100%}
+}
