@@ -154,3 +154,43 @@
   .issue-feature--reader .magazine-cover-trigger{width:min(50%,420px);min-width:260px}
   .issue-feature--reader .magazine-back-cover img{width:min(50%,420px);min-width:260px}
 }
+
+
+/* Spacious, readable desktop spread with a compact editorial header. */
+@media(min-width:901px){
+  .issue-feature--reader{
+    width:min(1480px,calc(100vw - 72px));
+    grid-template-columns:minmax(0,1fr);
+    align-items:start;
+    gap:18px;
+  }
+  .issue-feature--reader .issue-feature__copy{
+    display:grid;
+    grid-template-columns:minmax(260px,1fr) minmax(280px,.95fr) auto;
+    grid-template-rows:auto auto auto;
+    grid-template-areas:
+      "eyebrow eyebrow eyebrow"
+      "title summary facts"
+      "date summary actions";
+    align-items:center;
+    column-gap:clamp(22px,3vw,48px);
+    row-gap:3px;
+    max-width:none;
+    padding:0;
+  }
+  .issue-feature--reader .issue-feature__eyebrow{grid-area:eyebrow;margin-bottom:4px!important}
+  .issue-feature--reader .issue-feature__copy h2{grid-area:title;font-size:clamp(34px,3.2vw,48px)!important}
+  .issue-feature--reader .issue-feature__date{grid-area:date;margin:0!important}
+  .issue-feature--reader .issue-feature__summary{grid-area:summary;max-width:54ch;margin:0!important}
+  .issue-feature--reader .issue-feature__facts{grid-area:facts;justify-self:end;margin:0 0 5px}
+  .issue-feature--reader .issue-feature__actions{grid-area:actions;justify-self:end;gap:12px}
+  .issue-feature--reader .magazine-inline-reader{grid-column:1;width:100%;place-items:center}
+  .issue-feature--reader .magazine-reader-stage--inline{width:100%;height:min(80vh,815px);padding:0}
+  .issue-feature--reader .magazine-cover-intro,
+  .issue-feature--reader .magazine-book-scene{width:min(100%,1150px);height:100%;max-height:none;aspect-ratio:auto}
+  .issue-feature--reader .magazine-cover-trigger,
+  .issue-feature--reader .magazine-back-cover img{width:min(50%,540px);min-width:300px}
+}
+@media(min-width:901px) and (max-height:760px){
+  .issue-feature--reader .magazine-reader-stage--inline{height:min(76vh,700px)}
+}
