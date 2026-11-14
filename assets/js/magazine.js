@@ -62,7 +62,7 @@
     minHeight: 360,
     maxHeight: 708,
     autoSize: true,
-    usePortrait: true,
+    usePortrait: window.matchMedia('(max-width: 900px)').matches,
     showCover: true,
     drawShadow: true,
     maxShadowOpacity: 0.32,
