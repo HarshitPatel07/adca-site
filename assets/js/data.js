@@ -310,7 +310,7 @@ window.ADCA = {
     { key: 'network',  label: 'Our Network',     href: 'network.html' },
     { key: 'pub',      label: 'Publication',     href: 'publication.html', sub: [
         { label: 'Newsletter', href: 'publication.html#newsletter' },
-        { label: 'Budget', href: 'publication.html#budgets' } ] },
+        { label: 'Budget', href: 'budget.html#budgets' } ] },
     { key: 'careers',  label: 'Careers',         href: 'careers.html' },
     { key: 'gallery',  label: 'Gallery & Events', href: 'gallery.html' },
     { key: 'contact',  label: 'Contact Us',      href: 'contact.html' }
