@@ -463,3 +463,13 @@
 }
 
 @media(min-width:901px){#newsletter{scroll-margin-top:280px}}
+
+/* Center the magazine itself on the page, independently of the aligned copy column. */
+@media(min-width:901px){
+  .issue-feature--reader .magazine-inline-reader{
+    position:relative;
+    left:50%;
+    width:min(calc(100vw - 72px),1540px);
+    transform:translateX(-50%);
+  }
+}
