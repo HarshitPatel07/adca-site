@@ -209,13 +209,12 @@
   function renderServiceTiles() {
     var grid = $('#svc-grid');
     if (!grid) return;
-    grid.innerHTML = D.services.map(function (s, index) {
-      var number = (index + 1 < 10 ? '0' : '') + (index + 1);
+    grid.innerHTML = D.services.map(function (s) {
       return '<a class="svc-card reveal" href="services.html#' + s.id + '">' +
         '<span class="svc-card__top"><span class="ico" aria-hidden="true">' +
           '<img class="c" src="' + IMG + s.icon + '" alt="" loading="eager">' +
           '<img class="w" src="' + IMG + s.iconWhite + '" alt="" loading="eager">' +
-        '</span><span class="svc-card__index">' + number + '</span></span>' +
+        '</span></span>' +
         '<h3>' + s.name + '</h3><span class="svc-card__arrow" aria-hidden="true">↗</span></a>';
     }).join('');
   }
