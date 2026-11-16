@@ -11,7 +11,7 @@
 .about-shell{width:min(1180px,92%);margin-inline:auto}
 .about-hero{
   position:relative;
-  padding:72px 0 76px;
+  padding:72px 0 66px;
   background:linear-gradient(112deg,#f3f6f2 0%,#fbfcfa 60%,#eff4ef 100%);
   overflow:hidden;
 }
@@ -71,15 +71,7 @@
 .about-visual__seal strong{display:block;color:#ffbd55;font:700 53px/.95 'Saira',sans-serif;letter-spacing:-.04em}
 .about-visual__seal small{display:block;margin-top:8px;color:#e1ece4;font:600 9px 'Saira',sans-serif;letter-spacing:.17em;text-transform:uppercase}
 .about-visual__bottom{padding-top:15px;border-top:1px solid rgba(255,255,255,.2);letter-spacing:.06em}
-.about-facts{background:#123b29;color:#fff}
-.about-facts__grid{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:27px 0;
-}
-.about-fact{padding:4px 18px;text-align:center}
-.about-fact+.about-fact{border-left:1px solid rgba(255,255,255,.18)}
-.about-fact strong{display:block;color:#ffb544;font:700 clamp(30px,3.4vw,42px)/1 'Saira',sans-serif}
-.about-fact span{display:block;margin-top:8px;color:#d5e0d8;font:600 10px 'Saira',sans-serif;letter-spacing:.1em;text-transform:uppercase}
-.about-story{padding:76px 0}
+.about-story{padding:68px 0}
 .about-story__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);gap:clamp(38px,6vw,82px);align-items:start}
 .about-story h2,.about-team h2{
   margin:0 0 17px;color:var(--about-ink);
@@ -115,11 +107,6 @@
   .about-visual{min-height:300px;padding:24px}
   .about-visual__seal{width:148px;height:148px}
   .about-visual__seal strong{font-size:45px}
-  .about-facts__grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:13px 0}
-  .about-fact{padding:17px 8px}
-  .about-fact:nth-child(3){border-left:0}
-  .about-fact:nth-child(n+3){border-top:1px solid rgba(255,255,255,.18)}
-  .about-fact strong{font-size:32px}
   .about-story{padding:52px 0}
   .about-team{padding:50px 0 54px}
   .about-team__head,.about-team__foot{align-items:flex-start;flex-direction:column}
