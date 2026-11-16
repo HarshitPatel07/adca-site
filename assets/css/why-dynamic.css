@@ -120,3 +120,15 @@
  .why-point{opacity:1;transform:translate(-50%,-50%)}
  .why-insight__rule span{transition:none}
 }
+
+/* Keep the rotating icon orbit decorative and the changing explanation in one place. */
+.why-circle__center{gap:9px}
+.why-brand__mark{color:#fff;font:700 clamp(40px,5vw,58px)/.95 'Saira',sans-serif;letter-spacing:-.08em}
+.why-brand__mark span{color:#f6a12a;font-size:.8em}
+.why-brand__name{color:#c7ddd0;font:700 8px/1.3 'Saira',sans-serif;letter-spacing:.14em}
+.why-insight__facts{display:none}
+.why-insight h3,.why-insight .why-insight__copy{transition:opacity .18s ease,transform .18s ease}
+.why-insight.is-changing h3,.why-insight.is-changing .why-insight__copy{opacity:0;transform:translateY(5px)}
+@media(prefers-reduced-motion:reduce){
+ .why-insight h3,.why-insight .why-insight__copy{transition:none}
+}
