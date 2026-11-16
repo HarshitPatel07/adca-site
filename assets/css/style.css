@@ -665,3 +665,48 @@ table.tbl tr:nth-child(even) td{background:var(--gray-bg)}
 
 /* Align prose sections with the shared site container gutter. */
 .section > .container.prose{max-width:none}
+
+
+/* Accessible, consistent footer treatment across every page. */
+footer .copyright{
+  background:#123b29;
+  color:#f3f6f3;
+  padding:18px 0;
+}
+footer .copyright .container{
+  min-height:44px;
+  padding-right:54px;
+  gap:20px;
+}
+footer .copyright p{
+  margin:0;
+  color:#e7eee9;
+  font-size:13px;
+  line-height:1.5;
+}
+footer .copyright .social-chips{
+  align-items:center;
+  gap:10px;
+}
+footer .copyright .social-chips a{
+  width:40px;
+  height:40px;
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.5);
+}
+footer .copyright .social-chips a:hover{
+  color:#143a29;
+  background:#f6a12a;
+  border-color:#f6a12a;
+}
+@media(max-width:680px){
+  footer .copyright .container{
+    justify-content:center;
+    padding-right:0;
+    text-align:center;
+  }
+  footer .copyright .social-chips{
+    justify-content:center;
+  }
+}
