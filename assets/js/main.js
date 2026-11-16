@@ -209,12 +209,14 @@
   function renderServiceTiles() {
     var grid = $('#svc-grid');
     if (!grid) return;
-    grid.innerHTML = D.services.map(function (s) {
+    grid.innerHTML = D.services.map(function (s, index) {
+      var number = (index + 1 < 10 ? '0' : '') + (index + 1);
       return '<a class="svc-card reveal" href="services.html#' + s.id + '">' +
-        '<span class="ico">' +
-          '<img class="c" src="' + IMG + s.icon + '" alt="" loading="lazy">' +
-          '<img class="w" src="' + IMG + s.iconWhite + '" alt="" loading="lazy">' +
-        '</span><h3>' + s.name + '</h3></a>';
+        '<span class="svc-card__top"><span class="ico" aria-hidden="true">' +
+          '<img class="c" src="' + IMG + s.icon + '" alt="" loading="eager">' +
+          '<img class="w" src="' + IMG + s.iconWhite + '" alt="" loading="eager">' +
+        '</span><span class="svc-card__index">' + number + '</span></span>' +
+        '<h3>' + s.name + '</h3><span class="svc-card__arrow" aria-hidden="true">↗</span></a>';
     }).join('');
   }
 
@@ -267,6 +269,22 @@
     };
 
     function labelFor(item) {
+      return item.text.replace('<br>', ' ').replace(/&amp;/g, '&');
+    }
+    var insightTitle = $('#why-insight-title');
+    var insightCopy = $('#why-insight-copy');
+    var insightStep = $('#why-insight-step');
+    var insightProgress = $('#why-insight-progress');
+    var insightDetails = [
+      'Our team brings audit, tax, advisory and consulting experience together, so clients can get coordinated support as their needs change.',
+      'Eight offices connect clients with local teams and a broader network of professionals across India.',
+      'Focused scopes and practical recommendations keep advice useful, clear and mindful of value.',
+      'More than 300 professionals and staff support work across the firm’s services and offices.',
+      'We take time to understand each business and shape advice around its priorities and context.',
+      'Clear communication and an approachable team make it easier to move from questions to next steps.'
+    ];
+
+    function labelFor(item) {
       return item.text.replace('<br>', ' ');
     }
     function select(index, animate) {
@@ -278,10 +296,15 @@
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
       var update = function () {
-        count.textContent = (index + 1 < 10 ? '0' : '') + (index + 1) + ' / ' +
-          (D.why.length < 10 ? '0' : '') + D.why.length;
+        var step = (index + 1 < 10 ? '0' : '') + (index + 1);
+        var total = (D.why.length < 10 ? '0' : '') + D.why.length;
+        count.textContent = step + ' / ' + total;
         title.textContent = labelFor(item);
         if (copy) copy.textContent = item.desc || '';
+        if (insightStep) insightStep.textContent = step + ' / ' + total;
+        if (insightTitle) insightTitle.textContent = labelFor(item).replace(/&amp;/g, '&');
+        if (insightCopy) insightCopy.textContent = insightDetails[index] || item.desc || '';
+        if (insightProgress) insightProgress.style.width = ((index + 1) / D.why.length * 100) + '%';
         stage.classList.remove('is-changing');
       };
       if (animate) {
