@@ -80,3 +80,26 @@
 }
 @media(prefers-reduced-motion:reduce){.stats .container>div:hover,.branch:hover,.pub-grid a:hover,.side-card:hover{transform:none}}
 
+
+/* Shared service tiles: visible brand icons instead of numbered placeholders. */
+.svc-card{display:flex;flex-direction:column;min-height:190px;padding:24px 22px 22px;text-align:left}
+.svc-card__top{display:flex;align-items:center;justify-content:flex-start;margin-bottom:18px}
+.svc-card .ico{position:relative;display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;margin:0;border:1px solid #e1e9e1;border-radius:50%;background:linear-gradient(145deg,#f5f8f4,#fff);overflow:hidden}
+.svc-card .ico img{position:absolute;left:50%;top:50%;width:42px;height:42px;max-width:42px;object-fit:contain;translate:-50% -50%;opacity:1;visibility:visible}
+.svc-card .ico .c{opacity:1}
+.svc-card .ico .w{opacity:0}
+.svc-card:hover .ico{background:#fff;border-color:rgba(255,255,255,.65)}
+.svc-card:hover .ico .c{opacity:1!important}
+.svc-card:hover .ico .w{opacity:0!important}
+.svc-card h3{max-width:28ch;padding-right:25px;font-size:14px;line-height:1.45}
+.svc-card__arrow{position:absolute;right:21px;bottom:19px;color:#df8d20;font-size:20px;line-height:1;transition:transform .22s,color .22s}
+.svc-card:hover .svc-card__arrow{color:#fff;transform:translate(3px,-3px)}
+.svc-card::after{left:0;right:auto;width:100%;height:3px;border-radius:0}
+@media(max-width:600px){
+ .svc-card{min-height:154px;padding:17px 14px 18px}
+ .svc-card__top{margin-bottom:13px}
+ .svc-card .ico{flex-basis:48px;width:48px;height:48px}
+ .svc-card .ico img{width:36px;height:36px;max-width:36px}
+ .svc-card h3{font-size:11.5px}
+ .svc-card__arrow{right:14px;bottom:13px;font-size:17px}
+}
