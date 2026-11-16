@@ -108,3 +108,14 @@ body[data-page="network"] .camp-intro h1{font-size:clamp(34px,3.2vw,48px)}
 @media(max-width:520px){
  body[data-page="network"] .camp-intro h1{font-size:clamp(34px,9vw,46px)}
 }
+
+/* Teardrop pins use their tip as the geographic anchor on the map. */
+.camp-office-pin{width:24px;height:24px;border-radius:50% 50% 50% 0;transform:translate(-50%,-120%) rotate(-45deg)}
+.camp-office-pin:hover,.camp-office-pin.is-active{transform:translate(-50%,-120%) rotate(-45deg) scale(1.12)}
+.camp-office-pin span{transform:rotate(45deg)}
+.camp-office-pin::after{transform:translate(-50%,4px) rotate(45deg)}
+.camp-office-pin:hover::after,.camp-office-pin.is-active::after{transform:translate(-50%,0) rotate(45deg)}
+@media(max-width:600px){
+ .camp-office-pin{width:22px;height:22px}
+ .camp-office-pin:hover,.camp-office-pin.is-active{transform:translate(-50%,-120%) rotate(-45deg) scale(1.08)}
+}
