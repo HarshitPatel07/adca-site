@@ -105,3 +105,47 @@
 @media(max-width:680px){
   .careers-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:44px 0 48px}
 }
+
+/* Improve footer readability and give the fixed back-to-top control room. */
+.copyright{
+  background:#123b29;
+  color:#f3f6f3;
+  padding:18px 0;
+}
+.copyright .container{
+  min-height:44px;
+  padding-right:54px;
+  gap:20px;
+}
+.copyright p{
+  margin:0;
+  color:#e7eee9;
+  font-size:13px;
+  line-height:1.5;
+}
+.copyright .social-chips{
+  align-items:center;
+  gap:10px;
+}
+.copyright .social-chips a{
+  width:40px;
+  height:40px;
+  color:#fff;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.5);
+}
+.copyright .social-chips a:hover{
+  color:#143a29;
+  background:#f6a12a;
+  border-color:#f6a12a;
+}
+@media(max-width:680px){
+  .copyright .container{
+    justify-content:center;
+    padding-right:0;
+    text-align:center;
+  }
+  .copyright .social-chips{
+    justify-content:center;
+  }
+}
