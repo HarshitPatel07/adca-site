@@ -253,11 +253,12 @@
   function renderWhy() {
     var circle = $('#why-circle');
     var nodes = $('#why-list');
-    var stage = $('#why-stage');
-    var title = $('#why-stage-title');
-    var count = $('#why-stage-count');
-    var copy = $('#why-stage-copy');
-    if (!circle || !nodes || !stage || !title || !count) return;
+    var insight = $('.why-insight');
+    var insightTitle = $('#why-insight-title');
+    var insightCopy = $('#why-insight-copy');
+    var insightStep = $('#why-insight-step');
+    var insightProgress = $('#why-insight-progress');
+    if (!circle || !nodes || !insight || !insightTitle || !insightCopy || !insightStep) return;
 
     var icons = {
       l2: 'why-qualified.png',
@@ -267,14 +268,6 @@
       r2: 'why-clients.png',
       r3: 'why-friendly.png'
     };
-
-    function labelFor(item) {
-      return item.text.replace('<br>', ' ').replace(/&amp;/g, '&');
-    }
-    var insightTitle = $('#why-insight-title');
-    var insightCopy = $('#why-insight-copy');
-    var insightStep = $('#why-insight-step');
-    var insightProgress = $('#why-insight-progress');
     var insightDetails = [
       'Our team brings audit, tax, advisory and consulting experience together, so clients can get coordinated support as their needs change.',
       'Eight offices connect clients with local teams and a broader network of professionals across India.',
@@ -283,9 +276,10 @@
       'We take time to understand each business and shape advice around its priorities and context.',
       'Clear communication and an approachable team make it easier to move from questions to next steps.'
     ];
+    var detailTimer;
 
     function labelFor(item) {
-      return item.text.replace('<br>', ' ');
+      return item.text.replace('<br>', ' ').replace(/&amp;/g, '&');
     }
     function select(index, animate) {
       var item = D.why[index];
@@ -298,18 +292,16 @@
       var update = function () {
         var step = (index + 1 < 10 ? '0' : '') + (index + 1);
         var total = (D.why.length < 10 ? '0' : '') + D.why.length;
-        count.textContent = step + ' / ' + total;
-        title.textContent = labelFor(item);
-        if (copy) copy.textContent = item.desc || '';
-        if (insightStep) insightStep.textContent = step + ' / ' + total;
-        if (insightTitle) insightTitle.textContent = labelFor(item).replace(/&amp;/g, '&');
-        if (insightCopy) insightCopy.textContent = insightDetails[index] || item.desc || '';
+        insightStep.textContent = step + ' / ' + total;
+        insightTitle.textContent = labelFor(item);
+        insightCopy.textContent = insightDetails[index] || item.desc || '';
         if (insightProgress) insightProgress.style.width = ((index + 1) / D.why.length * 100) + '%';
-        stage.classList.remove('is-changing');
+        insight.classList.remove('is-changing');
       };
+      window.clearTimeout(detailTimer);
       if (animate) {
-        stage.classList.add('is-changing');
-        window.setTimeout(update, 160);
+        insight.classList.add('is-changing');
+        detailTimer = window.setTimeout(update, 140);
       } else update();
     }
 
@@ -318,7 +310,7 @@
       return '<button class="why-point" type="button" data-why-index="' + index +
         '" aria-label="' + labelFor(item) + '" aria-pressed="false" style="--point-index:' + index + '">' +
         '<span class="why-point__halo"></span>' +
-        '<img src="' + IMG + icons[item.pos] + '" alt="" aria-hidden="true" loading="lazy">' +
+        '<img src="' + IMG + icons[item.pos] + '" alt="" aria-hidden="true" loading="eager">' +
         '<span class="why-point__number">' + number + '</span>' +
         '</button>';
     }).join('');
@@ -341,7 +333,6 @@
     });
     select(0, false);
 
-    /* Reveal the orbit when it enters view; without this, .why-point stays hidden. */
     if ('IntersectionObserver' in window &&
         !window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
       var revealCircle = new IntersectionObserver(function (entries) {
