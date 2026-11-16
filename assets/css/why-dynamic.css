@@ -132,3 +132,7 @@
 @media(prefers-reduced-motion:reduce){
  .why-insight h3,.why-insight .why-insight__copy{transition:none}
 }
+
+/* Keep brand-colour service icons visible on the white hover badge. */
+.svc-card:hover .ico .c{opacity:1!important}
+.svc-card:hover .ico .w{opacity:0!important}
