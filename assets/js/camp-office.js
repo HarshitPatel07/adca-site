@@ -12,17 +12,31 @@
     var count = document.getElementById('camp-office-count');
     if (!pins || !list || !detail || !search) return;
 
-    var positions = {
-      'Surat':     { x: 19, y: 56, state: 'Gujarat', kind: 'Head Office' },
-      'Delhi':     { x: 33, y: 32, state: 'Delhi', kind: 'Branch Office' },
-      'Mumbai':    { x: 19, y: 61, state: 'Maharashtra', kind: 'Branch Office' },
-      'Ahmedabad': { x: 18, y: 45, state: 'Gujarat', kind: 'Branch Office' },
-      'Jaipur':    { x: 28, y: 37, state: 'Rajasthan', kind: 'Branch Office' },
-      'Hyderabad': { x: 50, y: 62, state: 'Telangana', kind: 'Branch Office' },
-      'Vapi':      { x: 19, y: 59, state: 'Gujarat', kind: 'Branch Office' },
-      'Chennai':   { x: 42, y: 85, state: 'Tamil Nadu', kind: 'Branch Office' },
-      'Kolkata':   { x: 78, y: 43, state: 'West Bengal', kind: 'Branch Office' }
+    /* City-centre coordinates mapped to the static India artwork.
+       The reference is Delhi, with the scale calibrated to the artwork's
+       latitude/longitude grid; pin tips land on the mapped city positions. */
+    var cityCoordinates = {
+      'Surat':     { lat: 21.1959, lon: 72.8302, state: 'Gujarat', kind: 'Head Office' },
+      'Delhi':     { lat: 28.65195, lon: 77.23149, state: 'Delhi', kind: 'Branch Office' },
+      'Mumbai':    { lat: 19.07283, lon: 72.88261, state: 'Maharashtra', kind: 'Branch Office' },
+      'Ahmedabad': { lat: 23.02579, lon: 72.58727, state: 'Gujarat', kind: 'Branch Office' },
+      'Jaipur':    { lat: 26.91962, lon: 75.78781, state: 'Rajasthan', kind: 'Branch Office' },
+      'Hyderabad': { lat: 17.38405, lon: 78.45636, state: 'Telangana', kind: 'Branch Office' },
+      'Vapi':      { lat: 20.36381, lon: 72.92290, state: 'Gujarat', kind: 'Branch Office' },
+      'Chennai':   { lat: 13.08784, lon: 80.27847, state: 'Tamil Nadu', kind: 'Branch Office' },
+      'Kolkata':   { lat: 22.56263, lon: 88.36304, state: 'West Bengal', kind: 'Branch Office' }
     };
+    var mapReference = { lat: 28.65195, lon: 77.23149, x: 33, y: 32, scaleX: 3.25, scaleY: 3.05 };
+    var positions = {};
+    Object.keys(cityCoordinates).forEach(function (city) {
+      var location = cityCoordinates[city];
+      positions[city] = {
+        x: mapReference.x + (location.lon - mapReference.lon) * mapReference.scaleX,
+        y: mapReference.y + (mapReference.lat - location.lat) * mapReference.scaleY,
+        state: location.state,
+        kind: location.kind
+      };
+    });
     var offices = [{
       city: 'Surat',
       address: D.firm.address,
