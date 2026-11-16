@@ -90,3 +90,18 @@
 @media(prefers-reduced-motion:reduce){
  .careers-btn,.careers-role a::after{transition:none}
 }
+
+
+/* Less copy, one clear action, and no repeated growth pitch. */
+.careers-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:68px 0 72px}
+.careers-hero__copy{max-width:880px}
+.careers-hero h1{max-width:14ch}
+.careers-intro{max-width:68ch}
+.careers-section__heading{justify-content:flex-start}
+.careers-values__heading p{display:none}
+@media(max-width:900px){
+  .careers-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:58px 0 64px}
+}
+@media(max-width:680px){
+  .careers-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:44px 0 48px}
+}
