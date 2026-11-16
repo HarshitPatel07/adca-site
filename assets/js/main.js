@@ -206,14 +206,27 @@
   /* ======================================================================
      SERVICES
      ====================================================================== */
+  function serviceIcon(id) {
+    var icons = {
+      audit: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 6h15l7 7v29H13z"/><path d="M28 6v8h7"/><path d="m17 22 2 2 4-4M26 22h5M17 30l2 2 4-4M26 30h5"/></g><path d="m17 37 2 2 4-4" fill="none" stroke="#f6a12a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      corporate: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="18" width="34" height="23" rx="2"/><path d="M17 18v-5h14v5M7 26h34M23 26v5h2v-5"/></g><path d="m13 34 7-6 5 3 10-10m-1 0h-6m6 0v6" fill="none" stroke="#f6a12a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      management: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="11" r="5"/><circle cx="11" cy="36" r="4"/><circle cx="37" cy="36" r="4"/><path d="M24 16v8M11 32v-6h26v6M24 24v5M7 43v-3a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v3M33 43v-3a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v3"/></g><path d="M24 21v9" fill="none" stroke="#f6a12a" stroke-width="2.2" stroke-linecap="round"/></svg>',
+      accounting: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="5" width="24" height="38" rx="3"/><path d="M17 11h14v7H17zM18 24h1M24 24h1M30 24h1M18 30h1M24 30h1M30 30h1M18 36h1M24 36h1M30 36h1"/></g><path d="M17 14h14" fill="none" stroke="#f6a12a" stroke-width="2.2" stroke-linecap="round"/></svg>',
+      taxation: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 17 17-9 17 9H7zM10 39h28M13 20v16M20 20v16M28 20v16M35 20v16M8 43h32"/></g><circle cx="36" cy="11" r="6" fill="#fff" stroke="#f6a12a" stroke-width="2"/><path d="M36 8v6m2-5c-.6-1-3-1-3 0 0 2 3 1 3 3 0 1.3-2.3 1.7-3.5.5" fill="none" stroke="#f6a12a" stroke-width="1.5" stroke-linecap="round"/></svg>',
+      forensic: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h21l7 7v17M30 7v8h7M14 20h13M14 26h10"/><circle cx="29" cy="30" r="8"/><path d="m35 36 7 7"/></g><path d="m25 30 2.5 2.5 5-5" fill="none" stroke="#f6a12a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      turnkey: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="16" height="16" rx="2"/><path d="M24 5v8m0-8-3 3m3-3 3 3M24 43v-8m0 8-3-3m3 3 3-3M5 24h8m-8 0 3-3m-3 3 3 3M43 24h-8m8 0-3-3m3 3-3 3"/></g><path d="M20 22h8M20 26h8" fill="none" stroke="#f6a12a" stroke-width="2" stroke-linecap="round"/></svg>',
+      kpo: '<svg class="svc-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 25v-4a16 16 0 0 1 32 0v4M8 23a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4h3V23zM40 23a4 4 0 0 1 4 4v4a4 4 0 0 1-4 4h-3V23zM37 35c-2 4-6 6-12 6"/></g><circle cx="24" cy="18" r="6" fill="none" stroke="#f6a12a" stroke-width="2.2"/><path d="M24 15v6m2-5c-.8-1.4-3.8-1.1-3.8.4s3.8 1.2 3.8 3.2c0 1.5-2.7 2-4 .8" fill="none" stroke="#f6a12a" stroke-width="1.6" stroke-linecap="round"/></svg>'
+    };
+    return icons[id] || icons.audit;
+  }
+
   function renderServiceTiles() {
     var grid = $('#svc-grid');
     if (!grid) return;
     grid.innerHTML = D.services.map(function (s) {
       return '<a class="svc-card reveal" href="services.html#' + s.id + '">' +
         '<span class="svc-card__top"><span class="ico" aria-hidden="true">' +
-          '<img class="c" src="' + IMG + s.icon + '" alt="" loading="eager">' +
-          '<img class="w" src="' + IMG + s.iconWhite + '" alt="" loading="eager">' +
+          serviceIcon(s.id) +
         '</span></span>' +
         '<h3>' + s.name + '</h3><span class="svc-card__arrow" aria-hidden="true">↗</span></a>';
     }).join('');
@@ -237,7 +250,7 @@
 
       return '<div class="acc' + (n === 0 ? ' is-open' : '') + '" id="' + s.id + '">' +
         '<button type="button" aria-expanded="' + (n === 0) + '">' +
-          '<span class="ai"><img src="' + IMG + s.icon + '" alt="" loading="lazy"></span>' +
+          '<span class="ai">' + serviceIcon(s.id) + '</span>' +
           '<span>' + s.name + '</span>' +
           (count ? '<span class="count">' + count + ' services</span>' : '') +
           '<span class="plus"></span>' +
