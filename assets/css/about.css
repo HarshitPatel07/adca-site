@@ -64,12 +64,11 @@
 .about-visual__top span:last-child,.about-visual__bottom strong{color:#ffbd55}
 .about-visual__seal{
   width:174px;height:174px;margin:15px auto;display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.34);border-radius:50%;
+  padding:18px;border:1px solid rgba(255,255,255,.4);border-radius:50%;
+  background:#fff;
   box-shadow:0 0 0 14px rgba(255,255,255,.035),0 0 0 29px rgba(255,255,255,.025);
-  text-align:center;
 }
-.about-visual__seal strong{display:block;color:#ffbd55;font:700 53px/.95 'Saira',sans-serif;letter-spacing:-.04em}
-.about-visual__seal small{display:block;margin-top:8px;color:#e1ece4;font:600 9px 'Saira',sans-serif;letter-spacing:.17em;text-transform:uppercase}
+.about-visual__seal img{display:block;width:100%;max-width:144px;height:auto;object-fit:contain}
 .about-visual__bottom{padding-top:15px;border-top:1px solid rgba(255,255,255,.2);letter-spacing:.06em}
 .about-story{padding:68px 0}
 .about-story__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.78fr);gap:clamp(38px,6vw,82px);align-items:start}
@@ -105,7 +104,7 @@
   .about-hero h1{font-size:clamp(40px,12vw,58px)}
   .about-lead{font-size:15px}
   .about-visual{min-height:300px;padding:24px}
-  .about-visual__seal{width:148px;height:148px}
+  .about-visual__seal{width:148px;height:148px;padding:15px}
   .about-visual__seal strong{font-size:45px}
   .about-story{padding:52px 0}
   .about-team{padding:50px 0 54px}
