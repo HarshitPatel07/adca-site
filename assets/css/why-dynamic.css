@@ -179,3 +179,7 @@
  .why-circle.is-in .why-point{animation:none!important;opacity:1}
  .why-point,.why-point__badge,.why-point img,.why-point__label{transition:none!important}
 }
+
+/* Keep the hit area visually neutral; selection styling belongs to the icon badge. */
+.why-point.is-active{border:0;background:transparent;box-shadow:none;transform:translate(-50%,-50%)}
+.why-point:hover:not(.is-active){border-color:transparent;transform:translate(-50%,-50%)}
