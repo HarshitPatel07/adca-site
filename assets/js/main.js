@@ -317,13 +317,17 @@
       } else update();
     }
 
+    var pointLabels = ['Professionals', 'National network', 'Cost conscious', 'Reliable service', 'Client focused', 'Friendly team'];
     nodes.innerHTML = D.why.map(function (item, index) {
       var number = (index + 1 < 10 ? '0' : '') + (index + 1);
       return '<button class="why-point" type="button" data-why-index="' + index +
         '" aria-label="' + labelFor(item) + '" aria-pressed="false" style="--point-index:' + index + '">' +
-        '<span class="why-point__halo"></span>' +
+        '<span class="why-point__badge">' +
+        '<span class="why-point__halo" aria-hidden="true"></span>' +
         '<img src="' + IMG + icons[item.pos] + '" alt="" aria-hidden="true" loading="eager">' +
-        '<span class="why-point__number">' + number + '</span>' +
+        '<span class="why-point__number" aria-hidden="true">' + number + '</span>' +
+        '</span>' +
+        '<span class="why-point__label" aria-hidden="true">' + (pointLabels[index] || 'Firm difference') + '</span>' +
         '</button>';
     }).join('');
 
