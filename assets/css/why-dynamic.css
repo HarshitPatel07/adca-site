@@ -138,3 +138,44 @@
 .why-circle__center{gap:0;padding:18px;background:#fff;border:6px solid #fff}
 .why-brand__logo{display:block;width:82%;max-width:190px;height:auto;object-fit:contain}
 @media(max-width:600px){.why-circle__center{padding:13px}}
+
+
+/* Static, upright selector: the orbit provides structure while each point names its purpose. */
+.why-selector-hint{margin:-14px auto 26px;text-align:center;color:#68786d;font:500 13px/1.5 'Saira',sans-serif}
+.why-selector-hint span{display:inline-block;margin-right:8px;color:#00562a;font-weight:700;letter-spacing:.1em}
+.why-circle.is-in .why-circle__ring--outer,
+.why-circle.is-in .why-circle__ring--inner,
+.why-circle.is-in .why-circle__nodes{animation:none!important}
+.why-point{width:118px;height:auto;min-height:98px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:7px;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;opacity:0;transform:translate(-50%,-50%);transition:opacity .24s ease}
+.why-circle.is-in .why-point{animation:why-point-in .42s ease both;animation-delay:calc(var(--point-index,0) * 55ms)}
+.why-point__badge{position:relative;flex:0 0 auto;width:68px;height:68px;display:grid;place-items:center;border:1px solid #dbe6dd;border-radius:50%;background:linear-gradient(145deg,#fff,#f8faf7);box-shadow:0 8px 20px rgba(20,58,35,.08);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.why-point__halo{inset:-6px}
+.why-point img{width:38px;height:38px}
+.why-point__number{right:-3px;top:-3px;transform:none}
+.why-point__label{display:block;max-width:116px;padding:4px 8px;border:1px solid #e1e9e1;border-radius:99px;background:rgba(255,255,255,.96);box-shadow:0 3px 10px rgba(20,58,35,.05);color:#42574a;text-align:center;white-space:nowrap;font:600 10px/1.15 'Saira',sans-serif;letter-spacing:.01em;transition:color .22s ease,border-color .22s ease,background .22s ease}
+.why-point.is-active .why-point__badge{border:2px solid #f6a12a;background:#fff;box-shadow:0 0 0 6px rgba(246,161,42,.12),0 11px 25px rgba(0,65,35,.13);transform:scale(1.05)}
+.why-point.is-active .why-point__halo{border-color:rgba(0,86,42,.2);transform:scale(1.08)}
+.why-point.is-active .why-point__label{border-color:rgba(0,86,42,.28);background:#f4f8f3;color:#00562a}
+.why-point:hover .why-point__badge,.why-point:focus-visible .why-point__badge{transform:translateY(-2px);border-color:#f6a12a;box-shadow:0 0 0 5px rgba(246,161,42,.12),0 12px 24px rgba(0,65,35,.13)}
+.why-point:hover img,.why-point:focus-visible img,.why-point.is-active img{transform:scale(1.04)}
+.why-point:focus-visible{outline:3px solid rgba(0,86,42,.55);outline-offset:4px;border-radius:10px}
+.why-point:nth-child(1){left:50%;top:8%}
+.why-point:nth-child(2){left:82%;top:27%}
+.why-point:nth-child(3){left:82%;top:73%}
+.why-point:nth-child(4){left:50%;top:92%}
+.why-point:nth-child(5){left:18%;top:73%}
+.why-point:nth-child(6){left:18%;top:27%}
+@media(max-width:700px){
+ .why-selector-hint{margin:-10px auto 18px;padding:0 12px;font-size:12px}
+ .why-point{width:96px;min-height:82px;gap:5px}
+ .why-point__badge{width:56px;height:56px}
+ .why-point img{width:32px;height:32px}
+ .why-point__number{width:18px;height:18px;font-size:7px}
+ .why-point__label{max-width:95px;padding:3px 6px;font-size:8.5px}
+ .why-point:nth-child(2),.why-point:nth-child(3){left:83%}
+ .why-point:nth-child(5),.why-point:nth-child(6){left:17%}
+}
+@media(prefers-reduced-motion:reduce){
+ .why-circle.is-in .why-point{animation:none!important;opacity:1}
+ .why-point,.why-point__badge,.why-point img,.why-point__label{transition:none!important}
+}
