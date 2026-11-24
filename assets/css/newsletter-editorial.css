@@ -3,15 +3,15 @@
   padding:clamp(28px,4vw,56px) 0 clamp(48px,6vw,80px);
   background:linear-gradient(180deg,#f7f9f6 0%,#f0f4ef 100%);
 }
-.publication-issue-section .container.prose{max-width:1320px}
+.publication-issue-section .container.prose{max-width:1500px}
 .publication-section-title{margin:0 0 clamp(20px,3vw,34px)!important}
 .issue-feature--reader{
   display:grid;
-  grid-template-columns:minmax(300px,.76fr) minmax(0,1.24fr);
+  grid-template-columns:minmax(280px,.66fr) minmax(0,1.34fr);
   align-items:stretch;
   gap:0;
   width:100%;
-  max-width:1240px;
+  max-width:1480px;
   margin:0 auto;
   padding:12px;
   overflow:hidden;
@@ -91,7 +91,7 @@
   position:relative;isolation:isolate;
   display:flex;flex-direction:column;justify-content:center;gap:14px;
   min-width:0;margin:0;
-  padding:clamp(22px,3vw,34px);
+  padding:clamp(18px,2vw,28px);
   overflow:hidden;
   border-radius:14px;
   background:radial-gradient(circle at 88% 12%,rgba(255,255,255,.08),transparent 28%),linear-gradient(145deg,#075334,#063e29 72%);
