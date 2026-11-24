@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="assets/css/dynamic.css">
 <link rel="stylesheet" href="assets/css/polish.css">
 <link rel="stylesheet" href="assets/css/header-fix.css">
-<link rel="stylesheet" href="assets/css/magazine.css?v=34">
+<link rel="stylesheet" href="assets/css/magazine.css?v=35">
 </head>
 <body data-page="pub">
 
@@ -62,19 +62,20 @@
         <div class="issue-feature__facts"><span>18 pages</span><span>Interactive reader</span><span>PDF available</span></div>
         <div class="issue-feature__actions">
           <a class="issue-feature__download" href="assets/newsletter/the-bottom-line-september-2026.pdf" download>Download full PDF <span aria-hidden="true">&darr;</span></a>
-          <span class="issue-feature__note">Drag a page corner to turn. The cover opens right here.</span>
+          <span class="issue-feature__note">Open the reader to turn pages.</span>
         </div>
       </div>
 
       <section class="magazine-inline-reader" aria-label="Read The Bottom Line online">
         <div class="magazine-reader-stage magazine-reader-stage--inline">
           <div class="magazine-cover-intro" id="magazine-cover-intro">
-            <button class="magazine-cover-trigger" type="button" data-open-magazine aria-controls="magazine-book-scene" aria-label="Open The Bottom Line newsletter">
-              <span class="magazine-cover-trigger__pages" aria-hidden="true"></span>
-              <img src="assets/newsletter/pages/page-01.webp" alt="The Bottom Line, September 2026 newsletter cover" fetchpriority="high">
-              <span class="magazine-cover-trigger__spine" aria-hidden="true"></span>
+            <button class="magazine-cover-trigger" type="button" data-open-magazine aria-controls="magazine-book-scene" aria-label="Open the interactive newsletter reader">
+              <span class="magazine-preview-spread" aria-hidden="true">
+                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-02.webp?v=preview2" alt="" fetchpriority="high"></span>
+                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-03.webp?v=preview2" alt="" fetchpriority="high"></span>
+                <span class="magazine-preview-gutter"></span>
+              </span>
             </button>
-            <p class="magazine-cover-hint">Tap the cover to open</p>
           </div>
           <div class="magazine-book-scene" id="magazine-book-scene" aria-label="Interactive 18-page newsletter" aria-hidden="true">
             <div class="magazine-flipbook" id="magazine-flipbook" tabindex="-1" aria-label="The Bottom Line, page 2 of 18"></div>
@@ -83,7 +84,7 @@
             <img src="assets/newsletter/pages/page-18.webp" alt="Agarwal &amp; Dhandhania back cover">
           </div>
         </div>
-        
+        <p class="magazine-cover-hint">Preview pages 02–03 <span aria-hidden="true">·</span> Select the spread to read online</p>
       </section>
     </article>
   </div>
@@ -167,7 +168,7 @@
 <script src="assets/js/data.js?v=28"></script>
 <script src="assets/js/main.js?v=31"></script>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
-<script src="assets/js/magazine.js?v=19"></script>
+<script src="assets/js/magazine.js?v=20"></script>
 </body>
 </html>
 
