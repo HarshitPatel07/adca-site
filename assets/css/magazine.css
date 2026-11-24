@@ -666,3 +666,7 @@
   .magazine-reader-stage--inline.is-opening .magazine-cover-trigger,
   .magazine-reader-stage--inline.is-closing .magazine-cover-trigger{animation-duration:.01ms}
 }
+
+.magazine-reader-stage--inline.is-opening + .magazine-cover-hint,
+.magazine-reader-stage--inline.is-open + .magazine-cover-hint,
+.magazine-reader-stage--inline.is-closing + .magazine-cover-hint{opacity:0;transition:opacity .2s ease}
