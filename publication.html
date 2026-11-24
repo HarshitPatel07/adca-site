@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="assets/css/dynamic.css">
 <link rel="stylesheet" href="assets/css/polish.css">
 <link rel="stylesheet" href="assets/css/header-fix.css">
-<link rel="stylesheet" href="assets/css/magazine.css?v=35">
+<link rel="stylesheet" href="assets/css/magazine.css?v=36">
 </head>
 <body data-page="pub">
 
@@ -50,29 +50,30 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section publication-issue-section">
   <div class="container prose">
-    <h2 class="sec-head sec-head--inline underline"><span class="dark">Monthly</span> <span class="amber">Newsletter</span></h2>
+    <h2 class="sec-head sec-head--inline underline publication-section-title"><span class="dark">Monthly</span> <span class="amber">Newsletter</span></h2>
     <article id="newsletter" class="issue-feature issue-feature--reader" aria-labelledby="issue-feature-title">
       <div class="issue-feature__copy">
-        <p class="issue-feature__eyebrow"><span></span> Latest monthly newsletter</p>
+        <p class="issue-feature__eyebrow"><span></span> September 2026 · Edition 02</p>
         <h2 id="issue-feature-title">The Bottom Line</h2>
-        <p class="issue-feature__date">September 2026 &middot; Edition 02</p>
-        <p class="issue-feature__summary">A monthly read on regulatory updates, compliance dates and business changes, with a brain break at the end.</p>
-        <div class="issue-feature__facts"><span>18 pages</span><span>Interactive reader</span><span>PDF available</span></div>
+        <p class="issue-feature__summary">A clear monthly briefing on regulatory updates, compliance dates and business changes, with a brain break at the end.</p>
+        <div class="issue-feature__facts"><span>18 pages</span><span>Monthly briefing</span></div>
         <div class="issue-feature__actions">
-          <a class="issue-feature__download" href="assets/newsletter/the-bottom-line-september-2026.pdf" download>Download full PDF <span aria-hidden="true">&darr;</span></a>
-          <span class="issue-feature__note">Open the reader to turn pages.</span>
+          <button class="issue-feature__read" type="button" data-open-magazine aria-controls="magazine-book-scene">Read the issue <span aria-hidden="true">→</span></button>
+          <a class="issue-feature__download" href="assets/newsletter/the-bottom-line-september-2026.pdf" download>Download PDF <span aria-hidden="true">↓</span></a>
         </div>
+        <p class="issue-feature__note">Preview the opening spread or open the reader to browse all 18 pages.</p>
       </div>
 
-      <section class="magazine-inline-reader" aria-label="Read The Bottom Line online">
+      <section class="magazine-inline-reader" aria-label="Newsletter preview and interactive reader">
+        <div class="magazine-reader-label"><span>INSIDE THE ISSUE</span><span>PREVIEW · 02—03</span></div>
         <div class="magazine-reader-stage magazine-reader-stage--inline">
           <div class="magazine-cover-intro" id="magazine-cover-intro">
             <button class="magazine-cover-trigger" type="button" data-open-magazine aria-controls="magazine-book-scene" aria-label="Open the interactive newsletter reader">
               <span class="magazine-preview-spread" aria-hidden="true">
-                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-02.webp?v=preview2" alt="" fetchpriority="high"></span>
-                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-03.webp?v=preview2" alt="" fetchpriority="high"></span>
+                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-02.webp?v=preview3" alt="" fetchpriority="high"></span>
+                <span class="magazine-preview-page"><img src="assets/newsletter/pages/page-03.webp?v=preview3" alt="" fetchpriority="high"></span>
                 <span class="magazine-preview-gutter"></span>
               </span>
             </button>
@@ -84,7 +85,7 @@
             <img src="assets/newsletter/pages/page-18.webp" alt="Agarwal &amp; Dhandhania back cover">
           </div>
         </div>
-        <p class="magazine-cover-hint">Preview pages 02–03 <span aria-hidden="true">·</span> Select the spread to read online</p>
+        <p class="magazine-reader-caption">Tap <span>Read the issue</span> to turn pages</p>
       </section>
     </article>
   </div>
@@ -168,7 +169,7 @@
 <script src="assets/js/data.js?v=28"></script>
 <script src="assets/js/main.js?v=31"></script>
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
-<script src="assets/js/magazine.js?v=21"></script>
+<script src="assets/js/magazine.js?v=22"></script>
 </body>
 </html>
 
