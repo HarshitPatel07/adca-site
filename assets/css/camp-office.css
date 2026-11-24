@@ -144,15 +144,8 @@ body[data-page="network"] .camp-intro h1{font-size:clamp(34px,3.2vw,48px)}
 .camp-leaflet-pin .camp-office-pin:hover::after,
 .camp-leaflet-pin .camp-office-pin.is-active::after{transform:translate(-50%,0)}
 
-/* MapLibre controls and numbered city markers. */
-.camp-map-view.maplibregl-map{font-family:'Lato',sans-serif}
-.camp-map-view .maplibregl-ctrl-attrib{font-size:9px}
-.camp-map-view .maplibregl-ctrl-group{overflow:hidden;border:1px solid #dfe8df;border-radius:5px;box-shadow:0 3px 10px rgba(20,50,30,.14)}
-.camp-map-view .maplibregl-ctrl-group button{width:30px;height:30px}
-.camp-map-view .maplibregl-ctrl-group button:hover{background:#f2f7f1}
-.maplibregl-marker .camp-office-pin{position:relative;left:auto;top:auto;display:grid;place-items:center;width:30px;height:30px;padding:0;border:2px solid #fff;border-radius:50%;background:#f6a12a;color:#173525;box-shadow:0 2px 8px rgba(14,47,29,.35);transform:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
-.maplibregl-marker .camp-office-pin::before{inset:-5px}
-.maplibregl-marker .camp-office-pin:hover,.maplibregl-marker .camp-office-pin.is-active{z-index:2;background:#00562a;color:#fff;transform:scale(1.2);box-shadow:0 4px 13px rgba(0,60,30,.38)}
-.maplibregl-marker .camp-office-pin span{font:700 9px/1 'Saira',sans-serif;transform:none}
-.maplibregl-marker .camp-office-pin::after{left:50%;bottom:calc(100% + 7px);font:600 10px/1.2 'Saira',sans-serif;transform:translate(-50%,4px)}
-.maplibregl-marker .camp-office-pin:hover::after,.maplibregl-marker .camp-office-pin.is-active::after{transform:translate(-50%,0)}
+
+/* Warm orange map palette while preserving geographic detail and city labels. */
+.camp-map-view .leaflet-tile-pane{filter:sepia(.48) saturate(1.28) hue-rotate(-8deg) contrast(1.04)}
+.camp-map-stage{background:#f5e7cb}
+.camp-map-view{background:#f5e7cb}
