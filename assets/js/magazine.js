@@ -119,7 +119,7 @@
       isOpening = false;
       updateSpread(pageFlip.getCurrentPageIndex());
       host.focus({ preventScroll: true });
-    }, reducedMotion ? 20 : 1150);
+    }, reducedMotion ? 20 : 520);
   }
 
   function closeMagazine() {
@@ -134,7 +134,7 @@
       isOpen = false;
       isClosing = false;
       coverButton.focus({ preventScroll: true });
-    }, reducedMotion ? 20 : 1150);
+    }, reducedMotion ? 20 : 520);
   }
 
   function closeBackCover() {
