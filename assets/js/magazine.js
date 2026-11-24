@@ -65,10 +65,10 @@
     usePortrait: window.matchMedia('(max-width: 900px)').matches,
     showCover: true,
     drawShadow: true,
-    maxShadowOpacity: 0.28,
-    flippingTime: reducedMotion ? 1 : 1450,
+    maxShadowOpacity: 0.2,
+    flippingTime: reducedMotion ? 1 : 850,
     mobileScrollSupport: false,
-    swipeDistance: 22,
+    swipeDistance: 18,
     useMouseEvents: true,
     disableFlipByClick: false
   });
