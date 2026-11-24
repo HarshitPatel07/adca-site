@@ -98,7 +98,7 @@
 
   var pages = [];
   for (var index = 1; index <= pageCount; index += 1) {
-    pages.push('assets/newsletter/pages/page-' + String(index).padStart(2, '0') + '.webp?v=hires1');
+    pages.push('assets/newsletter/pages/page-' + String(index).padStart(2, '0') + '.webp?v=hires2');
   }
   pageFlip.loadFromImages(pages);
 
