@@ -143,3 +143,9 @@ body[data-page="network"] .camp-intro h1{font-size:clamp(34px,3.2vw,48px)}
 .camp-leaflet-pin .camp-office-pin::after{transform:translate(-50%,4px)}
 .camp-leaflet-pin .camp-office-pin:hover::after,
 .camp-leaflet-pin .camp-office-pin.is-active::after{transform:translate(-50%,0)}
+
+
+/* Warm orange map palette while preserving the geographic tile detail. */
+.camp-map-view .leaflet-tile-pane{filter:sepia(.28) saturate(1.16) hue-rotate(-7deg) contrast(1.025)}
+.camp-map-stage{background:#f4ead8}
+.camp-map-view{background:#f4ead8}
