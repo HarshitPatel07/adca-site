@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="assets/css/dynamic.css">
 <link rel="stylesheet" href="assets/css/polish.css">
 <link rel="stylesheet" href="assets/css/header-fix.css">
-  <link rel="stylesheet" href="assets/css/camp-office.css?v=7">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY6ewAbpijTuV9v1vOLznlF+" crossorigin="">
+  <link rel="stylesheet" href="assets/css/camp-office.css?v=8">
 </head>
 <body data-page="network">
 
@@ -72,10 +73,10 @@
           <span class="camp-map-card__badge">8 branches <i>+</i> Surat head office</span>
         </div>
         <div class="camp-map-stage" id="camp-map">
-          <img class="camp-map-image" src="https://www.adcaindia.com/wp-content/uploads/2022/04/India-map-1.png" alt="Map of India with the office network regions marked" loading="eager">
-          <div class="camp-office-pins" id="camp-map-pins"></div>
+          <div class="camp-map-view" id="camp-map-view" role="application" aria-label="Interactive map showing the office cities in their geographic locations"></div>
+          <div class="camp-map-fallback" id="camp-map-fallback" hidden></div>
         </div>
-        <div class="camp-map-legend"><span class="camp-map-legend__dot"></span> Select a pin or office to view details</div>
+        <div class="camp-map-legend"><span class="camp-map-legend__dot"></span> Select a city pin or office to view details · Zoom in to inspect state borders</div>
       </section>
 
       <aside class="camp-directory" aria-label="Office directory">
@@ -122,7 +123,8 @@
 
 <script src="assets/js/data.js?v=28"></script>
 <script src="assets/js/main.js?v=31"></script>
-<script src="assets/js/camp-office.js?v=6"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="assets/js/camp-office.js?v=7"></script>
 </body>
 </html>
 
