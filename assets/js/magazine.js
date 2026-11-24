@@ -5,7 +5,9 @@
   var host = document.getElementById('magazine-flipbook');
   var stage = document.querySelector('.magazine-reader-stage--inline');
   var coverIntro = document.getElementById('magazine-cover-intro');
-  var coverButton = document.querySelector('[data-open-magazine]');
+  var coverButtons = document.querySelectorAll('[data-open-magazine]');
+  var coverButton = coverButtons[0];
+  var lastOpenTrigger = coverButton;
   var bookScene = document.getElementById('magazine-book-scene');
   var pageCount = 18;
   var currentIndex = 0;
@@ -19,7 +21,7 @@
   var backCover = document.getElementById('magazine-back-cover');
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!host || !stage || !coverIntro || !coverButton || !bookScene || !backCover || !window.St || !window.St.PageFlip) return;
+  if (!host || !stage || !coverIntro || !coverButton || !coverButtons.length || !bookScene || !backCover || !window.St || !window.St.PageFlip) return;
 
   function updateSpread(index) {
     if (typeof index === 'number') currentIndex = index;
@@ -133,7 +135,7 @@
       host.setAttribute('tabindex', '-1');
       isOpen = false;
       isClosing = false;
-      coverButton.focus({ preventScroll: true });
+      (lastOpenTrigger || coverButton).focus({ preventScroll: true });
     }, reducedMotion ? 20 : 520);
   }
 
@@ -166,7 +168,12 @@
     closeMagazine();
   }
 
-  coverButton.addEventListener('click', openMagazine);
+  coverButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      lastOpenTrigger = button;
+      openMagazine();
+    });
+  });
   backCover.addEventListener('click', closeBackCover);
   backCover.addEventListener('keydown', function (event) {
     if (event.key === 'ArrowLeft' || event.key === 'Enter' || event.key === ' ') {
