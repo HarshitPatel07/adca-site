@@ -203,7 +203,7 @@
   .issue-feature--reader{grid-template-columns:minmax(0,1fr);gap:0}
   .issue-feature--reader .issue-feature__copy{padding:clamp(22px,5vw,38px)}
   .issue-feature--reader .magazine-inline-reader{margin-top:4px}
-  .issue-feature--reader .magazine-reader-stage--inline{width:100%}
+  .issue-feature--reader .magazine-reader-stage--inline{width:100%;height:min(620px,max(170px,calc((100vw - 125px)/1.414)));aspect-ratio:auto}
 }
 @media(max-width:600px){
   .publication-issue-section{padding:24px 0 48px}
