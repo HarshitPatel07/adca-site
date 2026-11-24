@@ -1,4 +1,4 @@
-/* Interactive office directory with geographic map pins. */
+/* Interactive office directory with India-focused official boundary rendering. */
 (function () {
   'use strict';
   var D = window.ADCA;
@@ -13,7 +13,7 @@
     var count = document.getElementById('camp-office-count');
     if (!mapCanvas || !list || !detail || !search) return;
 
-    /* City-center coordinates, using the listed branch cities. */
+    /* City-center coordinates for the listed branch cities. */
     var cityCoordinates = {
       'Surat':     { lat: 21.1959, lon: 72.8302, state: 'Gujarat', kind: 'Head Office' },
       'Delhi':     { lat: 28.65195, lon: 77.23149, state: 'Delhi', kind: 'Branch Office' },
@@ -47,6 +47,7 @@
         lon: location.lon
       };
     }));
+
     var activeCity = 'Surat';
     var map = null;
     var markers = {};
@@ -60,69 +61,92 @@
       return 'https://www.google.com/maps/search/?api=1&query=' +
         encodeURIComponent(office.address + ', ' + office.city);
     }
-    function markerIcon(office, index) {
+    function markerElement(office, index) {
       var number = String(index + 1).padStart(2, '0');
-      var label = escapeHtml(office.city + ' · ' + office.state);
-      var aria = 'View ' + escapeHtml(office.city) + ', ' + escapeHtml(office.state) +
-        (office.kind === 'Head Office' ? ' head office' : ' branch office');
-      return L.divIcon({
-        className: 'camp-leaflet-pin',
-        html: '<button class="camp-office-pin' + (office.city === activeCity ? ' is-active' : '') +
-          '" type="button" data-city="' + escapeHtml(office.city) + '" aria-label="' + aria +
-          '" aria-pressed="' + (office.city === activeCity) + '" title="' + label +
-          '" data-label="' + label + '"><span>' + number + '</span></button>',
-        iconSize: [30, 30],
-        iconAnchor: [15, 15]
+      var button = document.createElement('button');
+      button.className = 'camp-office-pin' + (office.city === activeCity ? ' is-active' : '');
+      button.type = 'button';
+      button.setAttribute('data-city', office.city);
+      button.setAttribute('aria-label', 'View ' + office.city + ', ' + office.state +
+        (office.kind === 'Head Office' ? ' head office' : ' branch office'));
+      button.setAttribute('aria-pressed', office.city === activeCity ? 'true' : 'false');
+      button.setAttribute('title', office.city + ' · ' + office.state);
+      button.setAttribute('data-label', office.city + ' · ' + office.state);
+      button.innerHTML = '<span>' + number + '</span>';
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        showOffice(office.city, true);
       });
+      return button;
     }
-    function initMap() {
-      if (!window.L) {
-        if (mapFallback) {
-          mapFallback.hidden = false;
-          mapFallback.innerHTML = 'The map could not load right now. <a href="https://www.google.com/maps/search/?api=1&query=India">Open the map in Google Maps ↗</a>';
-        }
-        return;
-      }
-      map = L.map(mapCanvas, {
-        zoomControl: true,
-        scrollWheelZoom: false,
-        zoomSnap: 0.5,
-        minZoom: 4,
-        maxZoom: 17,
-        attributionControl: true
-      });
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-      }).addTo(map);
-      map.fitBounds(offices.map(function (office) { return [office.lat, office.lon]; }), {
-        padding: [38, 38],
-        maxZoom: 5.5
-      });
-      offices.forEach(function (office, index) {
-        var marker = L.marker([office.lat, office.lon], {
-          icon: markerIcon(office, index),
-          title: office.city + ' · ' + office.state,
-          keyboard: true,
-          riseOnHover: true
-        }).addTo(map);
-        marker.on('click', function () { showOffice(office.city, true); });
-        markers[office.city] = marker;
-      });
-      window.setTimeout(function () { map.invalidateSize(); }, 100);
+    function showMapFallback() {
+      if (!mapFallback) return;
+      mapFallback.hidden = false;
+      mapFallback.innerHTML = 'The map could not load right now. <a href="https://www.google.com/maps/search/?api=1&query=India">Open the map in Google Maps ↗</a>';
     }
     function renderMarkers(matched) {
       if (!map) return;
-      offices.forEach(function (office, index) {
-        var marker = markers[office.city];
-        if (!marker) return;
-        marker.setIcon(markerIcon(office, index));
-        if (!matched || matched.indexOf(office) !== -1) {
-          if (!map.hasLayer(marker)) marker.addTo(map);
-        } else if (map.hasLayer(marker)) {
-          map.removeLayer(marker);
+      offices.forEach(function (office) {
+        var entry = markers[office.city];
+        if (!entry) return;
+        var visible = !matched || matched.indexOf(office) !== -1;
+        if (visible && !entry.visible) {
+          entry.marker.addTo(map);
+          entry.visible = true;
+        } else if (!visible && entry.visible) {
+          entry.marker.remove();
+          entry.visible = false;
         }
+        entry.element.classList.toggle('is-active', office.city === activeCity);
+        entry.element.setAttribute('aria-pressed', office.city === activeCity ? 'true' : 'false');
       });
+    }
+    function addMarkers(maplibregl) {
+      offices.forEach(function (office, index) {
+        var element = markerElement(office, index);
+        var marker = new maplibregl.Marker({ element: element, anchor: 'center' })
+          .setLngLat([office.lon, office.lat])
+          .addTo(map);
+        markers[office.city] = { marker: marker, element: element, visible: true };
+      });
+      var bounds = new maplibregl.LngLatBounds();
+      offices.forEach(function (office) { bounds.extend([office.lon, office.lat]); });
+      map.fitBounds(bounds, { padding: 34, maxZoom: 5.5, duration: 0 });
+    }
+    function initMap() {
+      if (!window.maplibregl || !window.BharatMap) {
+        showMapFallback();
+        return;
+      }
+      var boundaryReady = window.BharatMap.install(window.maplibregl);
+      Promise.resolve(boundaryReady)
+        .then(function () {
+          return window.BharatMap.fixStyle('https://basemaps.cartocdn.com/gl/positron-gl-style/style.json');
+        })
+        .then(function (style) {
+          map = new window.maplibregl.Map({
+            container: mapCanvas,
+            style: style,
+            center: [78, 22],
+            zoom: 4.5,
+            minZoom: 3.5,
+            maxZoom: 17,
+            attributionControl: true,
+            dragRotate: false,
+            pitchWithRotate: false
+          });
+          map.addControl(new window.maplibregl.NavigationControl({
+            showCompass: false,
+            visualizePitch: false
+          }), 'top-left');
+          map.on('load', function () { addMarkers(window.maplibregl); });
+          map.on('error', function (event) {
+            if (event && event.error && /style|source|tile/i.test(event.error.message || '')) showMapFallback();
+          });
+          window.setTimeout(function () { if (map) map.resize(); }, 150);
+        })
+        .catch(function () { showMapFallback(); });
     }
     function renderList(query) {
       var q = query.trim().toLowerCase();
@@ -154,7 +178,11 @@
         '</a><a href="' + mapHref(office) + '" target="_blank" rel="noopener noreferrer">Directions ↗</a></div>';
       renderList(search.value);
       if (map && focusMap) {
-        map.flyTo([office.lat, office.lon], Math.max(map.getZoom(), 7), { duration: 0.65 });
+        map.flyTo({
+          center: [office.lon, office.lat],
+          zoom: Math.max(map.getZoom(), 7),
+          duration: 850
+        });
       }
     }
 
